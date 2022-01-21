@@ -1,0 +1,19 @@
+.section {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+  border: thin dashed lightblue;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  //init
+  opacity: 0;
+  transition: 0.5s ease;
+}
+
+.loaded {
+  opacity: 1;
+}
