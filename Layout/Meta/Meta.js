@@ -6,7 +6,7 @@ export function Meta() {
   return (
     <Head>
       <title>{metaData.title}</title>
-      <meta name="description" content={meta.descr} />
+      <meta name="description" content={metaData.descr} />
       <link rel="icon" href="/favicon.ico" />
     </Head>
   );

@@ -1,4 +1,6 @@
-export * from './Layout'
+export * from './Layout';
 
 //sub
-export * from './Nav'
+export * from './Dev';
+export * from './Meta';
+export * from './Nav';
