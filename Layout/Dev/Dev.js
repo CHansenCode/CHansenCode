@@ -29,6 +29,23 @@ export function Dev() {
                 <p>I am link</p>
               </a>
             </div>
+
+            <div className="sc">
+              <h1>H1 h1 - biggest font</h1>
+              <h2>H2 h2 - overline addict</h2>
+              <h3>H3 h3 - Look at me</h3>
+              <h4>H4 h4 - Look at me too but not as much</h4>
+              <p>
+                P p - I am the standard paragraph text, must be readable by all
+                very easily
+              </p>
+              <h5>H5 h5 - I am subscript and annotation</h5>
+              <h6>H6 h6 - i'm trying to be both small and readable</h6>
+
+              <a href="#">
+                <p>I am link</p>
+              </a>
+            </div>
           </div>
         </aside>
       )}
