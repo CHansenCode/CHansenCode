@@ -10,8 +10,8 @@ export const NavLink = ({ name, href, ...props }) => {
 
   return (
     <Link href={href}>
-      <a {...props} className={`${css.a} ${isActive ? css.active : ''}`}>
-        <li className={css.li}>{name}</li>
+      <a {...props} className={`${css.a} ${isActive ? `sc` : ''}`}>
+        <li className={`${css.li} ${isActive ? css.active : ''}`}>{name}</li>
       </a>
     </Link>
   );

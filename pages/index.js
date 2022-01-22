@@ -1,5 +1,5 @@
-import { Section, AnimatedLogo, FlexCenter } from 'components';
-import { Logo, LayeredImage } from 'chansencode-lib';
+import { Section, AnimatedLogo, FlexCenter, Empty } from 'components';
+import { LayeredImage } from 'chansencode-lib';
 
 export default function Home() {
   return (
@@ -15,6 +15,8 @@ export default function Home() {
           </LayeredImage>
         </div>
       </Section>
+
+      <Empty height="20vh" />
 
       <Section>
         <div style={{ height: '40rem', width: '100%' }}>
