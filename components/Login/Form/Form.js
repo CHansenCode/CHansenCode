@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-
 import { Input, Button } from 'chansencode-lib';
+
+import fetchJson, { FetchError } from 'lib/fetchJson';
+import useUser from 'lib/useUser';
 
 import css from './Form.module.scss';
 
@@ -12,18 +14,45 @@ export const Form = ({ open }) => {
   });
   const [showPassword, setShowPassword] = useState(false);
 
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const { mutateUser } = useUser({
+    redirectTo: '/contact',
+    rediretifFound: true,
+  });
+
   async function onChange(e, objKey) {
     setFormData({ ...formData, [objKey]: e.target.value });
   }
-  async function onSubmit(e) {
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    alert('not implemented yet');
+
+    const body = {
+      username: formData.username,
+    };
+
+    try {
+      mutateUser(
+        await fetchJson('/api/login', {
+          method: 'POST',
+          headers: { 'Content-type': 'application/json' },
+          body: JSON.stringify(body),
+        }),
+      );
+    } catch (error) {
+      if (error instanceof FetchError) {
+        setErrorMsg(error.data.message);
+      } else {
+        console.log('An unexpected error happened:', error);
+      }
+    }
   }
 
   return (
     <form
       className={`${css.form} pc5b bg ${open ? css.open : ''}`}
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit}
     >
       <>
         <Input
@@ -41,7 +70,7 @@ export const Form = ({ open }) => {
         />
       </>
 
-      <Button className="pc5b" onClick={onSubmit}>
+      <Button className="pc5b" onClick={handleSubmit}>
         Log In
       </Button>
     </form>

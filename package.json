@@ -10,9 +10,11 @@
   "dependencies": {
     "animejs": "^3.2.1",
     "chansencode-lib": "^0.1.43",
+    "iron-session": "^6.0.5",
     "next": "12.0.8",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "swr": "^1.1.2"
   },
   "devDependencies": {
     "eslint": "8.7.0",
