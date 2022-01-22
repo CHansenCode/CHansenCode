@@ -2,10 +2,10 @@ import React from 'react';
 
 import { Section } from 'components';
 
-export default function contact() {
+export default function webdesign() {
   return (
     <Section>
-      <h3>contact !</h3>
+      <h3>wabybaby</h3>
     </Section>
   );
 }

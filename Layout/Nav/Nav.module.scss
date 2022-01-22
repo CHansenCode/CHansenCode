@@ -1,3 +1,15 @@
 .nav {
   position: fixed;
+  z-index: 100;
+
+  top: 0;
+  left: 0;
+
+  height: 5rem;
+  width: 100vw;
+
+  display: grid;
+  grid-template: 'logo info links login' 1fr / 20rem 1fr auto auto;
+
+  align-items: center;
 }

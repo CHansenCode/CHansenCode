@@ -2,10 +2,10 @@ import React from 'react';
 
 import { Section } from 'components';
 
-export default function contact() {
+export default function architecture() {
   return (
     <Section>
-      <h3>contact !</h3>
+      <h3>architecture</h3>
     </Section>
   );
 }

@@ -1,3 +1,9 @@
+import { Section } from 'components';
+
 export default function cvPresentation() {
-  return <div>hello</div>;
+  return (
+    <Section>
+      <h4>portfolio</h4>
+    </Section>
+  );
 }
