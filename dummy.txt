@@ -1,0 +1,7 @@
+GIT
+
+-branch naming rules:
+    'developer-category-description',           f.e. 'chansen-feature-new page, cv'
+
+    categories:
+        feature, hotfix, testing, review, rework
