@@ -1,4 +1,4 @@
-import fetchJson from 'lib';
+import fetchJson from 'lib/fetchJson';
 
 export const swrValues = {
   fetcher: fetchJson,
