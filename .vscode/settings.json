@@ -12,9 +12,9 @@
     //
 
     //  dep's
-    "**/.git": true,
-    "**/.next": true,
-    "**/node_modules": true,
+    "**/.git": false,
+    "**/.next": false,
+    "**/node_modules": false,
 
     //  settings
     "**/.gitignore": false,
@@ -23,7 +23,7 @@
 
     //  proj.Settings
     "**/package.json": false,
-    "**/package-lock.json": true,
+    "**/package-lock.json": false,
     "**/jsconfig.json": false,
     "**/next.config.js": false,
 

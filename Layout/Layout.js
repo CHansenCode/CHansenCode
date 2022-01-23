@@ -1,4 +1,5 @@
 import { Dev, GlobalStyles, Main, Meta, Nav } from './';
+import { Dashboard } from './';
 import { useColors } from 'lib/useColor';
 
 export function Layout({ ...props }) {
@@ -20,6 +21,9 @@ export function Layout({ ...props }) {
       <GlobalStyles {...props} />
 
       <Nav {...props} />
+
+      {/* CMS */}
+      <Dashboard {...props} />
 
       <Main {...props} />
     </>

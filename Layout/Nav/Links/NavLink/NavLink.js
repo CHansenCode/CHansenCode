@@ -16,7 +16,3 @@ export const NavLink = ({ name, href, ...props }) => {
     </Link>
   );
 };
-
-NavLink.defaultProps = {
-  exact: false,
-};

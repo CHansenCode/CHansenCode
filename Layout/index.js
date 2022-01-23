@@ -1,8 +1,13 @@
 export * from './Layout';
 
-//sub
+//general
 export * from './Dev';
 export * from './GlobalStyles';
 export * from './Main';
 export * from './Meta';
+
+//Homepage
 export * from './Nav';
+
+//cms
+export * from './Dashboard';
