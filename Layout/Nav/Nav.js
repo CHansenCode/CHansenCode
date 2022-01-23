@@ -31,7 +31,7 @@ export function Nav() {
 
       <div style={{ display: 'flex' }}>
         <Button onClick={logOut}>Log out</Button>
-        <h5>user: {user.username}</h5>
+        <h5>user: {user?.username}</h5>
       </div>
 
       <Links />
