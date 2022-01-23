@@ -19,6 +19,8 @@ export function Nav() {
     mutateUser(await fetchJson('/api/logout', { method: 'POST' }), false);
   }
 
+  console.log(process.env);
+
   return (
     <nav className={css.nav}>
       <div>

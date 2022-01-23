@@ -1,0 +1,21 @@
+### 1
+
+- error msg:
+
+    "Failed to load resource: the server responded with a status of 500 ()"
+
+
+- console.log:
+
+    An unexpected error happened: SyntaxError: Unexpected end of JSON input
+        at _app-a0e722f0b79d6adf.js:1:371143
+        at s (main-1e7421553b9673ee.js:1:87575)
+        at Generator._invoke (main-1e7421553b9673ee.js:1:87363)
+        at Generator.P.forEach.e.<computed> [as next] (main-1e7421553b9673ee.js:1:87998)
+        at a (_app-a0e722f0b79d6adf.js:1:368748)
+        at s (_app-a0e722f0b79d6adf.js:1:368951)
+
+
+- description:
+
+    ./api/login.js throwing this error on the build but not on the local dev
