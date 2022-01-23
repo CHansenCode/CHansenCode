@@ -1,12 +1,46 @@
 .aside {
   position: fixed;
+  z-index: 100;
   top: 0;
-  left: 0;
+  left: -14rem;
 
   height: 100vh;
   width: 14rem;
 
+  box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, 0.2);
+
   border-top: none !important;
   border-bottom: none !important;
   border-left: none !important;
+
+  transition: 0.4s ease;
+}
+
+.nav {
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  border-top: none !important;
+  border-left: none !important;
+  border-bottom: none !important;
+
+  box-shadow: 0 0 5rem -4rem black;
+}
+.nav {
+  display: grid;
+  grid-template:
+    'header' auto
+    'links' 1fr
+    'footer' auto / 100%;
+
+  > :nth-child(1) {
+    grid-area: header;
+  }
+  > :nth-child(2) {
+    grid-area: links;
+  }
+  > :nth-child(3) {
+    grid-area: footer;
+  }
 }

@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
+import useUser from 'lib/useUser';
 
 import css from './Dev.module.scss';
 
 export function Dev() {
+  const { user } = useUser();
   const [open, setOpen] = useState(false);
+
   return (
     <>
       <button className={css.button} onClick={() => setOpen(!open)}>
@@ -13,6 +16,15 @@ export function Dev() {
       {open && (
         <aside className={css.aside}>
           <div className={css.innerDiv}>
+            <div>
+              <h4>{user?.username}</h4>
+              <h4>{user?.isLoggedIn ? 'isLoggedIn' : 'is not logged in'}</h4>
+            </div>
+
+            <br />
+            <br />
+            <br />
+
             <div>
               <h1>H1 h1 - biggest font</h1>
               <h2>H2 h2 - overline addict</h2>

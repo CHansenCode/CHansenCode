@@ -1,6 +1,6 @@
 import css from './Nav.module.scss';
 
-import { Links } from './';
+import { Links, Avatar } from './';
 import { NextLink, Login } from 'components';
 import { useRouter } from 'next/router';
 import { Logo, Button } from 'chansencode-lib';
@@ -13,12 +13,6 @@ export function Nav() {
   const { user, mutateUser } = useUser();
   const { pathname } = useRouter();
 
-  async function logOut(e) {
-    e.preventDefault();
-
-    mutateUser(await fetchJson('/api/logout', { method: 'POST' }), false);
-  }
-
   return (
     <nav className={css.nav}>
       <div>
@@ -29,14 +23,13 @@ export function Nav() {
         )}
       </div>
 
-      <div style={{ display: 'flex' }}>
-        <Button onClick={logOut}>Log out</Button>
-        <h5>user: {user?.username}</h5>
-      </div>
+      <div></div>
 
       <Links />
 
-      <Login />
+      <div>{user?.isLoggedIn ? <Avatar /> : <Login />}</div>
+
+      {/* {user?.isLoggedIn ? <Avatar /> : <Login />} */}
     </nav>
   );
 }

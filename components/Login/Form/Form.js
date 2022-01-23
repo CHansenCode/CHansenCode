@@ -16,10 +16,7 @@ export const Form = ({ open }) => {
 
   const [errorMsg, setErrorMsg] = useState('');
 
-  const { mutateUser } = useUser({
-    redirectTo: '/contact',
-    rediretifFound: true,
-  });
+  const { mutateUser } = useUser();
 
   async function onChange(e, objKey) {
     setFormData({ ...formData, [objKey]: e.target.value });

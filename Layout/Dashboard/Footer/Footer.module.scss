@@ -1,0 +1,98 @@
+.footer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  display: grid;
+  grid-template:
+    'toggles' 3rem
+    'navigation' 3rem
+    'logOut' 3rem / 1fr;
+}
+
+.button_menu {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-left: none !important;
+  border-right: none !important;
+
+  display: grid;
+  grid-template: 'a b c d' 1fr / 1fr 1fr 1fr 1fr;
+
+  > button {
+    padding: 0;
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    svg {
+      height: 40%;
+      width: 40%;
+    }
+  }
+
+  > :nth-child(4) {
+    border-right: none;
+  }
+}
+
+.logMenu {
+  display: flex;
+  > button {
+    border-bottom: 0;
+    border-top: 0;
+    border-left: 0;
+  }
+  > :first-child {
+    width: 66%;
+  }
+  > :last-child {
+    border-right: 0;
+    width: 34%;
+  }
+}
+
+.logMenu_collapsed {
+  width: calc(120% + 1px);
+  > :first-child {
+    width: calc(100% + 1px);
+  }
+  > :last-child {
+    border-top: thin solid;
+    border-right: thin solid;
+    width: 20%;
+  }
+}
+
+@media screen and (max-width: 948px) {
+  .footer {
+    display: grid;
+    grid-template:
+      'toggles' 1fr
+      'navigation' 1fr
+      'logOut' 1fr / 1fr;
+  }
+
+  .button_menu {
+    grid-template:
+      'a' 2.5rem
+      'b' 2.5rem
+      'c' 2.5rem
+      'd' 2.5rem / 1fr;
+    justify-content: center;
+
+    > button {
+      padding: 0;
+    }
+
+    > :nth-child(4) {
+      border-right: none;
+    }
+  }
+
+  .logMenu {
+    > :last-child {
+      display: none;
+    }
+  }
+}
