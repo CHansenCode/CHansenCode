@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import { CheckPuzzle, Information, Form } from './';
+import { CheckPuzzle } from './CheckPuzzle';
+import { Form } from './Form';
+import { Information } from './Information';
 
 import css from './Contact.module.scss';
 

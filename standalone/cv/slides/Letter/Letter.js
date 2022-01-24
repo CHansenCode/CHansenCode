@@ -1,10 +1,10 @@
 import React from 'react';
 
-import css from './LetterOfMotivation.module.scss';
+import css from './Letter.module.scss';
 
 // import { letter } from 'config/Letters';
 
-export const LetterOfMotivation = ({ ...props }) => {
+export const Letter = ({ ...props }) => {
   // const letters = letter[props.whom];
   // const pbData = props.data.pb;
 

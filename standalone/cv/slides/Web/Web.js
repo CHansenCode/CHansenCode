@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 
-import { Cards, Header, Details, ToggleWidth } from './';
+import { Cards, Header, Details, ToggleWidth } from '.';
 
 // import { apps } from './data';
 
-import css from './CHansenSystem.module.scss';
+import css from './Web.module.scss';
 
-export const CHansenSystem = ({ ...props }) => {
+export const Web = ({ ...props }) => {
   const [name, setName] = useState('CHansen');
   const [activeId, setActiveId] = useState('');
 
@@ -14,7 +14,7 @@ export const CHansenSystem = ({ ...props }) => {
 
   return (
     <div className={css.main}>
-      system
+      <h4 className="sc">WEB</h4>
       {/* <Header {...props} />
 
       <ToggleWidth {...props}>

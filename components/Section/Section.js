@@ -13,8 +13,24 @@ export const Section = ({ title, children, ...props }) => {
     }, 400);
   }, []);
 
+  const iStyle = {
+    minHeight: props.full && '100vh',
+    display: props.flex && 'flex',
+    flexDirection: props.column && 'column',
+    alignItems: props.center && 'center',
+    justifyContent: props.center && 'center',
+  };
+
+  props.style = {
+    ...props.style,
+    ...iStyle,
+  };
+
+  props.className += ` ${css.section}${loaded ? ` ${css.loaded}` : ''}`;
+
   return (
     <section
+      style={props.style}
       className={`${css.section} ${loaded ? css.loaded : ''}`}
       {...props}
     >

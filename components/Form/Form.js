@@ -2,7 +2,7 @@ import React from 'react';
 
 import css from './Form.module.scss';
 
-export const Form = ({ style, className, ...props }) => {
+export const Form = ({ className, ...props }) => {
   //
   const iStyle = {
     padding: props.padding && props.padding,

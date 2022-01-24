@@ -11,6 +11,7 @@ export const Button = ({ text, ...props }) => {
     margin: props.margin && props.margin,
     width: props.width && props.width,
     heght: props.height && props.height,
+    textTransform: props.uppercase && 'uppercase',
   };
 
   props.style = {

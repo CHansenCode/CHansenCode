@@ -15,12 +15,12 @@ export const Dashboard = ({ ...props }) => {
     }, 200);
   }, []);
 
-  const iStyle = {
-    left: props.controller.showDashboard ? '0' : '-14rem',
-  };
-
   return (
-    <aside style={iStyle} className={`${css.aside} pc1b`}>
+    <aside
+      className={`${css.aside} pc1b ${
+        props.controller.showDashboard ? `${css.aside_show} bg` : ''
+      }`}
+    >
       <nav className={css.nav}>
         <Header {...props} />
 

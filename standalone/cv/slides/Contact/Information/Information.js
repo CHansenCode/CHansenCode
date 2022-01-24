@@ -1,7 +1,3 @@
-import React from 'react';
-
-import { credentials } from 'config';
-
 import css from './Information.module.scss';
 
 export const Information = ({ puzzValid, ...props }) => {
@@ -24,4 +20,11 @@ export const Information = ({ puzzValid, ...props }) => {
       )}
     </div>
   );
+};
+
+const credentials = {
+  name: 'christoffer',
+  adr: 'somewhere',
+  country: 'Denmark',
+  phone: '+45',
 };

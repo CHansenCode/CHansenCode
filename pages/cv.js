@@ -1,10 +1,10 @@
 import { Section } from 'components';
 
-import CvSlideshow from 'domain/cv';
+import CvSlideshow from 'standalone/cv';
 
 export default function Portfolio() {
   return (
-    <Section>
+    <Section flex center full>
       <CvSlideshow />
     </Section>
   );
