@@ -10,11 +10,14 @@ export const Section = ({ title, children, ...props }) => {
   useState(() => {
     setTimeout(() => {
       setLoaded(true);
-    }, 500);
+    }, 400);
   }, []);
 
   return (
-    <section className={`${css.section} ${loaded ? css.loaded : ''}`}>
+    <section
+      className={`${css.section} ${loaded ? css.loaded : ''}`}
+      {...props}
+    >
       {title && <div>{title}</div>}
 
       {children}

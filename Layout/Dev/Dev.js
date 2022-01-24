@@ -17,7 +17,7 @@ export function Dev() {
         <aside className={css.aside}>
           <div className={css.innerDiv}>
             <div>
-              <h4>{user?.username}</h4>
+              <h4>{user?.username ? user?.username : 'no name'}</h4>
               <h4>{user?.isLoggedIn ? 'isLoggedIn' : 'is not logged in'}</h4>
             </div>
 

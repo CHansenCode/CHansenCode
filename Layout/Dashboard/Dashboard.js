@@ -16,11 +16,11 @@ export const Dashboard = ({ ...props }) => {
   }, []);
 
   const iStyle = {
-    left: props.appController.showDashboard ? '0' : '-14rem',
+    left: props.controller.showDashboard ? '0' : '-14rem',
   };
 
   return (
-    <aside style={iStyle} className={`${css.aside} bg pc3b`}>
+    <aside style={iStyle} className={`${css.aside} pc1b`}>
       <nav className={css.nav}>
         <Header {...props} />
 

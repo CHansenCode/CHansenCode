@@ -8,8 +8,16 @@ $mr: 1rem;
 
   display: flex;
   align-items: center;
+  flex-direction: column;
+}
 
-  border: thin solid purple;
+.form_wrapper {
+  position: absolute;
+  top: calc(100% + 2rem);
+  right: 1rem;
+  width: 14rem;
+
+  transition: 0.3s ease;
 }
 
 //login wrapper
