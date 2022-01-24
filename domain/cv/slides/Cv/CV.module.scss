@@ -1,0 +1,21 @@
+.wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  display: grid;
+  grid-template:
+    'profile detail' 1fr
+    'timeline timeline' auto / 3fr 2fr;
+  gap: 2rem;
+
+  > :nth-child(1) {
+    grid-area: profile;
+  }
+  > :nth-child(2) {
+    grid-area: detail;
+  }
+  > :nth-child(3) {
+    grid-area: timeline;
+  }
+}

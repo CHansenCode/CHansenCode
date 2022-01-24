@@ -12,7 +12,7 @@ async function eventsRoute(req, res) {
   }
 
   try {
-    const { data: events } = { name: 'cow' };
+    const { data: events } = { username: 'i was set by event handler' };
 
     res.json(events);
   } catch (error) {

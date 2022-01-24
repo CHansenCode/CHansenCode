@@ -1,0 +1,44 @@
+$gap: 2rem;
+
+.main {
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  padding: 2rem;
+
+  display: grid;
+  grid-template: 'a b' 1fr / 1fr 1fr;
+  gap: $gap;
+}
+
+.main > * {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  gap: $gap;
+}
+
+.main > :nth-child(1) {
+  grid-template-rows: auto auto 1fr;
+}
+.main > :nth-child(2) {
+  grid-template-rows: auto auto;
+}
+
+.main h2 {
+  text-transform: uppercase;
+}
+
+.paragraph {
+  height: 100%;
+  width: 100%;
+
+  padding: 1.5rem;
+
+  border: thin solid black;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+}
+.paragraph h4 {
+  margin-bottom: 1rem;
+}

@@ -6,6 +6,7 @@ export const dashConstructor = [
       { name: 'webdesign', href: '/webdesign' },
       { name: 'about', href: '/about' },
       { name: 'contact', href: '/contact' },
+      { name: 'cv', href: '/cv' },
     ],
   },
 ];

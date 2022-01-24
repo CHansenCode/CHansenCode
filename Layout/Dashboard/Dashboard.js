@@ -16,7 +16,7 @@ export const Dashboard = ({ ...props }) => {
   }, []);
 
   const iStyle = {
-    left: loaded ? '0' : '0',
+    left: props.appController.showDashboard ? '0' : '-14rem',
   };
 
   return (

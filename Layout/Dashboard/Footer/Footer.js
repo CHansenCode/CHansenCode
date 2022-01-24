@@ -8,7 +8,7 @@ import { Home, Settings, Calendar, Intercom } from './Buttons';
 
 import css from './Footer.module.scss';
 
-export const Footer = ({ showNav, setShowNav, id, ...props }) => {
+export const Footer = ({ id, ...props }) => {
   //
   const { user, mutateUser } = useUser();
   const router = useRouter();
@@ -21,6 +21,13 @@ export const Footer = ({ showNav, setShowNav, id, ...props }) => {
   async function onClickRouteTo(route) {
     router.push(route);
     props.setOpen(!props.open);
+  }
+
+  async function toggleDashboardVisiblity() {
+    props.setAppController({
+      ...props.appController,
+      showDashboard: !props.appController.showDashboard,
+    });
   }
 
   async function logOut(e) {
@@ -43,13 +50,15 @@ export const Footer = ({ showNav, setShowNav, id, ...props }) => {
       </List>
 
       <List
-        className={`${css.logMenu} ${showNav ? css.logMenu_collapsed : ''}`}
+        className={`${css.logMenu} ${
+          !props.appController.showDashboard ? css.logMenu_collapsed : ''
+        }`}
       >
         <Button className="pc5b" onClick={logOut}>
           Log out
         </Button>
-        <Button className="pc5b" onClick={() => setShowNav(!showNav)}>
-          <IconCollapseExpand ternary={showNav} />
+        <Button className="pc5b" onClick={toggleDashboardVisiblity}>
+          <IconCollapseExpand ternary={props.appController.showDashboard} />
         </Button>
       </List>
     </footer>
