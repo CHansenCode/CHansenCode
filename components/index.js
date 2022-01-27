@@ -7,6 +7,7 @@ export * from './FlexCenter';
 //  View
 export * from './AnimatedLogo';
 export * from './Logo';
+export * from './LayeredImage';
 
 //  Functional (no visuals)
 export * from './NextLink';

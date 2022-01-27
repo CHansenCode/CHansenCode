@@ -1,5 +1,5 @@
 import { Section, AnimatedLogo, FlexCenter, Empty } from 'components';
-import { LayeredImage } from 'chansencode-lib';
+import { LayeredImage } from 'components';
 
 export default function Home() {
   return (

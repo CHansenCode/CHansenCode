@@ -1,7 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-import { Input, Button } from 'components';
-
 import fetchJson, { FetchError } from 'lib/fetchJson';
 import useUser from 'lib/useUser';
 

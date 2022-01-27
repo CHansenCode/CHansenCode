@@ -20,10 +20,10 @@ export const Login = ({ ...props }) => {
   useEffect(() => {
     inputRef && open && inputRef.current.focus();
   }, [open]);
+
   async function onChange(e, objKey) {
     setFormData({ ...formData, [objKey]: e.target.value });
   }
-
   async function handleSubmit(e) {
     e.preventDefault();
 

@@ -15,12 +15,12 @@
     "**/node_modules": true,
 
     //  settings
-    "**/.gitignore": false,
+    "**/.gitignore": true,
     "**/.prettierrc": true,
     "**/.eslintrc.json": true,
 
     //  proj.Settings
-    "**/package.json": true,
+    "**/package.json": false,
     "**/package-lock.json": true,
     "**/jsconfig.json": true,
     "**/next.config.js": true,

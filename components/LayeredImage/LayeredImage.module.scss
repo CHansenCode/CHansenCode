@@ -1,0 +1,21 @@
+.wrapper {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  transition: 0.2s ease;
+}
+.overflow {
+  overflow: hidden;
+}
+
+.childWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  transform: translate(0, 0);
+
+  transition: 0.2s ease;
+}
