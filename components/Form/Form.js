@@ -7,6 +7,7 @@ export const Form = ({ className, ...props }) => {
   const iStyle = {
     padding: props.padding && props.padding,
     margin: props.margin && props.margin,
+    height: props.height && props.height,
   };
 
   props.style = { ...props.style, ...iStyle };

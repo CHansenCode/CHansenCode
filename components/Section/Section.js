@@ -3,6 +3,7 @@ import { useState } from 'react';
 import css from './Section.module.scss';
 
 export const Section = ({ title, children, ...props }) => {
+  //flex ,center
   //
   const [loaded, setLoaded] = useState(false);
 
@@ -14,11 +15,13 @@ export const Section = ({ title, children, ...props }) => {
   }, []);
 
   const iStyle = {
-    minHeight: props.full && '100vh',
+    minHeight: props.minheight && props.minheight,
     display: props.flex && 'flex',
     flexDirection: props.column && 'column',
     alignItems: props.center && 'center',
     justifyContent: props.center && 'center',
+    padding: props.padding && props.padding,
+    margin: props.margin && props.margin,
   };
 
   props.style = {

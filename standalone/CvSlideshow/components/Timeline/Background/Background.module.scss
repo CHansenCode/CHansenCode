@@ -1,0 +1,53 @@
+.main {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+  top: 0;
+  left: 0;
+
+  display: flex;
+
+  background: linear-gradient(
+    170deg,
+    rgba(150, 207, 221, 0) 0%,
+    rgba(39, 114, 117, 0) 100%
+  );
+}
+
+.main :nth-last-child(1) {
+  border-right: none;
+}
+
+.year {
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  border-right: thin solid;
+
+  > h6 {
+    position: absolute;
+    width: 100%;
+    font-size: 0.7rem;
+    bottom: 0.5rem;
+    text-align: center;
+  }
+}
+
+.month {
+  position: relative;
+  opacity: 0.3;
+  height: 100%;
+  width: calc(100% / 12);
+}
+.month::after {
+  position: absolute;
+  height: 100%;
+
+  opacity: 0.2;
+
+  content: ' ';
+  border: thin solid currentColor;
+}

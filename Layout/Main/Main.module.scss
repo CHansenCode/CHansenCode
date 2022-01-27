@@ -15,6 +15,10 @@
   box-shadow: 0 0 5rem -3rem black;
 
   transition: 0.4s ease;
+
+  > * {
+    border: thin dashed rgba(0, 128, 128, 0.1);
+  }
 }
 
 .show_dashboard {

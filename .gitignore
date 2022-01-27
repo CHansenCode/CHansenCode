@@ -35,3 +35,10 @@ yarn-error.log*
 
 # own
 dummy.txt
+
+#
+/dummyData
+/depr
+
+devData.js
+/standalone/CvSlideshow/data

@@ -1,0 +1,42 @@
+.timeline {
+  position: relative;
+
+  height: 9rem;
+  width: 100%;
+
+  display: grid;
+  grid-template: 'buttons view' 1fr / 3rem 1fr;
+  gap: 1rem;
+
+  > :nth-child(1) {
+    grid-area: buttons;
+  }
+  > :nth-child(2) {
+    grid-area: view;
+  }
+}
+
+.timeline > div {
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  overflow: hidden;
+}
+
+.timeline button {
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.buttons {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  > button {
+    height: calc(50% - 0.5rem);
+    width: 100%;
+  }
+}

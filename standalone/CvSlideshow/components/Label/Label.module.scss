@@ -1,0 +1,19 @@
+.wrapper {
+  height: min-content;
+  width: 100%;
+  margin-bottom: 0.35rem;
+
+  height: 3.5rem;
+}
+
+.label {
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.8;
+  font-weight: 601;
+}
+
+.wrapper > div {
+  background: rgba(0, 0, 0, 0.00001);
+}

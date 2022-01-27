@@ -3,7 +3,7 @@ import React from 'react';
 import css from './Links.module.scss';
 import { NextLink } from 'components';
 
-import { dashConstructor } from 'config/constructors/dashboard.constr';
+import { dashConstructor } from 'config/maps/dashboard.map';
 
 export const Links = () => {
   return (

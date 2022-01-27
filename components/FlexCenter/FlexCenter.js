@@ -7,6 +7,7 @@ export const FlexCenter = ({ ...props }) => {
     height: props.height && props.height,
     width: props.width && props.width,
     padding: props.padding && props.padding,
+    margin: props.margin && props.margin,
   };
 
   return (

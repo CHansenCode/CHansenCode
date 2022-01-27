@@ -1,10 +1,10 @@
-import { Section } from 'components';
+import { Section, FlexCenter } from 'components';
 
-import CvSlideshow from 'standalone/cv';
+import CvSlideshow from 'standalone/CvSlideshow';
 
 export default function Portfolio() {
   return (
-    <Section flex center full>
+    <Section minHeight="100vh" flex="true" center="true" column="true">
       <CvSlideshow />
     </Section>
   );

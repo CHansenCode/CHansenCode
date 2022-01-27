@@ -1,0 +1,15 @@
+.slide {
+  height: 50rem; // 800px view + 3rem nav bar
+  width: 1200px;
+}
+
+.slide > * {
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (max-width: 1300px) {
+  .container {
+    width: 96%;
+  }
+}

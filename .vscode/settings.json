@@ -9,23 +9,21 @@
     "editorIndentGuide.background": "#3a3a3a1c"
   },
   "files.exclude": {
-    //
-
     //  dep's
-    "**/.git": false,
+    "**/.git": true,
     "**/.next": false,
-    "**/node_modules": false,
+    "**/node_modules": true,
 
     //  settings
     "**/.gitignore": false,
-    "**/.prettierrc": false,
-    "**/.eslintrc.json": false,
+    "**/.prettierrc": true,
+    "**/.eslintrc.json": true,
 
     //  proj.Settings
-    "**/package.json": false,
-    "**/package-lock.json": false,
-    "**/jsconfig.json": false,
-    "**/next.config.js": false,
+    "**/package.json": true,
+    "**/package-lock.json": true,
+    "**/jsconfig.json": true,
+    "**/next.config.js": true,
 
     //  folders
     "**/lib": false,

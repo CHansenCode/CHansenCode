@@ -7,7 +7,10 @@ import useUser from 'lib/useUser';
 import css from './Login.module.scss';
 
 export const Login = ({ ...props }) => {
-  const { mutateUser } = useUser();
+  const { mutateUser } = useUser({
+    redirectIfFound: true,
+    redirectTo: '/welcome',
+  });
 
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({ ...initFormData });

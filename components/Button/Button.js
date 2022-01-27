@@ -12,6 +12,9 @@ export const Button = ({ text, ...props }) => {
     width: props.width && props.width,
     heght: props.height && props.height,
     textTransform: props.uppercase && 'uppercase',
+    fontSize: props.fontSize && props.fontSize,
+    opacity: props.disabled && 0.5,
+    pointerEvents: props.disabled ? 'none' : 'all',
   };
 
   props.style = {
@@ -19,7 +22,7 @@ export const Button = ({ text, ...props }) => {
     ...iStyle,
   };
 
-  props.className += ` pc5b ${css.button}${hover ? ` sc` : ''}`;
+  props.className += ` pc3b ${css.button}${hover ? ` sc` : ''}`;
 
   return (
     <button
