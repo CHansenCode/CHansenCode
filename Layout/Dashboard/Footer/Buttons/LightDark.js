@@ -1,6 +1,4 @@
-import { useRouter } from 'next/router';
-
-import { Button } from 'chansencode-lib';
+import { Button } from 'components';
 import { GiYinYang } from 'react-icons/gi';
 
 export const LightDark = ({ ...props }) => {

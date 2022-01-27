@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { Button, List } from 'chansencode-lib';
+import { Button } from 'components';
 import useUser from 'lib/useUser';
 import fetchJson from 'lib/fetchJson';
 
@@ -10,15 +10,10 @@ import css from './Footer.module.scss';
 
 export const Footer = ({ id, ...props }) => {
   //
-  const { user, mutateUser } = useUser();
+  const { mutateUser } = useUser();
   const router = useRouter();
-  const { pathname } = useRouter();
 
-  async function onLogOut(e) {
-    e.preventDefault();
-  }
-
-  async function onClickRouteTo(route) {
+  async function goTo(route) {
     router.push(route);
     props.setOpen(!props.open);
   }
@@ -32,24 +27,23 @@ export const Footer = ({ id, ...props }) => {
 
   async function logOut(e) {
     e.preventDefault();
-
     mutateUser(await fetchJson('/api/logout', { method: 'POST' }), false);
   }
 
   return (
     <footer id={id} className={css.footer}>
-      <List className={css.button_menu}>
+      <div className={css.button_menu}>
         <LightDark {...props} />
-      </List>
+      </div>
 
-      <List className={`pc5b ${css.button_menu}`}>
-        <Home onClick={() => onClickRouteTo('/')} />
-        <Settings onClick={() => onClickRouteTo('/')} />
-        <Calendar onClick={() => onClickRouteTo('/')} />
-        <Intercom onClick={() => onClickRouteTo('/')} />
-      </List>
+      <div className={`pc5b ${css.button_menu}`}>
+        <Home />
+        <Settings />
+        <Calendar />
+        <Intercom />
+      </div>
 
-      <List
+      <div
         className={`${css.logMenu} ${
           !props.controller.showDashboard ? css.logMenu_collapsed : ''
         }`}
@@ -57,10 +51,14 @@ export const Footer = ({ id, ...props }) => {
         <Button className="pc5b" onClick={logOut}>
           Log out
         </Button>
-        <Button className="pc5b" onClick={toggleDashboardVisiblity}>
+        <Button
+          padding="0.25rem"
+          className="pc5b"
+          onClick={toggleDashboardVisiblity}
+        >
           <IconCollapseExpand ternary={props.controller.showDashboard} />
         </Button>
-      </List>
+      </div>
     </footer>
   );
 };

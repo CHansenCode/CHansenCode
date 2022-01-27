@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { Logo } from 'chansencode-lib';
+import { Logo } from 'components';
 import useUser from 'lib/useUser';
 
 import css from './Header.module.scss';

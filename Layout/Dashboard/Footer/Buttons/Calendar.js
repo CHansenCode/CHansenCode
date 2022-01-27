@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 
-import { Button } from 'chansencode-lib';
+import { Button } from 'components';
 import { AiOutlineCalendar } from 'react-icons/ai';
 
-export const Calendar = ({ onClick }) => {
+export const Calendar = () => {
   //
   const router = useRouter();
   const { pathname } = useRouter();
@@ -11,8 +11,12 @@ export const Calendar = ({ onClick }) => {
   let path = '/calendar';
   let active = pathname === path;
 
+  async function goTo() {
+    router.push(path);
+  }
+
   return (
-    <Button className={`pc5b ${active ? 'sc' : ''}`} onClick={onClick}>
+    <Button className={`pc5b ${active ? 'sc' : ''}`} onClick={goTo}>
       <AiOutlineCalendar />
     </Button>
   );

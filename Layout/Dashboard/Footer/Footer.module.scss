@@ -38,6 +38,8 @@
 
 .logMenu {
   display: flex;
+  transition: 0.2s ease;
+  width: 100%;
   > button {
     border-bottom: 0;
     border-top: 0;
@@ -58,8 +60,6 @@
     width: calc(100% + 1px);
   }
   > :last-child {
-    border-top: thin solid;
-    border-right: thin solid;
     width: 20%;
   }
 }

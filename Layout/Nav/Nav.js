@@ -1,12 +1,10 @@
 import css from './Nav.module.scss';
 
 import { Links, Avatar } from './';
-import { NextLink, Login } from 'components';
+import { NextLink, Login, Logo, Button } from 'components';
 import { useRouter } from 'next/router';
-import { Logo, Button } from 'chansencode-lib';
 
 import useUser from 'lib/useUser';
-import fetchJson from 'lib/fetchJson';
 
 export function Nav() {
   //

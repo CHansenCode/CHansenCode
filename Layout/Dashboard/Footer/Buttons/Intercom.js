@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 
-import { Button } from 'chansencode-lib';
+import { Button } from 'components';
 import { AiOutlineWechat } from 'react-icons/ai';
 
 export const Intercom = () => {
