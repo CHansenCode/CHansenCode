@@ -1,13 +1,16 @@
 import React from 'react';
 
-import css from './FlexCenter.module.scss';
+import css from './Flex.module.scss';
 
-export const FlexCenter = ({ ...props }) => {
+export const Flex = ({ ...props }) => {
   const iStyle = {
     height: props.height && props.height,
     width: props.width && props.width,
     padding: props.padding && props.padding,
     margin: props.margin && props.margin,
+    flexDirection: props.flexDirection && props.flexDirection,
+    alignItems: props.center && 'center',
+    justifyContent: props.center && 'center',
   };
 
   return (

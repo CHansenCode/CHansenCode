@@ -1,11 +1,17 @@
 import { useState, useEffect } from 'react';
 import useUser from 'lib/useUser';
 
+import { ObjectViewer } from 'components';
+
+import { useSelector } from 'react-redux';
+
 import css from './Dev.module.scss';
 
 export function Dev() {
   const { user } = useUser();
   const [open, setOpen] = useState(false);
+
+  const storeData = useSelector(store => store);
 
   return (
     <>
@@ -19,6 +25,8 @@ export function Dev() {
             <div>
               <h4>{user?.username ? user?.username : 'no name'}</h4>
               <h4>{user?.isLoggedIn ? 'isLoggedIn' : 'is not logged in'}</h4>
+
+              <ObjectViewer data={storeData} />
             </div>
 
             <br />

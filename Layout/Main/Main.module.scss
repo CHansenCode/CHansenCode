@@ -21,13 +21,21 @@
   }
 }
 
-.show_dashboard {
+.is_logged_in {
+  height: 100vh;
+  margin-bottom: 0;
+}
+.dashboard_visible {
+  height: 100vh;
   margin-left: 14rem;
+
   width: calc(100vw - 14rem);
+
+  margin-bottom: 0;
 }
 
 @media screen and (max-width: 950px) {
-  .show_dashboard {
+  .dashboard_visible {
     margin-left: 0;
     width: 100vw;
   }

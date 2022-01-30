@@ -2,7 +2,6 @@
 
 //  Composition
 export * from './Login';
-export * from './FlexCenter';
 
 //  View
 export * from './AnimatedLogo';
@@ -17,7 +16,16 @@ export * from './Section';
 export * from './Empty';
 export * from './Form';
 export * from './Input';
+export * from './Textarea';
+export * from './Select';
 export * from './Button';
+export * from './Cimage'; //extension of next.js/Image
+
+//  Enhanced Elements
+export * from './FullSection'; //fullpage section for backside
+export * from './SectionMenu'; //Page header for FullSection menu buttons
+export * from './Flex';
+export * from './Grid';
 
 //  Dev
 export * from './ObjectViewer';

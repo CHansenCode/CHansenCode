@@ -18,20 +18,17 @@ export const Textarea = ({ label, info, required, ...props }) => {
         )}
       </header>
 
-      <Textarea
-        className={`pc5b bg ${css.input}`}
+      <textarea
+        className={`pc5b bg ${css.textarea}`}
         ref={props.myRef}
         type={props.type}
-        //
         placeholder={props.placeholder}
         value={props.value}
         rows={props.rows ? props.rows : '4'}
-        //
         onFocus={props.onFocus ? props.onFocus : () => setFocused(true)}
         onBlur={props.onBlur ? props.onBlur : () => setFocused(false)}
-        //
         onChange={props.onChange}
-      ></Textarea>
+      ></textarea>
     </div>
   );
 };

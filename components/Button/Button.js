@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import css from './Button.module.scss';
 
-export const Button = ({ text, ...props }) => {
+export const Button = ({ active, text, ...props }) => {
   const [hover, setHover] = useState(false);
 
   const iStyle = {
@@ -22,18 +22,21 @@ export const Button = ({ text, ...props }) => {
     ...iStyle,
   };
 
-  props.className += ` pc3b ${css.button}${hover ? ` sc` : ''}`;
+  props.className += ` pc3b ${css.button}${active || hover ? ` sc` : ''}`;
 
   return (
-    <button
-      ref={props.myRef}
-      style={props.style}
-      onMouseOver={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      {...props}
-    >
-      {text}
-      {props.children}
-    </button>
+    <>
+      <button
+        className="chansen_button"
+        ref={props.myRef}
+        style={props.style}
+        onMouseOver={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        {...props}
+      >
+        {text}
+        {props.children}
+      </button>
+    </>
   );
 };

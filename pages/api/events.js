@@ -1,5 +1,6 @@
 import { withIronSessionApiRoute } from 'iron-session/next';
 import { sessionOptions } from 'lib/session';
+import useSWR from 'swr';
 
 export default withIronSessionApiRoute(eventsRoute, sessionOptions);
 
@@ -12,7 +13,7 @@ async function eventsRoute(req, res) {
   }
 
   try {
-    const { data: events } = { username: 'i was set by event handler' };
+    const { data: events } = { cow: 'hello?' };
 
     res.json(events);
   } catch (error) {

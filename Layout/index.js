@@ -6,6 +6,9 @@ export * from './GlobalStyles';
 export * from './Main';
 export * from './Meta';
 
+//Modals
+export * from './Toast';
+
 //Homepage
 export * from './Nav';
 

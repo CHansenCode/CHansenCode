@@ -1,4 +1,4 @@
-import { Section, AnimatedLogo, FlexCenter, Empty } from 'components';
+import { Section, AnimatedLogo, Flex, Empty } from 'components';
 import { LayeredImage } from 'components';
 
 export default function Home() {
@@ -7,9 +7,9 @@ export default function Home() {
       <Section>
         <div style={{ height: '40rem', width: '100%' }}>
           <LayeredImage distortMax={1}>
-            <FlexCenter padding="20% 30% 20% 10%">
+            <Flex padding="20% 30% 20% 10%">
               <AnimatedLogo />
-            </FlexCenter>
+            </Flex>
 
             <div></div>
           </LayeredImage>
@@ -21,9 +21,9 @@ export default function Home() {
       <Section>
         <div style={{ height: '40rem', width: '100%' }}>
           <LayeredImage distortMax={1}>
-            <FlexCenter padding="20% 30% 20% 10%">
+            <Flex padding="20% 30% 20% 10%">
               <AnimatedLogo />
-            </FlexCenter>
+            </Flex>
 
             <div></div>
           </LayeredImage>

@@ -1,0 +1,36 @@
+.select {
+  font-size: 1rem;
+}
+
+.header {
+  display: flex;
+  height: 1rem;
+  width: 100%;
+
+  h6 {
+    font-size: 0.7rem;
+  }
+}
+
+.label {
+  text-transform: uppercase;
+}
+
+.button {
+  background: transparent;
+  border: thin solid currentColor;
+  outline: none;
+  color: currentColor;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+
+  outline: thin dashed;
+}
+
+.option {
+  padding: 0.1rem 0.35rem;
+  margin: 0 0.25rem 0 0.25rem;
+}

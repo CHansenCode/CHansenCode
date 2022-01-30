@@ -21,7 +21,7 @@ export const Footer = ({ id, ...props }) => {
   async function toggleDashboardVisiblity() {
     props.setController({
       ...props.controller,
-      showDashboard: !props.controller.showDashboard,
+      dashboardVisible: !props.controller.dashboardVisible,
     });
   }
 
@@ -45,7 +45,7 @@ export const Footer = ({ id, ...props }) => {
 
       <div
         className={`${css.logMenu} ${
-          !props.controller.showDashboard ? css.logMenu_collapsed : ''
+          !props.controller.dashboardVisible ? css.logMenu_collapsed : ''
         }`}
       >
         <Button className="pc5b" onClick={logOut}>
@@ -56,7 +56,7 @@ export const Footer = ({ id, ...props }) => {
           className="pc5b"
           onClick={toggleDashboardVisiblity}
         >
-          <IconCollapseExpand ternary={props.controller.showDashboard} />
+          <IconCollapseExpand ternary={props.controller.dashboardVisible} />
         </Button>
       </div>
     </footer>

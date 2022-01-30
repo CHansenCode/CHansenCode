@@ -23,7 +23,7 @@
     "**/package.json": false,
     "**/package-lock.json": true,
     "**/jsconfig.json": true,
-    "**/next.config.js": true,
+    "**/next.config.js": false,
 
     //  folders
     "**/lib": false,

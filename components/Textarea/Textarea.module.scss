@@ -1,5 +1,4 @@
 .wrapper {
-  height: 3rem;
   width: 100%;
   margin-bottom: 0.5rem;
 }
@@ -20,9 +19,13 @@
 
 .textarea {
   color: currentColor;
-  height: 2rem;
   width: 100%;
   padding: 0.25rem 0.5rem;
+  resize: vertical;
+}
+
+.textarea::placeholder {
+  opacity: 0.5;
 }
 
 .textarea:focus {

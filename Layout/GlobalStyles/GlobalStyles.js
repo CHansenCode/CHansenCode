@@ -43,19 +43,19 @@ export const GlobalStyles = ({ colors }) => {
 
           //  BACKGROUND
           .pc05bg {
-            color: rgba(${colors.nakedPc}, 0.05);
+            background: rgba(${colors.nakedPc}, 0.05);
           }
           .pc1bg {
-            color: rgba(${colors.nakedPc}, 0.1);
+            background: rgba(${colors.nakedPc}, 0.1);
           }
           .pc3bg {
-            color: rgba(${colors.nakedPc}, 0.3);
+            background: rgba(${colors.nakedPc}, 0.3);
           }
           .pc5bg {
-            color: rgba(${colors.nakedPc}, 0.5);
+            background: rgba(${colors.nakedPc}, 0.5);
           }
           .pc7bg {
-            color: rgba(${colors.nakedPc}, 0.7);
+            background: rgba(${colors.nakedPc}, 0.7);
           }
 
           //  BORDERS

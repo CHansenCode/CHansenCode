@@ -1,15 +1,15 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 import { Background } from './Background';
 import { MapPosts } from './Post/MapPosts';
 import { Button } from '../';
 
+import { getOccupations } from '../../apiCalls';
+
 import css from './Timeline.module.scss';
 
-import { occupation } from '../../data/occupation';
-
 export const Timeline = ({ activeData, setActiveData, ...props }) => {
-  //
+  const [data, setData] = useState([]);
   const [scope, setScope] = useState(8);
 
   async function onClickSubstract() {
@@ -18,6 +18,10 @@ export const Timeline = ({ activeData, setActiveData, ...props }) => {
   async function onClickAdd() {
     setScope(scope + 1);
   }
+
+  useCallback(async () => {
+    setData(await getOccupations());
+  });
 
   return (
     <div className={css.timeline}>
@@ -28,7 +32,7 @@ export const Timeline = ({ activeData, setActiveData, ...props }) => {
 
       <div>
         <MapPosts
-          data={occupation}
+          data={data}
           setActiveData={setActiveData}
           scope={scope}
           setScope={setScope}

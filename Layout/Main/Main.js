@@ -3,18 +3,12 @@ import React from 'react';
 import css from './Main.module.scss';
 
 export const Main = ({ children, ...props }) => {
-  //
-  // const iStyle = {
-  //   marginLeft: props.controller.showDashboard ? '14rem' : '0',
-  //   width: props.controller.showDashboard ? 'calc(100vw - 14rem)' : '100vw',
-  // };
-
   return (
     <main
       id="main_container"
-      className={`pc5b ${css.main_container} ${
-        props.controller.showDashboard ? css.show_dashboard : ''
-      }`}
+      className={`pc5b ${css.main_container}${
+        props.controller.isLoggedIn ? ` ${css.is_logged_in}` : ''
+      }${props.controller.dashboardVisible ? ` ${css.dashboard_visible}` : ''}`}
     >
       {React.Children.map(children, child => {
         return React.cloneElement(child, {

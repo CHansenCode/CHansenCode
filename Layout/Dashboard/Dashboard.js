@@ -18,7 +18,7 @@ export const Dashboard = ({ ...props }) => {
   return (
     <aside
       className={`${css.aside} pc1b ${
-        props.controller.showDashboard ? `${css.aside_show} bg` : ''
+        props.controller.dashboardVisible ? `${css.aside_show} bg` : ''
       }`}
     >
       <nav className={css.nav}>

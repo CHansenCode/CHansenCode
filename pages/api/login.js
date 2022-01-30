@@ -1,11 +1,20 @@
 import { withIronSessionApiRoute } from 'iron-session/next';
 import { sessionOptions } from 'lib/session';
+import bcrypt from 'bcrypt';
 
 export default withIronSessionApiRoute(async (req, res) => {
-  const { username } = await req.body;
+  const { username, password } = await req.body;
+  const userData = {
+    username: username,
+    password: bcrypt.hash(password, 10),
+  };
 
   try {
-    const user = { isLoggedIn: true, username: username };
+    const user = {
+      isLoggedIn: true,
+      username: userData.username,
+      password: userData.password,
+    };
 
     req.session.user = user;
     await req.session.save();

@@ -1,0 +1,52 @@
+.header {
+  position: relative;
+
+  height: 100%;
+
+  padding: 0 0.75rem;
+
+  display: grid;
+  grid-template: 'controllers settings' 1fr / 1fr auto;
+
+  align-items: center;
+}
+
+.header button {
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.12);
+}
+
+.folding_menu {
+  height: 3rem;
+  display: flex;
+
+  div {
+    display: flex;
+  }
+  button {
+    margin-left: 0.75rem;
+  }
+}
+
+.fold {
+  opacity: 0;
+  pointer-events: none;
+
+  button {
+    opacity: 0;
+    transform: translateX(1rem);
+  }
+}
+
+.unfold {
+  opacity: 1;
+  pointer-events: all;
+
+  button {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.header button {
+  transition: 0.3s ease;
+}

@@ -25,6 +25,10 @@
   padding: 0.25rem 0.5rem;
 }
 
+.input::placeholder {
+  opacity: 0.5;
+}
+
 .input:focus {
   border: thin solid currentColor;
   outline: thin solid transparent;
