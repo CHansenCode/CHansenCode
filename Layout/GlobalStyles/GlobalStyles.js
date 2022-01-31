@@ -97,19 +97,19 @@ export const GlobalStyles = ({ colors }) => {
 
           //  **  BACKGROUND
           .sc05bg {
-            color: rgba(${colors.nakedSc}, 0.05);
+            background: rgba(${colors.nakedSc}, 0.05);
           }
           .sc1bg {
-            color: rgba(${colors.nakedSc}, 0.1);
+            background: rgba(${colors.nakedSc}, 0.1);
           }
           .sc3bg {
-            color: rgba(${colors.nakedSc}, 0.3);
+            background: rgba(${colors.nakedSc}, 0.3);
           }
           .sc5bg {
-            color: rgba(${colors.nakedSc}, 0.5);
+            background: rgba(${colors.nakedSc}, 0.5);
           }
           .sc7bg {
-            color: rgba(${colors.nakedSc}, 0.7);
+            background: rgba(${colors.nakedSc}, 0.7);
           }
 
           //  **  BORDERS

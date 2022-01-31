@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { List, Item, initForm } from 'page-components/media';
-import { FullSection, Button, Flex, SectionMenu } from 'components';
-import { Form, Input, Textarea, Select } from 'components';
+import { List, Item, initForm, Fixed } from 'page-components/media';
+import { FullSection, Button, Flex, SectionMenu, Cimage } from 'components';
+import { Form, Input, Textarea, Select, Loading, Grid } from 'components';
 
 import * as api from 'apiCalls';
 import { GET_MEDIA, CREATE_MEDIA, PATCH_MEDIA, DELETE_MEDIA } from 'actions';
@@ -27,11 +27,27 @@ export default function MediaDb({ ...props }) {
     setController({ ...controller, isEditing: !controller.isEditing });
   }
   async function toggleCreating() {
-    setController({ ...controller, isCreating: !controller.isCreating });
+    if (activeId && !controller.isCreating) {
+      clearIdAndFormdata();
+      setController({ ...controller, isCreating: true });
+    } else {
+      clearIdAndFormdata();
+      setController({ ...controller, isCreating: !controller.isCreating });
+    }
+  }
+  async function selectProject(id) {
+    if (controller.isCreating) {
+      setController({ ...controller, isCreating: false });
+      setActiveId(id);
+    } else if (activeId === id) {
+      setActiveId('');
+    } else {
+      setActiveId(id);
+    }
   }
   //#endregion
 
-  //#region Listeners
+  //#region   Data fetcher listener
   useEffect(() => {
     getMedia();
   }, [dispatch]);
@@ -89,20 +105,15 @@ export default function MediaDb({ ...props }) {
     }
   }
   async function clear(e) {
-    e.preventDefault();
+    e && e.preventDefault();
     setController({ ...controller, isCreating: false });
     setFormData({ ...initForm });
     setActiveId('');
   }
-  //#endregion
-
-  //#region   local var's
-  let title = activeId ? `Editing: ${activeId}` : 'creating new';
-  let submitText = activeId ? 'Update' : 'Create new';
-
-  let editActive = controller.isEditing;
-  let deleteActive = controller.isDeleting;
-  let creatingActive = controller.isCreating;
+  async function clearIdAndFormdata() {
+    setActiveId('');
+    setFormData({ ...initForm });
+  }
   //#endregion
 
   props = {
@@ -118,86 +129,161 @@ export default function MediaDb({ ...props }) {
           <div>
             <Button
               text="NEW"
-              active={creatingActive}
+              active={controller.isCreating}
               onClick={toggleCreating}
             />
           </div>
+
           <div>
-            <Button text="DEL" active={deleteActive} onClick={enableDeleting} />
-            <Button text="EDIT" active={editActive} onClick={enableEditing} />
+            <Button
+              text="DEL"
+              active={controller.isDeleting}
+              onClick={enableDeleting}
+            />
           </div>
         </SectionMenu>
 
-        <div className="fixed_form">
-          <Form title={title} onSubmit={e => e.preventDefault()}>
-            <Input
-              label="title"
-              value={formData.title}
-              onChange={e => handleChange(e, 'title')}
-            />
-            <Input
-              label="project"
-              value={formData.project}
-              onChange={e => handleChange(e, 'project')}
-            />
-            <Input
-              label="category"
-              value={formData.category}
-              onChange={e => handleChange(e, 'category')}
+        <Fixed toggle={controller.isCreating || activeId ? true : false}>
+          <Form
+            title={activeId ? `Editing: ${activeId}` : 'creating new'}
+            onSubmit={e => e.preventDefault()}
+          >
+            <header>
+              <div>
+                <Input
+                  label="title"
+                  value={formData.title}
+                  onChange={e => handleChange(e, 'title')}
+                />
+                <Select
+                  label="category"
+                  value={formData.category}
+                  options={['cow', 'fox', 'cat']}
+                  objKey={'category'}
+                  data={formData}
+                  setData={setFormData}
+                />
+                <Select
+                  label="project"
+                  value={formData.project}
+                  options={['cow', 'fox', 'cat']}
+                  objKey={'project'}
+                  data={formData}
+                  setData={setFormData}
+                />
+              </div>
+              <div>
+                <Cimage />
+              </div>
+            </header>
+
+            <Textarea
+              label="alt"
+              value={formData.alt}
+              onChange={e => handleChange(e, 'alt')}
             />
 
-            <Select
-              label="category"
-              value={formData.category}
-              options={['cow', 'fox', 'cat']}
-              objKey={'category'}
-              data={formData}
-              setData={setFormData}
-            />
+            <div>
+              <div>
+                <Input
+                  label="drawingType"
+                  value={formData.drawingType}
+                  onChange={e => handleChange(e, 'drawingType')}
+                />
+                <Input
+                  label="url"
+                  value={formData.url}
+                  onChange={e => handleChange(e, 'url')}
+                />
+              </div>
+            </div>
 
             <Flex>
               <Button
                 padding="1rem"
-                text={submitText}
+                text={activeId ? 'Update' : 'create new'}
                 onClick={e => handleSubmit(e)}
               />
               <Button padding="1rem" text={'clear'} onClick={e => clear(e)} />
             </Flex>
           </Form>
-        </div>
+        </Fixed>
 
         <List>
-          {storeData &&
+          <ListHeader>
+            <Button width="2rem" padding="0" />
+            <Button
+              width="9rem"
+              margin="0 1rem"
+              padding="0.25rem 0"
+              text="title"
+            />
+            <Button
+              width="9rem"
+              margin="0 1rem"
+              padding="0.25rem 0"
+              text={`category`}
+            />
+            <Button
+              width="9rem"
+              margin="0 1rem"
+              padding="0.25rem 0"
+              text={`project`}
+            />
+            <Button
+              width="9rem"
+              margin="0 1rem"
+              padding="0.25rem 0"
+              text={`Creation date :`}
+            />
+          </ListHeader>
+
+          {storeData.length ? (
             storeData.map((p, i) => (
               <Item
-                className={i % 2 ? 'pc05bg' : ''}
+                className={`${i % 2 ? 'pc05bg' : ''}${
+                  activeId === p._id ? ` sc sc1bg` : ''
+                }`}
                 key={p._id}
                 data={p}
                 onClick={
                   !controller.isDeleting
-                    ? () => setActiveId(p._id)
+                    ? () => selectProject(p._id)
                     : console.log('Toggle deleting to set id')
                 }
                 onDelete={() => deleteMedia(p._id)}
                 {...props}
               />
-            ))}
+            ))
+          ) : (
+            <Flex>
+              <Loading />
+              <h4>Fetching data...</h4>
+            </Flex>
+          )}
         </List>
       </FullSection>
+    </>
+  );
+}
+
+const ListHeader = ({ children }) => {
+  return (
+    <>
+      <div className="list_header_kkk999">{children}</div>
 
       <style jsx>
         {`
-          .fixed_form {
-            position: fixed;
-            top: 0;
-            right: ${controller.isCreating || activeId ? '0' : '-50vw'};
-            height: 100vh;
-            width: 50vw;
+          .list_header_kkk999 {
+            height: 2rem;
+            width: 100%;
 
-            transition: 0.3s ease;
+            display: flex;
+
+            margin-bottom: 1rem;
           }
         `}
       </style>
     </>
   );
-}
+};

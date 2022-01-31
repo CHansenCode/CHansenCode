@@ -8,7 +8,5 @@ export const initForm = {
   thumbnail: '',
   createdBy: '',
   drawingType: '',
-  stage: '',
-  stageType: '',
   tags: [],
 };

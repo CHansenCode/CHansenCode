@@ -11,28 +11,33 @@
   "files.exclude": {
     //  dep's
     "**/.git": true,
-    "**/.next": false,
+    "**/.next": true,
     "**/node_modules": true,
 
     //  settings
     "**/.gitignore": true,
     "**/.prettierrc": true,
     "**/.eslintrc.json": true,
-
     //  proj.Settings
     "**/package.json": false,
     "**/package-lock.json": true,
     "**/jsconfig.json": true,
     "**/next.config.js": false,
 
-    //  folders
-    "**/lib": false,
-    "**/styles": false,
-    "**/public": false,
+    //  others
+    "**/lib": true,
+    "**/apiCalls": true,
+    "**/middleware": true,
+    "**/config": false,
+
+    "**/standalone": true,
+
+    "**/styles": true,
+    "**/public": true,
 
     //  redux
-    "**/actions": false,
-    "**/reducers": false,
+    "**/actions": true,
+    "**/reducers": true,
 
     //  compile
     "**/out": false

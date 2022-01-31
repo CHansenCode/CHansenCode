@@ -7,6 +7,7 @@ export * from './Login';
 export * from './AnimatedLogo';
 export * from './Logo';
 export * from './LayeredImage';
+export * from './Loading';
 
 //  Functional (no visuals)
 export * from './NextLink';
@@ -14,12 +15,12 @@ export * from './NextLink';
 //  Elements
 export * from './Section';
 export * from './Empty';
+export * from './Button';
+export * from './Cimage'; //extension of next.js/Image
 export * from './Form';
 export * from './Input';
 export * from './Textarea';
 export * from './Select';
-export * from './Button';
-export * from './Cimage'; //extension of next.js/Image
 
 //  Enhanced Elements
 export * from './FullSection'; //fullpage section for backside
