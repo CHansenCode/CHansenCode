@@ -6,6 +6,7 @@ export const Flex = ({ ...props }) => {
   const iStyle = {
     height: props.height && props.height,
     width: props.width && props.width,
+    maxWidth: props.maxWidth && props.maxWidth,
     padding: props.padding && props.padding,
     margin: props.margin && props.margin,
     flexDirection: props.flexDirection && props.flexDirection,

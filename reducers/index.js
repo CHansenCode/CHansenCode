@@ -2,7 +2,6 @@ import { combineReducers } from 'redux';
 
 // ** BASE
 // import users from './users';
-
 // import texts from './texts';
 // import intercom from './intercom';
 // import meta from './meta';
@@ -14,10 +13,10 @@ import { combineReducers } from 'redux';
 // import errorHandler from './errorHandler';
 // import imageModal from './imageModal';
 
-import occupation from './occupation';
+import cv from './cv';
 import media from './media';
 
 export const reducers = combineReducers({
-  occupation,
+  cv,
   media,
 });

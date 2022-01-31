@@ -27,6 +27,7 @@ export * from './FullSection'; //fullpage section for backside
 export * from './SectionMenu'; //Page header for FullSection menu buttons
 export * from './Flex';
 export * from './Grid';
+export * from './RichText';
 
 //  Dev
 export * from './ObjectViewer';

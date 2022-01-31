@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { Button } from 'components';
+import { AiOutlineSetting } from 'react-icons/ai';
 
 import css from './SectionMenu.module.scss';
 
@@ -14,7 +15,9 @@ export const SectionMenu = ({ children }) => {
       <div className={css.folding_menu}>
         <div className={fold ? css.fold : css.unfold}>{children[1]}</div>
 
-        <Button text="set" className="pc5b" onClick={() => setFold(!fold)} />
+        <Button active={!fold} className="pc5b" onClick={() => setFold(!fold)}>
+          <AiOutlineSetting size="1.5rem" />
+        </Button>
       </div>
     </header>
   );

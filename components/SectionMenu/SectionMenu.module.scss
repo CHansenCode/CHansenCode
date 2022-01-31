@@ -13,6 +13,13 @@
 
 .header button {
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.12);
+  transition: 0.3s ease;
+}
+
+.normal {
+  > * > * {
+    margin: 0 0.5rem;
+  }
 }
 
 .folding_menu {
@@ -45,8 +52,4 @@
     opacity: 1;
     transform: translateX(0);
   }
-}
-
-.header button {
-  transition: 0.3s ease;
 }

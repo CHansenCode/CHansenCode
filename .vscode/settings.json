@@ -26,7 +26,7 @@
 
     //  others
     "**/lib": true,
-    "**/apiCalls": true,
+    "**/apiCalls": false,
     "**/middleware": true,
     "**/config": false,
 
@@ -36,8 +36,8 @@
     "**/public": true,
 
     //  redux
-    "**/actions": true,
-    "**/reducers": true,
+    "**/actions": false,
+    "**/reducers": false,
 
     //  compile
     "**/out": false

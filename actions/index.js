@@ -1,8 +1,8 @@
 // ** OCCUPATION
-export const GET_OCCU = 'GET_OCCU';
-export const CREATE_OCCU = 'CREATE_MEDIA';
-export const PATCH_OCCU = 'PATCH_OCCU';
-export const DELETE_OCCU = 'DELETE_OCCU';
+export const GET_CV = 'GET_CV';
+export const CREATE_CV = 'CREATE_CV';
+export const PATCH_CV = 'PATCH_CV';
+export const DELETE_CV = 'DELETE_CV';
 
 // ** MEDIA
 export const GET_MEDIA = 'GET_MEDIA';
