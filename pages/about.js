@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Section } from 'components';
 
-export default function about() {
+export default function About() {
   return (
     <Section>
       <h3>about</h3>

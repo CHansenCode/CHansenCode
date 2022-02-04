@@ -7,7 +7,7 @@ import { TOAST } from 'actions';
 
 import * as api from 'api-axios/contactForm';
 
-export default function contact() {
+export default function Contact() {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({ ...initForm });
 

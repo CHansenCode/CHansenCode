@@ -19,9 +19,3 @@ export const postOne = async formData => {
     console.log(`Error: postOne to "${url}" in "./apiCalls/x.js"`);
   }
 };
-
-const validate = formData => {
-  let error = { code: '201', message: '' };
-
-  formData.name.length > 32 && error.message;
-};
