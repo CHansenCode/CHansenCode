@@ -8,8 +8,8 @@ import css from './Login.module.scss';
 
 export const Login = ({ ...props }) => {
   const { mutateUser } = useUser({
-    // redirectIfFound: true,
-    // redirectTo: '/welcome',
+    redirectIfFound: true,
+    redirectTo: '/welcome',
   });
 
   const [open, setOpen] = useState(false);
