@@ -23,16 +23,16 @@ export default function Home({ ...props }) {
       <Empty height="20vh" />
 
       <Section>
-        <RenderRichText data={props.texts[0]} />
+        <RenderRichText data={props.text && props.texts[0]} />
       </Section>
     </>
   );
 }
 
-export async function getStaticProps(context) {
-  const { data } = await axios.get('http://localhost:3000/api/cv');
+// export async function getStaticProps(context) {
+//   const { data } = await axios.get('http://localhost:3000/api/cv');
 
-  return {
-    props: { texts: data }, // will be passed to the page component as props
-  };
-}
+//   return {
+//     props: { texts: data }, // will be passed to the page component as props
+//   };
+// }
