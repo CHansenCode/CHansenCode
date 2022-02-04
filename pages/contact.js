@@ -5,7 +5,7 @@ import { initForm } from 'page-components/contact';
 import { Section, Form, TypeInput, Grid, Button } from 'components';
 import { TOAST } from 'actions';
 
-import * as api from 'api-axios/contactForm';
+import * as api from 'api-axios/contact';
 
 export default function Contact() {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ export default function Contact() {
       clear();
       dispatch({
         type: TOAST,
-        payload: { type: 'success', message: 'Post created!' },
+        payload: { type: 'success', message: 'Message sent!' },
       });
     } catch (error) {
       console.log('ErrorIn: pages/contact, action: post', error);
