@@ -4,13 +4,13 @@ export const RenderRichText = ({ data }) => {
   //
   const objKey = 'richText_1';
 
-  useEffect(() => {
-    console.log(data.objKey);
-  }, []);
+  // useEffect(() => {
+  //   console.log(data.objKey);
+  // }, []);
 
   return (
     <div>
-      <button onClick={console.log(data)}>text</button>
+      <button onClick={e => e.preventDefault()}>text</button>
     </div>
   );
 };

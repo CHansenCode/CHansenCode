@@ -35,7 +35,6 @@ export const Section = ({ title, children, ...props }) => {
     <section
       style={props.style}
       className={`${css.section} ${loaded ? css.loaded : ''}`}
-      {...props}
     >
       {title && <div>{title}</div>}
 

@@ -1,11 +1,13 @@
 .section {
   margin: 0 auto;
-  max-width: 1200px;
   width: 100%;
+  max-width: 1200px;
 
   //init
   opacity: 0;
   transition: 0.4s ease;
+
+  border: thin dashed rgba(128, 0, 128, 0.1);
 }
 
 .loaded {

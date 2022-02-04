@@ -1,16 +1,20 @@
 import React from 'react';
+import useUser from 'lib/useUser';
 
 import css from './Main.module.scss';
 
 export const Main = ({ children, ...props }) => {
+  //
+  const { user } = useUser();
+
+  let collapsed = !props.controller.dashboardVisible;
+  let loggedIn = props.controller.isLoggedIn;
+
   return (
     <main
-      id="main_container"
-      className={`${css.main_container}${
-        props.controller.isLoggedIn
-          ? ` ${css.is_logged_in}`
-          : `${css.is_not_logged_in}`
-      }${props.controller.dashboardVisible ? ` ${css.dashboard_visible}` : ''}`}
+      className={`${css.main} ${collapsed ? `${css.collapsed}` : ''} ${
+        loggedIn ? `${css.loggedIn}` : ''
+      }`}
     >
       {React.Children.map(children, child => {
         return React.cloneElement(child, {
