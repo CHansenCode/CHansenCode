@@ -4,9 +4,11 @@ import bcrypt from 'bcrypt';
 
 export default withIronSessionApiRoute(async (req, res) => {
   const { username, password } = await req.body;
+  const hashed = await bcrypt.hash(password, 10);
+
   const userData = {
     username: username,
-    password: bcrypt.hash(password, 10),
+    password: hashed,
   };
 
   try {

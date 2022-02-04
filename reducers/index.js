@@ -13,10 +13,12 @@ import { combineReducers } from 'redux';
 // import errorHandler from './errorHandler';
 // import imageModal from './imageModal';
 
+import toast from './toast';
 import cv from './cv';
 import media from './media';
 
 export const reducers = combineReducers({
+  toast,
   cv,
   media,
 });

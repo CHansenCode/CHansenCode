@@ -1,4 +1,5 @@
-.select {
+.wrapper {
+  width: 100%;
   font-size: 1rem;
 }
 
@@ -11,26 +12,20 @@
     font-size: 0.7rem;
   }
 }
-
 .label {
   text-transform: uppercase;
 }
 
-.button {
-  background: transparent;
-  border: thin solid currentColor;
-  outline: none;
-  color: currentColor;
-}
-
-.options {
-  display: flex;
-  flex-wrap: wrap;
-
-  outline: thin dashed;
+.select {
+  height: 2rem;
+  width: 100%;
 }
 
 .option {
   padding: 0.1rem 0.35rem;
   margin: 0 0.25rem 0 0.25rem;
+}
+
+.select:focus {
+  outline: none;
 }

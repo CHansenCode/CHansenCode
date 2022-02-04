@@ -1,21 +1,20 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { initForm, initContr } from 'page-components/cv';
+import { FormStyle, initController, initFormData } from 'page-components/cv';
+import { List, Item } from 'page-components/cv';
 import { FullSection, SectionMenu, Button, ObjectViewer } from 'components';
-import { Form, Input, Select, RichText } from 'components';
+import { Form, TypeInput, RichText } from 'components';
 
-import * as api from 'apiCalls';
-import { GET_CV, CREATE_CV, PATCH_CV, DELETE_CV } from 'actions';
+import * as api from 'api-axios/cv';
+import { GET_CV, CREATE_CV, PATCH_CV, DELETE_CV, TOAST } from 'actions';
 
-export default function Occupation({ ...props }) {
+export default function CvCreator({ ...props }) {
   const dispatch = useDispatch();
   //
-  const [controller, setController] = useState({ ...initContr });
-  const [formData, setFormData] = useState({ ...initForm });
+  const [controller, setController] = useState({ ...initController });
+  const [formData, setFormData] = useState({ ...initFormData });
   const [activeId, setActiveId] = useState('');
-
-  const store = useSelector(state => state.occupation);
 
   //#region   Controller
   async function enableDeleting() {
@@ -33,94 +32,118 @@ export default function Occupation({ ...props }) {
       setController({ ...controller, isCreating: !controller.isCreating });
     }
   }
-  async function selectProject(id) {
-    if (controller.isCreating) {
-      setController({ ...controller, isCreating: false });
-      setActiveId(id);
-    } else if (activeId === id) {
-      setActiveId('');
-    } else {
-      setActiveId(id);
-    }
-  }
   //#endregion
 
   //#region   Data fetcher listener
   useEffect(() => {
-    getData();
+    getAll();
   }, [dispatch]);
-  const storeData = useSelector(s => s.media);
-  const activePost = useSelector(s =>
-    s.media.find((o, i) => o._id === activeId),
-  );
+  const storeData = useSelector(s => s.cv);
+
+  const activePost = useSelector(s => s.cv.find((o, i) => o._id === activeId));
   useEffect(() => {
+    console.log('setFormData from activeId');
     activePost && setFormData({ ...activePost });
   }, [activePost]);
   //#endregion
 
-  //#region   CRUD
-  async function getData() {
+  //#region   CRUD & DISPATCH
+  async function getAll() {
     try {
-      const data = await api.getMedia();
-
+      const data = await api.getAll();
       dispatch({ type: GET_CV, payload: data });
     } catch (error) {
-      console.log('Error in "pages/cvCreator" dispatching data => ', error);
+      console.log('Error in "pages/media" dispatching data => ', error);
     }
   }
-  async function postData() {
+  async function postOne(formData) {
     try {
-      const data = await api.postMedia(formData);
-
+      const data = await api.postOne(formData);
       dispatch({ type: CREATE_CV, payload: data });
+      clear();
+      dispatch({
+        type: TOAST,
+        payload: { type: 'success', message: 'Post created!' },
+      });
     } catch (error) {
-      console.log('ErrorIn: pages/cvCreator, action: postMedia', error);
+      console.log('ErrorIn: pages/media, action: postMedia', error);
+      dispatch({
+        type: TOAST,
+        payload: {
+          type: 'warning',
+          message: 'Post attempt failed, please try again.',
+        },
+      });
     }
   }
-  async function deleteData(id) {
-    const data = await api.deleteMedia(id);
-
-    dispatch({ type: DELETE_CV, payload: data._id });
+  async function deleteOne(id) {
+    try {
+      const data = await api.deleteOne(id);
+      dispatch({ type: DELETE_CV, payload: data._id });
+      dispatch({
+        type: TOAST,
+        payload: { type: 'success', message: 'Post deleted!' },
+      });
+    } catch (error) {
+      console.log('ErrorIn: pages/media, action: deleteOne', error);
+      dispatch({
+        type: TOAST,
+        payload: {
+          type: 'warning',
+          message: 'Delete attempt failed, please try again.',
+        },
+      });
+    }
   }
-  async function patchData() {
-    const data = await api.patchMedia(activeId, formData);
-
-    dispatch({ type: PATCH_CV, payload: data });
+  async function patchOne(id, formData) {
+    try {
+      const data = await api.patchOne(id, formData);
+      dispatch({ type: PATCH_CV, payload: data });
+      dispatch({
+        type: TOAST,
+        payload: { type: 'success', message: 'Post updated!' },
+      });
+    } catch (error) {
+      console.log('ErrorIn: pages/media, action: patchOne', error);
+      dispatch({
+        type: TOAST,
+        payload: {
+          type: 'warning',
+          message: 'Update attempt failed, please try again.',
+        },
+      });
+    }
   }
   //#endregion
 
-  //#region FORM
+  //#region Form handling
   async function handleChange(e, objKey) {
     setFormData({ ...formData, [objKey]: e.target.value });
+  }
+  async function handleBooleanChange(e, objKey) {
+    e.preventDefault();
+    setFormData({ ...formData, [objKey]: !formData[objKey] });
   }
   async function handleSubmit(e) {
     e.preventDefault();
 
     if (activeId) {
-      patchData();
+      patchOne(activeId, formData);
     } else {
-      postData();
+      postOne(formData);
     }
   }
   async function clear(e) {
     e && e.preventDefault();
     setController({ ...controller, isCreating: false });
-    setFormData({ ...initForm });
+    setFormData({ ...initFormData });
     setActiveId('');
   }
   async function clearIdAndFormdata() {
     setActiveId('');
-    setFormData({ ...initForm });
+    setFormData({ ...initFormData });
   }
   //#endregion
-
-  props = {
-    ...props,
-    activeId,
-    setActiveId,
-    formData,
-    setFormData,
-  };
 
   return (
     <FullSection hasMenu="true" title="Cv creator">
@@ -131,6 +154,12 @@ export default function Occupation({ ...props }) {
             active={controller.isCreating}
             onClick={toggleCreating}
           />
+
+          {(activeId || controller.isCreating) && (
+            <Button onClick={e => clear(e)}>
+              <h4>{`ᐊ`}</h4>
+            </Button>
+          )}
         </div>
 
         <div>
@@ -139,53 +168,152 @@ export default function Occupation({ ...props }) {
             active={controller.isDeleting}
             onClick={enableDeleting}
           />
+          <Button
+            text="EDIT"
+            active={controller.isEditing}
+            onClick={enableEditing}
+          />
         </div>
       </SectionMenu>
 
-      <div>
-        <div>
-          <Input placeholder="for whom..." />
-        </div>
+      <div style={{ height: '100%' }}>
+        {controller.isCreating || activeId ? (
+          formData && (
+            <Form>
+              <FormStyle>
+                <header>
+                  <div>
+                    <TypeInput
+                      label="whom"
+                      value={formData.whom}
+                      onChange={e => handleChange(e, 'whom')}
+                    />
+                    <TypeInput
+                      label="company"
+                      value={formData.company}
+                      onChange={e => handleChange(e, 'company')}
+                    />
+                    <TypeInput
+                      label="urlParam"
+                      value={formData.urlParam}
+                      onChange={e => handleChange(e, 'urlParam')}
+                    />
+                  </div>
 
-        <div>
-          <RichText />
-        </div>
+                  <div>
+                    <TypeInput
+                      label="deadline"
+                      value={formData.deadline}
+                      onChange={e => handleChange(e, 'deadline')}
+                    />
+                    <TypeInput
+                      label="name of handler"
+                      value={formData.nameOfHandler}
+                      onChange={e => handleChange(e, 'nameOfHandler')}
+                    />
+                    <TypeInput
+                      label="Date of publishing"
+                      value={formData.publishedAt}
+                      onChange={e => handleChange(e, 'publishedAt')}
+                    />
+                  </div>
+
+                  <Button
+                    text={formData.published ? 'PUBLISHED' : 'UNPUBLISHED'}
+                    onClick={e => handleBooleanChange(e, 'published')}
+                    className={formData.published ? 'success' : 'alert'}
+                    style={{
+                      boxShadow:
+                        'inset 0 0 4rem -2rem currentColor, 0 0 4rem -3rem currentColor',
+                    }}
+                  />
+                </header>
+
+                <div>
+                  <RichText
+                    title="Paragraph 1"
+                    value={formData.richTextOne}
+                    activeId={activeId}
+                    formData={formData}
+                    setFormData={setFormData}
+                    objKey="richTextOne"
+                  />
+                  <RichText
+                    title="Paragraph 2"
+                    value={formData.richTextTwo}
+                    activeId={activeId}
+                    formData={formData}
+                    setFormData={setFormData}
+                    objKey="richTextTwo"
+                  />
+                  <RichText
+                    title="Paragraph 3"
+                    value={formData.richTextThree}
+                    activeId={activeId}
+                    formData={formData}
+                    setFormData={setFormData}
+                    objKey="richTextThree"
+                  />
+                  <RichText
+                    title="Paragraph 4"
+                    value={formData.richTextFour}
+                    activeId={activeId}
+                    formData={formData}
+                    setFormData={setFormData}
+                    objKey="richTextFour"
+                  />
+                </div>
+
+                <footer>
+                  <Button
+                    text={activeId ? 'UPDATE' : 'CREATE NEW'}
+                    onClick={e => handleSubmit(e)}
+                  />
+                </footer>
+              </FormStyle>
+            </Form>
+          )
+        ) : (
+          <List>
+            {storeData.length
+              ? storeData.map((p, i) => (
+                  <Item
+                    key={`cv_project${i}`}
+                    i={i}
+                    data={p}
+                    onClick={() => setActiveId(p._id)}
+                    onDelete={() => deleteOne(p._id)}
+                    controller={controller}
+                  />
+                ))
+              : 'loading...'}
+          </List>
+        )}
       </div>
     </FullSection>
   );
 }
 
-const OccuCard = ({ data, onClick, onDelete }) => {
+const Project = ({ data, ...props }) => {
   return (
     <>
-      <Button onClick={onDelete}>delete {data._id}</Button>
-      <div className="occucard" onClick={onClick}>
-        <p className="sc">{data._id}</p>
-        <p>{data.category}</p>
-        <p>{data.short}</p>
-        <p>{data.employer}</p>
-        <p>{data.title}</p>
-        <p>{data.location}</p>
-        <p>{data.country}</p>
-        <p>{data.descr}</p>
-        <p>{data.from}</p>
-        <p>{data.to}</p>
+      <div className="project_card_id pc5b" onClick={props.onClick}>
+        <p>{data._id}</p>
       </div>
+      <button onClick={props.onDelete}>x</button>
 
       <style jsx>
         {`
-          .occucard {
-            border: thin solid;
+          .project_card_id {
             padding: 1rem;
-            margin: 0.5rem 10vw;
+            maxwidth: 20rem;
 
-            background: transparent;
-            transition: 0.2s ease;
+            margin: 0 0.5rem 0.5rem 0;
+
+            transition: 0.3s ease;
           }
-
-          .occucard:hover {
+          .project_card_id:hover {
             cursor: pointer;
-            background: rgba(100, 50, 50, 0.1);
           }
         `}
       </style>

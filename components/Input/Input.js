@@ -19,6 +19,7 @@ export const Input = ({ label, info, required, ...props }) => {
       </header>
 
       <input
+        name={props.name}
         className={`pc5b bg ${css.input}`}
         ref={props.myRef}
         type={props.type}

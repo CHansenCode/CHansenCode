@@ -1,0 +1,26 @@
+.input,
+.textarea,
+.select {
+  width: 100%;
+  color: currentColor;
+  padding: 0.25rem 0.5rem;
+}
+
+.input,
+.select {
+  height: 2rem;
+}
+
+//  input
+.input::placeholder,
+.textarea::placeholder,
+.select::placeholder {
+  opacity: 0.5;
+}
+.input:focus,
+.textarea:focus,
+.select:focus {
+  box-shadow: inset 0 0 0.1rem 0 currentColor;
+  border: thin solid currentColor;
+  outline: thin solid transparent;
+}

@@ -8,26 +8,35 @@ export * from './AnimatedLogo';
 export * from './Logo';
 export * from './LayeredImage';
 export * from './Loading';
+export * from './PlannedFeature';
+export * from './RenderRichText';
+export * from './Diode';
 
-//  Functional (no visuals)
-export * from './NextLink';
+//  Structural
+export * from './Section'; //section for frontside, title="" & myRef={} props for layout and pageNav
+export * from './FullSection'; //fullpage section for backside
 
 //  Elements
-export * from './Section';
-export * from './Empty';
+export * from './Empty'; //spacer
 export * from './Button';
-export * from './Cimage'; //extension of next.js/Image
+export * from './Dropdown';
 export * from './Form';
 export * from './Input';
+export * from './InputLabel';
+export * from './TypeInput';
 export * from './Textarea';
 export * from './Select';
+export * from './Cimage'; //extension of next.js/Image w. domain specific alt, placeholder etc.
+export * from './NextLink'; //extension of Link/next with active={boolean} toggle
 
 //  Enhanced Elements
-export * from './FullSection'; //fullpage section for backside
 export * from './SectionMenu'; //Page header for FullSection menu buttons
-export * from './Flex';
-export * from './Grid';
-export * from './RichText';
+export * from './Flex'; //Quick Flex grid, main props: center={true} (ali & justi), flexDirection, hei,wid,pad,mar
+export * from './Grid'; //Grid
+export * from './RichText'; //RichText editor, has internal state logic, <-- overriden by passing setFormData in props
+export * from './Fold'; //Foldable container
 
 //  Dev
-export * from './ObjectViewer';
+export * from './ObjectViewer'; //object/array viewer
+
+//  FormHandling

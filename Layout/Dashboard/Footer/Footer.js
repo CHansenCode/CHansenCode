@@ -13,11 +13,6 @@ export const Footer = ({ id, ...props }) => {
   const { mutateUser } = useUser();
   const router = useRouter();
 
-  async function goTo(route) {
-    router.push(route);
-    props.setOpen(!props.open);
-  }
-
   async function toggleDashboardVisiblity() {
     props.setController({
       ...props.controller,

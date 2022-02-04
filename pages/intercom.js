@@ -1,26 +1,34 @@
-import { FullSection, Flex } from 'components';
+import { FullSection, Flex, PlannedFeature } from 'components';
 
 export default function Intercom({ ...props }) {
   return (
     <FullSection>
       <Flex flexDirection="column" center={true}>
         <Flex height="min-content" maxWidth="600px" flexDirection="column">
-          <h4>Intercom</h4>
+          <h3 className="sc">Intercom</h3>
+
           <br />
+
           <h5>
             <i>Under development</i>
             <br />
             <i>ETA: N/A</i>
           </h5>
+
           <br />
-          <p>
-            This will be a chat page where you can connect to team-members and
-            customers alike.
-            <br />
-            <br />
-            It will also contain 'project-chats' that the user is part of with
-            appropriate milestone-messages as stages are complete.
-          </p>
+          <br />
+
+          <div style={{ padding: '1rem' }}>
+            <h4 style={{ marginBottom: '1rem' }}>Planned features :</h4>
+            <PlannedFeature
+              title="Intercom / Chat"
+              text={`This will be a chat page where you can connect to team-members and customers alike.`}
+            />
+            <PlannedFeature
+              title="Project chat / webhooks"
+              text={`Discussion and updates regarding project progress and cooperation`}
+            />
+          </div>
         </Flex>
       </Flex>
     </FullSection>

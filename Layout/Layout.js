@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Dev, GlobalStyles, Main, Meta, Nav } from './';
-import { Dashboard } from './';
+import { GlobalStyles, Main, Meta, Nav, Dashboard } from './';
+import { Dev, Toast } from './';
 import { useColors } from 'lib/useColor';
 import useUser from 'lib/useUser';
 import { useRouter } from 'next/router';
@@ -23,11 +23,12 @@ export function Layout({ ...props }) {
   }, [user]);
 
   useEffect(() => {
-    checkUser();
+    !user && checkUser();
   }, [pathname]);
 
   async function checkUser() {
     const { data } = await axios.get('./api/user');
+    console.log('checked user');
     if (data.isLoggedIn) {
       mutateUser(data);
     }
@@ -44,6 +45,8 @@ export function Layout({ ...props }) {
   return (
     <>
       {process.env.NODE_ENV === 'development' && <Dev {...props} />}
+
+      <Toast />
 
       <Meta {...props} />
       <GlobalStyles {...props} />

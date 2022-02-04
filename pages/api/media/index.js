@@ -1,7 +1,7 @@
 import nextConnect from 'next-connect';
 import middleware from 'middleware/database';
 
-import { getAllMedia, postMedia } from 'apiCalls/db/media';
+import { getAll, postOne } from 'api-db/media';
 
 const handler = nextConnect();
 handler.use(middleware);
@@ -9,7 +9,7 @@ handler.use(middleware);
 //
 
 handler.get(async (req, res) => {
-  const response = await getAllMedia(req.db);
+  const response = await getAll(req.db);
 
   res.json(response);
 });
@@ -18,7 +18,7 @@ handler.post(async (req, res) => {
   const formData = req.body;
 
   try {
-    const { insertedId } = await postMedia(req.db, formData);
+    const { insertedId } = await postOne(req.db, formData);
 
     res.json({ ...formData, _id: insertedId });
   } catch (error) {

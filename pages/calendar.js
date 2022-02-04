@@ -1,30 +1,34 @@
-import { FullSection, Flex } from 'components';
+import { FullSection, Flex, PlannedFeature } from 'components';
 
 export default function CalendarPage({ ...props }) {
   return (
     <FullSection>
       <Flex flexDirection="column" center={true}>
         <Flex height="min-content" maxWidth="600px" flexDirection="column">
-          <h4>Calendar</h4>
+          <h3 className="sc">Calendar</h3>
+
           <br />
+
           <h5>
             <i>Under development</i>
             <br />
             <i>ETA: N/A</i>
           </h5>
+
           <br />
-          <p>
-            Calendar filled with project-specific deadlines and deliverables.
-            <br />
-            <br />
-            Advanced feature: 'generate: todays-to-do-list'
-            <br />
-            <i>
-              Scans through the project's made in project-planner-app and fills
-              todays scheduled hours with the most urgent tasks (based on
-              time-to-deadline/estimated-minutes-left ratio)
-            </i>
-          </p>
+          <br />
+
+          <div style={{ padding: '1rem' }}>
+            <h4 style={{ marginBottom: '1rem' }}>Planned features :</h4>
+            <PlannedFeature
+              title="Calendar"
+              text={`Calendar focused on being an interactive tool in conjunction with project planning and progress`}
+            />
+            <PlannedFeature
+              title="Todays-To-Do-List"
+              text={`Advanced feature: Generate to-do list for the day based on hours left to deadline in projects`}
+            />
+          </div>
         </Flex>
       </Flex>
     </FullSection>

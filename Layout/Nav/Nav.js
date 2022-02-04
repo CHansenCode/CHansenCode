@@ -8,7 +8,7 @@ import useUser from 'lib/useUser';
 
 export function Nav() {
   //
-  const { user, mutateUser } = useUser();
+  const { user } = useUser();
   const { pathname } = useRouter();
 
   return (
@@ -26,8 +26,6 @@ export function Nav() {
       <Links />
 
       <div>{user?.isLoggedIn ? <Avatar /> : <Login />}</div>
-
-      {/* {user?.isLoggedIn ? <Avatar /> : <Login />} */}
     </nav>
   );
 }

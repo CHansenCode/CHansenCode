@@ -10,8 +10,10 @@ export const Flex = ({ ...props }) => {
     padding: props.padding && props.padding,
     margin: props.margin && props.margin,
     flexDirection: props.flexDirection && props.flexDirection,
-    alignItems: props.center && 'center',
-    justifyContent: props.center && 'center',
+    alignItems: props.alignItems ? props.alignItems : props.center && 'center',
+    justifyContent: props.justifyContent
+      ? props.justifyContent
+      : props.center && 'center',
   };
 
   return (

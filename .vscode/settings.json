@@ -19,15 +19,14 @@
     "**/.prettierrc": true,
     "**/.eslintrc.json": true,
     //  proj.Settings
-    "**/package.json": false,
+    "**/package.json": true,
     "**/package-lock.json": true,
     "**/jsconfig.json": true,
-    "**/next.config.js": false,
+    "**/next.config.js": true,
 
     //  others
-    "**/lib": true,
-    "**/apiCalls": false,
     "**/middleware": true,
+    "**/lib": false,
     "**/config": false,
 
     "**/standalone": true,
@@ -36,8 +35,8 @@
     "**/public": true,
 
     //  redux
-    "**/actions": false,
-    "**/reducers": false,
+    "**/actions": true,
+    "**/reducers": true,
 
     //  compile
     "**/out": false

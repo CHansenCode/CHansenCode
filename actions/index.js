@@ -10,3 +10,6 @@ export const CREATE_MEDIA = 'CREATE_MEDIA';
 export const GET_MEDIA_POST = 'GET_MEDIA_POST';
 export const PATCH_MEDIA = 'PATCH_MEDIA';
 export const DELETE_MEDIA = 'DELETE_MEDIA';
+
+export const TOAST = 'TOAST';
+export const DELETE_TOAST = 'DELETE_TOAST';

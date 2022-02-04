@@ -1,12 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { List, Item, initForm, Fixed } from 'page-components/media';
+import { List, ListHeader, Item, initForm, Fixed } from 'page-components/media';
 import { FullSection, Button, Flex, SectionMenu, Cimage } from 'components';
 import { Form, Input, Textarea, Select, Loading, Grid } from 'components';
 
-import * as api from 'apiCalls';
-import { GET_MEDIA, CREATE_MEDIA, PATCH_MEDIA, DELETE_MEDIA } from 'actions';
+import * as api from 'api-axios/media';
+import {
+  GET_MEDIA,
+  CREATE_MEDIA,
+  PATCH_MEDIA,
+  DELETE_MEDIA,
+  TOAST,
+} from 'actions';
 
 export default function MediaDb({ ...props }) {
   const dispatch = useDispatch();
@@ -49,7 +55,7 @@ export default function MediaDb({ ...props }) {
 
   //#region   Data fetcher listener
   useEffect(() => {
-    getMedia();
+    getAll();
   }, [dispatch]);
   const storeData = useSelector(s => s.media);
   const activePost = useSelector(s =>
@@ -61,33 +67,72 @@ export default function MediaDb({ ...props }) {
   //#endregion
 
   //#region   CRUD
-  async function getMedia() {
+  async function getAll() {
     try {
-      const data = await api.getMedia();
-
+      const data = await api.getAll();
       dispatch({ type: GET_MEDIA, payload: data });
     } catch (error) {
       console.log('Error in "pages/media" dispatching data => ', error);
     }
   }
-  async function postMedia() {
+  async function postOne(formData) {
     try {
-      const data = await api.postMedia(formData);
-
+      const data = await api.postOne(formData);
       dispatch({ type: CREATE_MEDIA, payload: data });
+      clear();
+      dispatch({
+        type: TOAST,
+        payload: { type: 'success', message: 'Post created!' },
+      });
     } catch (error) {
       console.log('ErrorIn: pages/media, action: postMedia', error);
+      dispatch({
+        type: TOAST,
+        payload: {
+          type: 'warning',
+          message: 'Post attempt failed, please try again.',
+        },
+      });
     }
   }
-  async function deleteMedia(id) {
-    const data = await api.deleteMedia(id);
-
-    dispatch({ type: DELETE_MEDIA, payload: data._id });
+  async function deleteOne(id) {
+    try {
+      const data = await api.deleteOne(id);
+      dispatch({ type: DELETE_MEDIA, payload: data._id });
+      dispatch({
+        type: TOAST,
+        payload: { type: 'success', message: 'Post deleted!' },
+      });
+    } catch (error) {
+      console.log('cow');
+      dispatch({
+        type: TOAST,
+        payload: {
+          type: 'warning',
+          message: 'Delete attempt failed, please try again.',
+        },
+      });
+    }
   }
-  async function patchMedia() {
-    const data = await api.patchMedia(activeId, formData);
-
-    dispatch({ type: PATCH_MEDIA, payload: data });
+  async function patchOne(id, formData) {
+    try {
+      const data = await api.patchOne(id, formData);
+      dispatch({ type: PATCH_MEDIA, payload: data });
+      clear();
+      dispatch({
+        type: TOAST,
+        payload: { type: 'success', message: 'Post updated!' },
+      });
+    } catch (error) {
+      console.log('cow');
+      dispatch({
+        type: TOAST,
+        payload: {
+          type: 'warning',
+          message: 'Update attempt failed, please try again.',
+        },
+      });
+    }
   }
   //#endregion
 
@@ -99,9 +144,9 @@ export default function MediaDb({ ...props }) {
     e.preventDefault();
 
     if (activeId) {
-      patchMedia();
+      patchOne(activeId, formData);
     } else {
-      postMedia();
+      postOne(formData);
     }
   }
   async function clear(e) {
@@ -154,22 +199,6 @@ export default function MediaDb({ ...props }) {
                   label="title"
                   value={formData.title}
                   onChange={e => handleChange(e, 'title')}
-                />
-                <Select
-                  label="category"
-                  value={formData.category}
-                  options={['cow', 'fox', 'cat']}
-                  objKey={'category'}
-                  data={formData}
-                  setData={setFormData}
-                />
-                <Select
-                  label="project"
-                  value={formData.project}
-                  options={['cow', 'fox', 'cat']}
-                  objKey={'project'}
-                  data={formData}
-                  setData={setFormData}
                 />
               </div>
               <div>
@@ -251,7 +280,7 @@ export default function MediaDb({ ...props }) {
                     ? () => selectProject(p._id)
                     : console.log('Toggle deleting to set id')
                 }
-                onDelete={() => deleteMedia(p._id)}
+                onDelete={() => deleteOne(p._id)}
                 {...props}
               />
             ))
@@ -266,24 +295,3 @@ export default function MediaDb({ ...props }) {
     </>
   );
 }
-
-const ListHeader = ({ children }) => {
-  return (
-    <>
-      <div className="list_header_kkk999">{children}</div>
-
-      <style jsx>
-        {`
-          .list_header_kkk999 {
-            height: 2rem;
-            width: 100%;
-
-            display: flex;
-
-            margin-bottom: 1rem;
-          }
-        `}
-      </style>
-    </>
-  );
-};

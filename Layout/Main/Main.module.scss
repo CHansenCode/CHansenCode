@@ -27,10 +27,13 @@
 }
 
 .dashboard_visible {
-  height: 100vh;
   width: calc(100vw - 14rem);
   margin-left: 14rem;
   margin-bottom: 0;
+}
+
+.is_not_logged_in {
+  margin-left: 0;
 }
 
 @media screen and (max-width: 950px) {

@@ -16,7 +16,7 @@ export const FullSection = ({ title, hasMenu, children, ...props }) => {
       )}
 
       <div className={css.child_wrapper}>
-        <>
+        <div className={css.scrollable}>
           {hasMenu
             ? //If hasMenu is true, steal the first child and place in header instead
               React.Children.map(children, (child, i) =>
@@ -25,7 +25,7 @@ export const FullSection = ({ title, hasMenu, children, ...props }) => {
             : React.Children.map(children, (child, i) => {
                 return React.cloneElement(child, { ...props });
               })}
-        </>
+        </div>
       </div>
     </section>
   );

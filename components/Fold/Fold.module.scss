@@ -1,0 +1,47 @@
+.wrapper {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.button {
+  color: currentColor;
+
+  height: 2.5rem;
+  width: 100%;
+
+  padding: 0;
+  margin: 0;
+  padding-left: 1rem;
+
+  background: transparent;
+  outline: none;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.button:hover {
+  cursor: pointer;
+}
+.button p {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+.button div {
+  height: 2.5rem;
+  width: 2.5rem;
+  font-size: 1.5rem;
+  transform: rotate(270deg);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.child_wrapper {
+  position: relative;
+  padding: 0.5rem;
+  transition: 0.2s ease;
+  overflow: hidden;
+}

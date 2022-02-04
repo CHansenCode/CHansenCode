@@ -23,7 +23,7 @@ export const Item = ({ data, ...props }) => {
       onClick={props.onClick}
     >
       <div style={{ height: '2rem', width: '2rem', overflow: 'hidden' }}>
-        <Cimage height="100%" width="100%" layout="fill" />
+        <Cimage height="100%" width="100%" src={`${data.url}`} layout="fill" />
       </div>
 
       <p>{data.title}</p>

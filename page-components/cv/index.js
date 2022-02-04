@@ -1,2 +1,8 @@
-export * from './initForm';
-export * from './initContr';
+//View components
+export * from './List';
+
+//Style components
+export * from './FormStyle';
+
+//init values
+export * from './init';
