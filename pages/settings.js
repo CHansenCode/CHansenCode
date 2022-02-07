@@ -1,9 +1,48 @@
-import { FullSection, Flex, PlannedFeature } from 'components';
+import { useState } from 'react';
+
+import { FullSection, Flex, PlannedFeature, SectionMenu } from 'components';
+import { Button, ObjectViewer, List, Fold } from 'components';
+
+import { User } from 'page-components/settings/users';
+
+import * as api from 'api-axios/users';
 
 export default function SettingsPage({ ...props }) {
+  const [data, setData] = useState([]);
+
+  async function cow() {
+    setData(await api.getAll());
+  }
+
   return (
-    <FullSection>
-      <Flex flexDirection="column" center={true}>
+    <FullSection hasMenu={true} title="Settings page">
+      <SectionMenu>
+        <div></div>
+
+        <div>
+          <Button text="EDIT" />
+          <Button text="DEL" />
+        </div>
+      </SectionMenu>
+
+      <Fold title="Users" fold={true}>
+        <Flex>
+          <Button
+            padding="0.5rem 1rem"
+            text="choose organisation >"
+            onClick={() => alert('not yet')}
+          />
+          <Button padding="0.5rem 1rem" text="get users" onClick={cow} />
+        </Flex>
+
+        <List title="users">
+          {data
+            ? data.map((user, i) => <User key={user._id} data={user} />)
+            : 'no users fetched'}
+        </List>
+      </Fold>
+
+      {/* <Flex flexDirection="column" center={true}>
         <Flex height="min-content" maxWidth="600px" flexDirection="column">
           <h3 className="sc">Settings page</h3>
 
@@ -34,7 +73,17 @@ export default function SettingsPage({ ...props }) {
             />
           </div>
         </Flex>
-      </Flex>
+      </Flex> */}
     </FullSection>
   );
+}
+
+export async function getServerSideProps(context) {
+  // const {data} = await api.getAll();
+
+  // console.log(users);
+
+  return {
+    props: { users: [{ cow: 'yes' }] },
+  };
 }

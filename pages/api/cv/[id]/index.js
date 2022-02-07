@@ -1,7 +1,7 @@
 import nextConnect from 'next-connect';
 import middleware from 'middleware/database';
 
-import { findByIdAndUpdate, findByIdAndDelete } from 'api-db/cv';
+import { findByIdAndUpdate, findByIdAndDelete, findOne } from 'api-db/cv';
 
 const handler = nextConnect();
 handler.use(middleware);
@@ -9,11 +9,15 @@ handler.use(middleware);
 //
 
 handler.get(async (req, res) => {
-  const id = req.query;
+  const { id } = req.query; //whom
 
-  let resData = await req.db.collection('Gallery').findOne(id);
+  try {
+    let resData = await findOne(req.db, id);
 
-  res.json(resData);
+    res.json(resData);
+  } catch (error) {
+    res.status(400).json({ error: 'something wong' });
+  }
 });
 
 handler.patch(async (req, res) => {

@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router';
-import { Button } from 'components';
+
 import useUser from 'lib/useUser';
 import fetchJson from 'lib/fetchJson';
 
-import { LightDark } from './Buttons';
-import { Home, Settings, Calendar, Intercom } from './Buttons';
+import { Button } from 'components';
+import { Home, Settings, Calendar, Intercom, LightDark } from './Buttons';
 
 import css from './Footer.module.scss';
 

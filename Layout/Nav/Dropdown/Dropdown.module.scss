@@ -1,0 +1,17 @@
+.wrapper {
+  width: 2rem;
+  position: relative;
+}
+
+.toggleButton {
+  height: 2rem !important;
+  width: 2rem !important;
+  border-radius: 50%;
+}
+
+.wrapper > div {
+  position: absolute;
+
+  top: 2.5rem;
+  right: 0;
+}

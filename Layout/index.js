@@ -7,11 +7,11 @@ export * from './Modals/Toast';
 export * from './GlobalStyles';
 export * from './Main';
 export * from './Meta';
+export * from './Footer';
 
-//Homepage
+//nav-frontside
 export * from './Nav';
-
-//cms
+//nav-backside
 export * from './Dashboard';
 
 //Dev

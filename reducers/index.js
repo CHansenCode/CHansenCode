@@ -16,8 +16,10 @@ import { combineReducers } from 'redux';
 import toast from './toast';
 import cv from './cv';
 import media from './media';
+import contact from './contact';
 
 export const reducers = combineReducers({
+  contact,
   toast,
   cv,
   media,

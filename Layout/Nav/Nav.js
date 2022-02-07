@@ -1,10 +1,12 @@
-import css from './Nav.module.scss';
-
-import { Links, Avatar } from './';
-import { NextLink, Login, Logo, Button } from 'components';
 import { useRouter } from 'next/router';
 
+import { navConstr, navSubConstr } from 'config';
+import { NavLink, Avatar, Dropdown } from './';
+import { NextLink, Login, Logo, Button, Flex } from 'components';
+
 import useUser from 'lib/useUser';
+
+import css from './Nav.module.scss';
 
 export function Nav() {
   //
@@ -13,19 +15,33 @@ export function Nav() {
 
   return (
     <nav className={css.nav}>
-      <div>
-        {!(pathname === '/') && (
-          <NextLink href="/">
-            <Logo height="2rem" />
-          </NextLink>
-        )}
-      </div>
+      <>
+        <div className={css.logo}>
+          {!(pathname === '/') && (
+            <NextLink href="/">
+              <Logo height="4rem" />
+            </NextLink>
+          )}
+        </div>
 
-      <div></div>
+        <div></div>
 
-      <Links />
+        {/* <Links /> */}
 
-      <div>{user?.isLoggedIn ? <Avatar /> : <Login />}</div>
+        <Flex>
+          {navConstr.map((l, i) => (
+            <NavLink name={l.as} href={l.href} key={`cowie${i}`} />
+          ))}
+        </Flex>
+
+        <Dropdown>
+          {navSubConstr.map((l, i) => (
+            <NavLink key={`cowie${i}`} name={l.as} href={l.href} />
+          ))}
+        </Dropdown>
+
+        <div>{user?.isLoggedIn ? <Avatar /> : <Login />}</div>
+      </>
     </nav>
   );
 }

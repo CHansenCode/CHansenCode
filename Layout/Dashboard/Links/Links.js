@@ -13,9 +13,9 @@ export const Links = () => {
           <h5 className="pc7">{cat.category} :</h5>
 
           {cat.pages.map((l, i) => (
-            <NextLink exact={l.href === '/' && true} key={l.name} href={l.href}>
+            <NextLink exact={l.href === '/' && true} key={l.as} href={l.href}>
               <li className={css.link} key={`NextLink${i}`}>
-                {l.name}
+                {l.as}
               </li>
             </NextLink>
           ))}

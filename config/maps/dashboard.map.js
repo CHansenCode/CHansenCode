@@ -2,18 +2,19 @@ export const dashConstructor = [
   {
     category: 'Backside',
     pages: [
-      { name: 'Media DB', href: '/media' },
-      { name: "Cv's", href: '/cvCreator' },
+      { as: 'Media DB', href: '/media' },
+      { as: "Cv's", href: '/cvCreator' },
+      { as: 'Contact form', href: '/contactBackside' },
     ],
   },
   {
     category: 'Pages',
     pages: [
-      { name: 'home', href: '/' },
-      { name: 'architecture', href: '/architecture' },
-      { name: 'webdesign', href: '/webdesign' },
-      { name: 'about', href: '/about' },
-      { name: 'contact', href: '/contact' },
+      { as: 'home', href: '/' },
+      { as: 'architecture', href: '/architecture' },
+      { as: 'webdesign', href: '/webdesign' },
+      { as: 'about', href: '/about' },
+      { as: 'contact', href: '/contact' },
     ],
   },
 ];

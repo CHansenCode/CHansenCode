@@ -1,18 +1,21 @@
 export const navConstr = [
   {
-    name: 'architecture',
+    as: 'architecture',
     href: '/architecture',
   },
   {
-    name: 'webdesign',
+    as: 'webdesign',
     href: '/webdesign',
   },
+];
+
+export const navSubConstr = [
   {
-    name: 'about',
+    as: 'about',
     href: '/about',
   },
   {
-    name: 'contact',
+    as: 'contact',
     href: '/contact',
   },
 ];

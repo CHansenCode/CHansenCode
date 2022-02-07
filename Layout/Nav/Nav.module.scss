@@ -9,7 +9,17 @@
   width: 100vw;
 
   display: grid;
-  grid-template: 'logo info links login' 1fr / 20rem 1fr auto auto;
+  grid-template: 'logo info links drop login' 1fr / 20rem 1fr auto auto auto;
 
   align-items: center;
+}
+
+.logo {
+  padding-left: 2rem;
+  padding-top: 1.5rem;
+}
+
+.nav button {
+  height: 2rem;
+  width: 5rem;
 }

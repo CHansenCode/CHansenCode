@@ -32,6 +32,7 @@ export const Diode = ({ toggle, ...props }) => {
 
             transition: 0.4s ease;
           }
+
           .diode_status_indicator::after {
             color: black;
 
@@ -57,9 +58,11 @@ export const Diode = ({ toggle, ...props }) => {
             border: thin solid transparent;
             border-radius: 50%;
           }
+
           .diode_status_indicator:hover diode_status_onHoverInfo {
             opacity: 1;
           }
+
           .diode_status_onHoverInfo {
             position: absolute;
             top: 100%;

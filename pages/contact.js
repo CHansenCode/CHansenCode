@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { initForm } from 'page-components/contact';
-import { Section, Form, TypeInput, Grid, Button } from 'components';
+import { Section, Form, TypeInput, Grid, Button, Empty } from 'components';
 import { TOAST } from 'actions';
 
 import * as api from 'api-axios/contact';
@@ -44,7 +44,7 @@ export default function Contact() {
 
   return (
     <>
-      <Section padding="20vh 0 0 0" />
+      <Empty height="20vh" />
 
       <Section>
         <Grid>

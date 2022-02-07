@@ -4,9 +4,19 @@ import axios from 'axios';
 import { Form, Input, Button } from 'components';
 import useUser from 'lib/useUser';
 
+import { useDispatch } from 'react-redux';
+import { TOAST } from 'actions';
+
 import css from './Login.module.scss';
 
+const initFormData = {
+  username: '',
+  password: '',
+};
+
 export const Login = ({ ...props }) => {
+  const dispatch = useDispatch();
+
   const { mutateUser } = useUser({
     redirectIfFound: true,
     redirectTo: '/welcome',
@@ -29,10 +39,13 @@ export const Login = ({ ...props }) => {
 
     try {
       const { data } = await axios.post('api/login', formData);
-
       mutateUser(data);
     } catch (error) {
-      console.log('could not auth');
+      console.log('Auth request failed');
+      dispatch({
+        type: TOAST,
+        payload: { type: 'alert', message: 'Auth request failed' },
+      });
     }
   }
 
@@ -64,7 +77,7 @@ export const Login = ({ ...props }) => {
             type="password"
           />
           <Button
-            margin="0.5rem 0 0 0"
+            margin="1rem 0 0 0"
             padding="0.5rem"
             text="Log in"
             onClick={handleSubmit}
@@ -73,9 +86,4 @@ export const Login = ({ ...props }) => {
       </div>
     </div>
   );
-};
-
-const initFormData = {
-  username: '',
-  password: '',
 };

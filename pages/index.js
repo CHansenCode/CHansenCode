@@ -8,6 +8,8 @@ export default function Home({ ...props }) {
 
   return (
     <>
+      <Empty height="20vh" />
+
       <Section>
         <div style={{ height: '40rem', width: '100%' }}>
           <LayeredImage distortMax={1}>
@@ -20,10 +22,8 @@ export default function Home({ ...props }) {
         </div>
       </Section>
 
-      <Empty height="20vh" />
-
       <Section>
-        <RenderRichText data={props.text && props.texts[0]} />
+        {/* <RenderRichText data={props.text && props.texts[0]} /> */}
       </Section>
     </>
   );

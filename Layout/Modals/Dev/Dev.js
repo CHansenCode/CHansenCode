@@ -62,9 +62,21 @@ export function Dev() {
                 <h5>{`}`}</h5>
               </Flex>
               <Flex alignItems="flex-end">
-                <h6>password :</h6>
+                <h6>role :</h6>
                 <h5>{`{`}</h5>
-                <p className="sc">' {user?.password ? 'true' : 'false'} '</p>
+                <p className="sc">' {user?.role} '</p>
+                <h5>{`}`}</h5>
+              </Flex>
+              <Flex alignItems="flex-end">
+                <h6>group :</h6>
+                <h5>{`{`}</h5>
+                <p className="sc">' {user?.group} '</p>
+                <h5>{`}`}</h5>
+              </Flex>
+              <Flex alignItems="flex-end">
+                <h6>organisation :</h6>
+                <h5>{`{`}</h5>
+                <p className="sc">' {user?.organisation} '</p>
                 <h5>{`}`}</h5>
               </Flex>
             </Fold>
@@ -88,6 +100,20 @@ export function Dev() {
                 <ObjectViewer
                   title="store.toast"
                   data={storeData.toast}
+                  fontSize="0.9rem"
+                />
+              </Fold>
+              <Fold title="store.contact" fold={true}>
+                <ObjectViewer
+                  title="store.toast"
+                  data={storeData.contact}
+                  fontSize="0.9rem"
+                />
+              </Fold>
+              <Fold title="store" fold={true}>
+                <ObjectViewer
+                  title="store"
+                  data={storeData}
                   fontSize="0.9rem"
                 />
               </Fold>

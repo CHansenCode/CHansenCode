@@ -13,3 +13,7 @@ export const DELETE_MEDIA = 'DELETE_MEDIA';
 
 export const TOAST = 'TOAST';
 export const DELETE_TOAST = 'DELETE_TOAST';
+
+// ** CONTACT FORM
+export const GET_CONTACT = 'GET_CONTACT';
+export const DELETE_CONTACT = 'DELETE_CONTACT';

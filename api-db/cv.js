@@ -20,6 +20,16 @@ export async function postOne(db, formData) {
   }
 }
 
+export async function findOne(db, whom) {
+  try {
+    const response = await db.collection(col).findOne({ whom: whom }); //res = {?}
+
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function findByIdAndUpdate(db, id, data) {
   console.log(data.richTextOne);
   try {

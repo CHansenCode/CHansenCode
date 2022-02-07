@@ -11,7 +11,7 @@
   "files.exclude": {
     //  dep's
     "**/.git": true,
-    "**/.next": true,
+    "**/.next": false,
     "**/node_modules": true,
 
     //  settings
@@ -25,18 +25,18 @@
     "**/next.config.js": true,
 
     //  others
-    "**/middleware": true,
+    "**/middleware": false,
     "**/lib": false,
     "**/config": false,
 
-    "**/standalone": true,
+    "**/standalone": false,
 
     "**/styles": true,
-    "**/public": true,
+    "**/public": false,
 
     //  redux
-    "**/actions": true,
-    "**/reducers": true,
+    "**/actions": false,
+    "**/reducers": false,
 
     //  compile
     "**/out": false
