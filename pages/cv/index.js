@@ -68,10 +68,10 @@ const NoPid = () => {
         <br />
 
         <p>
-          You are seeing this text because the unique key "?pid= <u>NAME</u> "
+          {`You are seeing this text because the unique key "?pid= <u>NAME</u> "
           wasn't provided. If you haven't received an email from me with the
           corresponding link then you are asked to go back to the homepage and
-          continue browsing
+          continue browsing`}
         </p>
       </div>
 
