@@ -3,10 +3,11 @@ import { RenderRichText } from 'components';
 import css from './styles/Letter.module.scss';
 
 export const Letter = ({ data }) => {
-  console.log(data);
   return (
     <>
-      <div>
+      <div className={css.letters}>
+        <h4>title</h4>
+
         <Paragraph>
           <RenderRichText data={data.richTextOne} />
         </Paragraph>
@@ -53,12 +54,13 @@ export const Letter = ({ data }) => {
 const Paragraph = ({ children }) => {
   return (
     <>
-      <div className="cv_paragraph_richtext">{children}</div>
+      <div className={css.paragraph}>{children}</div>
 
       <style jsx>
         {`
           .cv_paragraph_richtext {
             border: thin solid;
+            padding: 1rem;
           }
         `}
       </style>

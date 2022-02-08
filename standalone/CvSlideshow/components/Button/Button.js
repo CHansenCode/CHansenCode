@@ -7,10 +7,11 @@ export const Button = ({ text, ...props }) => {
 
   const iStyle = {
     border: props.border && props.border,
+    borderRadius: props.borderRadius && props.borderRadius,
     padding: props.padding && props.padding,
     margin: props.margin && props.margin,
-    width: props.width && props.width,
-    heght: props.height && props.height,
+    width: props.size ? props.size : props.width && props.width,
+    height: props.size ? props.size : props.height && props.height,
     textTransform: props.uppercase && 'uppercase',
     fontSize: props.fontSize && props.fontSize,
     //
@@ -29,7 +30,7 @@ export const Button = ({ text, ...props }) => {
     <button
       ref={props.myRef}
       style={props.style}
-      onMouseOver={() => setHover(true)}
+      onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       {...props}
     >

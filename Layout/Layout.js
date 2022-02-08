@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
-import { GlobalStyles, Main, Meta, Nav, Dashboard } from './';
-import { Dev, Toast, Footer } from './';
 import { useColors } from 'lib/useColor';
 import useUser from 'lib/useUser';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 
+import { GlobalStyles, Main, Meta, Nav, Dashboard } from './';
+import { Dev, Toast, Footer } from './';
+
 export function Layout({ ...props }) {
   const { pathname } = useRouter();
-  const { user, mutateUser } = useUser();
+  const { user, mutateUser } = useUser({ redirectIfFound: false });
   const { colors, setColors } = useColors();
 
   const [controller, setController] = useState({
@@ -24,7 +25,7 @@ export function Layout({ ...props }) {
 
   useEffect(() => {
     !user && checkUser();
-  }, [pathname]);
+  }, [pathname, user]);
 
   async function checkUser() {
     const { data } = await axios.get('./api/user');
@@ -32,6 +33,8 @@ export function Layout({ ...props }) {
       mutateUser(data);
     }
   }
+
+  console.log(pathname);
 
   props = {
     ...props,
@@ -50,7 +53,11 @@ export function Layout({ ...props }) {
       <Meta {...props} />
       <GlobalStyles {...props} />
 
-      {controller.isLoggedIn ? <Dashboard {...props} /> : <Nav {...props} />}
+      {!(pathname == '/cv') && controller.isLoggedIn ? (
+        <Dashboard {...props} />
+      ) : (
+        <Nav {...props} />
+      )}
 
       <Main {...props} />
 

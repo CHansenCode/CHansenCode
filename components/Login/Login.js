@@ -18,7 +18,7 @@ export const Login = ({ ...props }) => {
   const dispatch = useDispatch();
 
   const { mutateUser } = useUser({
-    redirectIfFound: true,
+    redirectIfFound: false,
     redirectTo: '/welcome',
   });
 

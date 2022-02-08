@@ -1,9 +1,12 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import useUser from 'lib/useUser';
 
 import css from './Main.module.scss';
 
 export const Main = ({ children, ...props }) => {
+  //
+  const router = useRouter();
   //
   const { user } = useUser();
 

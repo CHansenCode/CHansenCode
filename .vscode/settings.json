@@ -31,7 +31,7 @@
 
     "**/standalone": false,
 
-    "**/styles": true,
+    "**/styles": false,
     "**/public": false,
 
     //  redux
