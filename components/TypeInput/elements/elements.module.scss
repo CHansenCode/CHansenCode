@@ -11,6 +11,10 @@
   height: 2rem;
 }
 
+.textarea {
+  resize: vertical;
+}
+
 //  input
 .input::placeholder,
 .textarea::placeholder,

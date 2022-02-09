@@ -1,8 +1,12 @@
+import { useState } from 'react';
+
 import css from './Post.module.scss';
 
 import useDates from '../../../lib/useDates';
 
 export const Post = ({ data, scope, ...props }) => {
+  const [hover, setHover] = useState(false);
+
   const { y } = useDates();
 
   // relative max (100% width)
@@ -28,16 +32,23 @@ export const Post = ({ data, scope, ...props }) => {
   let endMonthsAgo = y * 12 - endYear * 12 - endMonth + 12;
   let relativeToScope = (endMonthsAgo * 100) / scopeMonths;
 
-  const propStyle = {
-    width: `${percentageOfScope}%`,
+  const iStyle = {
+    width: hover ? 'min-content' : `${percentageOfScope}%`,
     right: `${relativeToScope}%`,
   };
 
   return (
     data && (
       <>
-        <div className={css.post} style={propStyle} {...props}>
+        <div
+          className={`${css.post} bg pc3b`}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          style={iStyle}
+          {...props}
+        >
           <h6>{data.short}</h6>
+          <h6>{data.title}</h6>
         </div>
       </>
     )

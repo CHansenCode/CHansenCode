@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { Cv, Letter, Web, Contact } from './pages';
 import { Button, Pagination } from './components';
 
 export default function CvSlideshow({ data, ...props }) {
   const [page, setPage] = useState(1);
+  const [activeId, setActiveId] = useState('');
 
   let pages = [
     {
@@ -21,18 +22,38 @@ export default function CvSlideshow({ data, ...props }) {
     },
   ];
 
-  console.log(data);
+  props = {
+    ...props,
+    activeId,
+    setActiveId,
+  };
 
   return (
     <Main>
       <SlideView>
-        {page === 1 && <Cv data={data} {...props} />}
-        {page === 2 && <Letter data={data} {...props} />}
-        {page === 3 && <Web data={data} {...props} />}
-        {page === 4 && <Contact data={data} {...props} />}
+        {page === 1 && (
+          <SlideWrapper>
+            <Cv {...props} />
+          </SlideWrapper>
+        )}
+        {page === 2 && (
+          <SlideWrapper>
+            <Letter data={data} {...props} />
+          </SlideWrapper>
+        )}
+        {page === 3 && (
+          <SlideWrapper>
+            <Web {...props} />
+          </SlideWrapper>
+        )}
+        {page === 4 && (
+          <SlideWrapper>
+            <Contact {...props} />
+          </SlideWrapper>
+        )}
       </SlideView>
 
-      <Navie page={page} setPage={setPage} />
+      <Nav page={page} setPage={setPage} />
     </Main>
   );
 }
@@ -81,7 +102,36 @@ const SlideView = ({ children }) => {
   );
 };
 
-const Navie = ({ page, setPage }) => {
+const SlideWrapper = ({ children }) => {
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
+
+  const iStyle = {
+    opacity: loaded ? '1' : '0',
+    transition: '0.5s ease',
+  };
+
+  return (
+    <>
+      <div style={iStyle} className="cv_slide_wrapper">
+        {children}
+      </div>
+
+      <style jsx>
+        {`
+          .cv_slide_wrapper {
+            height: 100%;
+          }
+        `}
+      </style>
+    </>
+  );
+};
+
+const Nav = ({ page, setPage }) => {
   //
   async function onClickAddPage() {
     setPage(page + 1);

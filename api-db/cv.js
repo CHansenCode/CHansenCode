@@ -67,3 +67,14 @@ export async function findByIdAndDelete(db, id) {
     console.log(error);
   }
 }
+
+//
+
+export async function getAllOccupations(db) {
+  try {
+    const response = await db.collection('occupations').find().toArray(); //res = [...mediaPosts]
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}

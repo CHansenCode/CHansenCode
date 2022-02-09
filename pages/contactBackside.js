@@ -4,9 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FullSection, Button, SectionMenu, Loading, Empty } from 'components';
 import { Card } from 'page-components/contact';
 
-import { useRouter } from 'next/router';
-
-import { GET_CONTACT, DELETE_CONTACT } from 'actions';
+import { GET_CONTACT, DELETE_CONTACT, TOAST } from 'actions';
 
 import * as api from 'api-axios/contact';
 
@@ -35,13 +33,13 @@ export default function ContactBackside() {
   async function deleteOne(id) {
     try {
       const data = await api.deleteOne(id);
+      console.log(data);
       dispatch({ type: DELETE_CONTACT, payload: data._id });
       dispatch({
         type: TOAST,
         payload: { type: 'success', message: 'Post deleted!' },
       });
     } catch (error) {
-      console.log('cow');
       dispatch({
         type: TOAST,
         payload: {
@@ -51,34 +49,16 @@ export default function ContactBackside() {
       });
     }
   }
-
   async function toggleDeleting() {
     setController({ ...controller, isDeleting: !controller.isDeleting });
-  }
-  async function toggleEditing() {
-    setController({ ...controller, isEditing: !controller.isEditing });
-  }
-  async function toggleCreating() {
-    setController({ ...controller, isCreating: !controller.isCreating });
   }
 
   return (
     <FullSection hasMenu={true} title="Contact form">
       <SectionMenu>
-        <div>
-          <Button
-            text="NEW"
-            active={controller.isCreating}
-            onClick={toggleCreating}
-          />
-        </div>
+        <div></div>
 
         <div>
-          <Button
-            text="EDIT"
-            active={controller.isEditing}
-            onClick={toggleEditing}
-          />
           <Button
             text="DEL"
             active={controller.isDeleting}
@@ -87,11 +67,33 @@ export default function ContactBackside() {
         </div>
       </SectionMenu>
 
-      <div>
+      <List>
         {storeData.map((p, i) => (
-          <Card key={p._id} data={p} onDelete={() => deleteOne(p._id)} />
+          <Card
+            key={p._id}
+            data={p}
+            controller={controller}
+            onDelete={() => deleteOne(p._id)}
+          />
         ))}
-      </div>
+      </List>
     </FullSection>
   );
 }
+
+const List = ({ children }) => {
+  return (
+    <>
+      <div className="contact_list">{children}</div>
+
+      <style jsx>
+        {`
+          .contact_list {
+            display: flex;
+            flex-wrap: wrap;
+          }
+        `}
+      </style>
+    </>
+  );
+};

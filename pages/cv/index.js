@@ -10,19 +10,23 @@ export default function CV() {
   const router = useRouter();
   const { pid } = router.query;
 
-  async function cow() {
+  async function getData() {
     setData(await api.getOne(pid));
   }
 
   useEffect(() => {
-    async function cow() {
+    async function getData() {
       setData(await api.getOne(pid));
     }
 
-    cow();
+    getData();
   }, [pid]);
 
-  return <View>{pid ? <CvSlideshow data={data} /> : <NoPid />}</View>;
+  return (
+    <View>
+      <>{pid ? <CvSlideshow data={data} /> : <NoPid />}</>
+    </View>
+  );
 }
 
 const View = ({ pid, children }) => {
@@ -46,8 +50,6 @@ const View = ({ pid, children }) => {
             width: 100%;
             max-width: 1200px;
             max-height: 90vh;
-
-            border: thin dashed rgba(255, 100, 255, 0.5);
           }
         `}
       </style>

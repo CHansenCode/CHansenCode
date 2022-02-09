@@ -1,12 +1,12 @@
 .timeline {
   position: relative;
 
-  height: 9rem;
+  height: 12rem;
   width: 100%;
 
-  display: grid;
-  grid-template: 'buttons view' 1fr / 3rem 1fr;
-  gap: 1rem;
+  // display: grid;
+  // grid-template: 'buttons view' 1fr / 3rem 1fr;
+  // gap: 1rem;
 
   > :nth-child(1) {
     grid-area: buttons;

@@ -37,6 +37,7 @@ export * from './Grid'; //Grid
 export * from './RichText'; //RichText editor, has internal state logic, <-- overriden by passing setFormData in props
 export * from './Fold'; //Foldable container
 export * from './List'; //flex-wrap
+export * from './Label'; //flex-wrap
 
 //  Dev
 export * from './ObjectViewer'; //object/array viewer

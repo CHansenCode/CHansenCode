@@ -2,58 +2,65 @@ import { Post } from './Post';
 
 import css from './Post.module.scss';
 
-export const MapPosts = ({ data, setActiveData, ...props }) => {
+export const MapPosts = ({ data, activeId, setActiveId, ...props }) => {
   //
 
-  async function setActiveData(data, setData) {
-    setData(data);
-  }
+  const iStyle = {
+    row_one: {
+      marginTop: '1rem',
+      height: '25%',
+    },
+    row_two: {
+      height: '25%',
+    },
+    row_three: { height: '25%' },
+  };
 
   return (
     <>
-      <div className={`${css.posts} ${css.job}`}>
-        <h6>jobs</h6>
-        {data &&
-          data.map((c, i) =>
-            c.category === 'job' ? (
+      <div style={iStyle.row_one} className={css.posts}>
+        {data.map(
+          (c, i) =>
+            c.category === 'job' && (
               <Post
-                key={`${c.id}`}
+                key={`${c._id}`}
                 data={c}
-                onClick={() => setActiveData(c, setActiveData)}
+                activeId={activeId}
+                onClick={() => setActiveId(c._id)}
                 {...props}
               />
-            ) : null,
-          )}
+            ),
+        )}
       </div>
 
-      <div className={`${css.posts} ${css.education}`}>
-        <h6>education</h6>
-        {data &&
-          data.map((c, i) =>
-            c.category === 'education' ? (
+      <div style={iStyle.row_two} className={css.posts_education}>
+        {data.map(
+          (c, i) =>
+            c.category === 'education' && (
               <Post
-                key={`${c.id}`}
+                key={`${c._id}`}
                 data={c}
-                onClick={() => setActiveData(c, setActiveData)}
+                activeId={activeId}
+                onClick={() => setActiveId(c._id)}
                 {...props}
               />
-            ) : null,
-          )}
+            ),
+        )}
       </div>
 
-      <div className={`${css.posts} ${css.extra}`}>
-        <h6>extra</h6>
-        {data &&
-          data.map((c, i) =>
-            c.category === 'extra' ? (
+      <div style={iStyle.row_three} className={css.posts_extra}>
+        {data.map(
+          (c, i) =>
+            c.category === 'extra' && (
               <Post
-                key={`${c.id}`}
+                key={`${c._id}`}
                 data={c}
-                onClick={() => setActiveData(c, setActiveData)}
+                activeId={activeId}
+                onClick={() => setActiveId(c._id)}
                 {...props}
               />
-            ) : null,
-          )}
+            ),
+        )}
       </div>
     </>
   );

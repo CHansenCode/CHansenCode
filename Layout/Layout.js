@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+
 import { useColors } from 'lib/useColor';
 import useUser from 'lib/useUser';
-import { useRouter } from 'next/router';
-import axios from 'axios';
+import { checkUser } from 'lib/checkUser';
 
 import { GlobalStyles, Main, Meta, Nav, Dashboard } from './';
 import { Dev, Toast, Footer } from './';
 
 export function Layout({ ...props }) {
-  const { pathname } = useRouter();
-  const { user, mutateUser } = useUser({ redirectIfFound: false });
+  const router = useRouter();
+  const { user, mutateUser } = useUser();
   const { colors, setColors } = useColors();
 
   const [controller, setController] = useState({
@@ -21,20 +22,9 @@ export function Layout({ ...props }) {
     user?.isLoggedIn
       ? setController({ ...controller, isLoggedIn: true })
       : setController({ ...controller, isLoggedIn: false });
-  }, [user]);
-
-  useEffect(() => {
-    !user && checkUser();
-  }, [pathname, user]);
-
-  async function checkUser() {
-    const { data } = await axios.get('./api/user');
-    if (data.isLoggedIn) {
-      mutateUser(data);
-    }
-  }
-
-  console.log(pathname);
+  }, [user, router]);
+  useEffect(() => checkUser(mutateUser), [router, user]);
+  useEffect(() => checkUser(mutateUser), []);
 
   props = {
     ...props,
@@ -53,10 +43,16 @@ export function Layout({ ...props }) {
       <Meta {...props} />
       <GlobalStyles {...props} />
 
-      {!(pathname == '/cv') && controller.isLoggedIn ? (
-        <Dashboard {...props} />
+      {router.pathname === '/cv' ? (
+        <></>
       ) : (
-        <Nav {...props} />
+        <>
+          {controller.isLoggedIn ? (
+            <Dashboard {...props} />
+          ) : (
+            <Nav {...props} />
+          )}
+        </>
       )}
 
       <Main {...props} />

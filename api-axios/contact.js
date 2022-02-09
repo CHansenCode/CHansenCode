@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = './api/contactForm';
+const url = './api/contact';
 
 export const getAll = async () => {
   try {
@@ -17,5 +17,14 @@ export const postOne = async formData => {
     return data;
   } catch (error) {
     console.log(`Error: postOne to "${url}" in "./apiCalls/x.js"`);
+  }
+};
+
+export const deleteOne = async id => {
+  try {
+    const { data } = await axios.delete(`${url}/${id}`);
+    return data;
+  } catch (error) {
+    console.log(`Error: delete in "${url}" in "./apiCalls/x.js"`);
   }
 };

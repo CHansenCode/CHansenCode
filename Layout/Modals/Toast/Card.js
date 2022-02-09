@@ -6,8 +6,6 @@ import { IconSwitch } from './IconSwitch';
 import css from './Toast.module.scss';
 
 export const Card = ({ data, ...props }) => {
-  const dispatch = useDispatch();
-
   const [loaded, setLoaded] = useState(false);
 
   //on init fade in
@@ -17,9 +15,10 @@ export const Card = ({ data, ...props }) => {
 
   //after 4 seconds fade out
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setLoaded(false);
     }, 4000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (

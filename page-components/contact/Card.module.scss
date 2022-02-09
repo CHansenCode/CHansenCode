@@ -1,4 +1,68 @@
 .card {
-  border: thin solid;
+  position: relative;
+  width: 300px;
+  max-width: 300px;
+
+  margin: 0 0.5rem 0.5rem 0;
   padding: 1rem;
+}
+
+.card p {
+  margin-left: 0.75rem;
+}
+
+.delete_button {
+  position: absolute;
+
+  top: 0.5rem;
+  right: 0.5rem;
+
+  height: 1.5rem;
+  width: 1.5rem;
+
+  color: red;
+  border-color: red !important;
+
+  &:hover {
+    background: rgba(255, 0, 0, 0.05);
+  }
+}
+
+.white_fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  height: 3rem;
+  width: 100%;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.hover_box {
+  position: absolute;
+
+  z-index: 10;
+  top: -1px;
+  left: -1px;
+
+  width: calc(100% + 2px);
+  min-height: calc(100% + 2px);
+
+  padding: 1rem;
+
+  transition: 0.2s ease;
+
+  //init
+  opacity: 0;
+  pointer-events: 0;
+}
+
+.card:hover .hover_box {
+  height: 100%;
+  opacity: 1;
 }

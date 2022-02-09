@@ -13,12 +13,20 @@ export const Main = ({ children, ...props }) => {
   let collapsed = !props.controller.dashboardVisible;
   let loggedIn = props.controller.isLoggedIn;
 
+  const iStyle = {
+    marginLeft: router.pathname === '/cv' && 0,
+    marginBottom: router.pathname === '/cv' && 0,
+    width: router.pathname === '/cv' && '100vw',
+  };
+
   return (
     <main
+      style={iStyle}
       className={`${css.main} ${collapsed ? `${css.collapsed}` : ''} ${
         loggedIn ? `${css.loggedIn}` : ''
       }`}
     >
+      {}
       {React.Children.map(children, child => {
         return React.cloneElement(child, {
           ...props,
