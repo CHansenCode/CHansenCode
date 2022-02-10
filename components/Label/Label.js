@@ -21,9 +21,12 @@ export const Label = ({ ...props }) => {
 
   return (
     <div style={props.style} className={css.wrapper}>
-      <h6 style={iStyle.label} className={props.labelClass}>
-        {props.label} :
-      </h6>
+      {props.label && (
+        <h6 style={iStyle.label} className={props.labelClass}>
+          {props.label} :
+        </h6>
+      )}
+
       <p style={iStyle.body} className={props.bodyClass}>
         {props.body}
         {props.children}

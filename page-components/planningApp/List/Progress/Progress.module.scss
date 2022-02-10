@@ -1,0 +1,34 @@
+.progress_wrapper {
+  height: 10rem;
+  width: 10rem;
+
+  padding: 0.25rem;
+  margin-left: 2rem;
+}
+.progress_wrapper header {
+  margin-bottom: 0.5rem;
+}
+.progress_wrapper .resolved_unresolved {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+  > div {
+    display: flex;
+  }
+}
+.progress_wrapper .time_left {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+  span {
+    margin-left: 0.25rem;
+  }
+  i {
+    font-size: 0.7rem;
+    margin-left: 0.2rem;
+  }
+}
+.progress_wrapper .deadline {
+  display: flex;
+  justify-content: space-between;
+}

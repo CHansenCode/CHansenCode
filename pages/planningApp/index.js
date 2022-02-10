@@ -1,20 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { initController, initFormData } from './initData';
+import { FullSection, SectionMenu, Button } from 'components';
+import { Label, Flex } from 'components';
 
-import { FullSection, SectionMenu, Button, FlexWrap } from 'components';
-import { Label, TypeInput, Flex } from 'components';
+import { List, Item } from 'page-components/planningApp';
 import { Project, Stage, Task, Subtask } from 'page-components/planningApp';
+import { initFormData, initController } from 'page-components/planningApp';
 
 import * as api from 'api-axios/planningApp';
-import {
-  GET_PLANS,
-  CREATE_PLAN,
-  PATCH_PLAN,
-  DELETE_PLAN,
-  TOAST,
-} from 'actions';
+
+import { GET_PLANS, CREATE_PLAN, PATCH_PLAN, DELETE_PLAN } from 'actions';
+import { TOAST } from 'actions';
 
 export default function PlanningApp({ ...props }) {
   const dispatch = useDispatch();
@@ -128,6 +125,8 @@ export default function PlanningApp({ ...props }) {
   props = {
     ...props,
     controller,
+    formData,
+    setFormData,
   };
 
   return (
@@ -170,22 +169,22 @@ export default function PlanningApp({ ...props }) {
             <Stages>
               {activePost.stages.map((s, i) => (
                 <Stage
-                  index={{ stage: i }}
                   key={s._id || s.id}
+                  index={{ stage: i }}
                   data={activePost.stages[0]}
                   {...props}
                 >
                   {s.tasks.map((t, ind) => (
                     <Task
-                      index={{ stage: i, task: ind }}
                       key={t._id || t.id}
+                      index={{ stage: i, task: ind }}
                       data={t}
                       {...props}
                     >
                       {t.subtasks.map((sub, index) => (
                         <Subtask
+                          key={sub._id || sub.id}
                           index={{ stage: i, task: ind, sub: index }}
-                          key={t._id || t.id}
                           data={sub}
                           {...props}
                         />
@@ -200,47 +199,23 @@ export default function PlanningApp({ ...props }) {
           </>
         )
       ) : (
-        <FlexWrap>
+        <List>
           {storeData.length ? (
             <>
               {storeData.map((p, i) => (
-                <ProjectCard
-                  key={p._id}
-                  data={p}
-                  onClick={() => setActiveId(p._id)}
-                />
+                <Item key={p._id} data={p} onClick={() => setActiveId(p._id)} />
               ))}
             </>
           ) : (
             <Flex height="100%" center={true}>
-              'Fetching data from db...'
+              {`'Fetching data from db...'`}
             </Flex>
           )}
-        </FlexWrap>
+        </List>
       )}
     </FullSection>
   );
 }
-
-const ProjectCard = ({ data, ...props }) => {
-  return (
-    <div onClick={props.onClick}>
-      <Label label="title" body={data.title} />
-    </div>
-  );
-};
-
-// const Project = ({ data }) => {
-//   return (
-//     <div className="bg pc3b" style={{ padding: '1rem' }}>
-//       <Label label="title" body={data.title} />
-//       <Label label="category" body={data.category} />
-//       <Label label="body" body={data.body} />
-//       <Label label="deadline" body={data.deadline} />
-//       <Label label="startTime" body={data.startTime} />
-//     </div>
-//   );
-// };
 
 const Stages = ({ children }) => {
   return (
