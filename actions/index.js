@@ -17,3 +17,10 @@ export const DELETE_TOAST = 'DELETE_TOAST';
 // ** CONTACT FORM
 export const GET_CONTACT = 'GET_CONTACT';
 export const DELETE_CONTACT = 'DELETE_CONTACT';
+
+// ** PLANNING APP
+export const GET_PLANS = 'GET_PLANS';
+export const GET_PLAN = 'GET_PLAN';
+export const CREATE_PLAN = 'CREATE_PLAN';
+export const PATCH_PLAN = 'PATCH_PLAN';
+export const DELETE_PLAN = 'DELETE_PLAN';

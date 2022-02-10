@@ -36,8 +36,9 @@ export * from './Flex'; //Quick Flex grid, main props: center={true} (ali & just
 export * from './Grid'; //Grid
 export * from './RichText'; //RichText editor, has internal state logic, <-- overriden by passing setFormData in props
 export * from './Fold'; //Foldable container
-export * from './List'; //flex-wrap
-export * from './Label'; //flex-wrap
+export * from './List';
+export * from './Label';
+export * from './FlexWrap';
 
 //  Dev
 export * from './ObjectViewer'; //object/array viewer

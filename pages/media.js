@@ -18,6 +18,7 @@ import {
 export default function MediaDb({ ...props }) {
   const dispatch = useDispatch();
 
+  //#region STATES
   const [formData, setFormData] = useState({ ...initForm });
   const [activeId, setActiveId] = useState('');
   const [controller, setController] = useState({
@@ -25,6 +26,7 @@ export default function MediaDb({ ...props }) {
     isDeleting: false,
     isEditing: false,
   });
+  //#endregion
 
   //#region   Controller
   async function enableDeleting() {

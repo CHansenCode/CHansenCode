@@ -5,6 +5,7 @@ import { Input, Textarea, Select, RichText, File } from './elements';
 import css from './style.module.scss';
 
 export function TypeInput({ ...props }) {
+  //
   const RenderType = useCallback(props => {
     switch (props.type) {
       case 'input':
@@ -39,7 +40,7 @@ export function TypeInput({ ...props }) {
 
   return (
     <div style={iStyle} className={css.wrapper}>
-      <Label {...props} />
+      {props.label && <Label {...props} />}
       <RenderType {...props} />
     </div>
   );

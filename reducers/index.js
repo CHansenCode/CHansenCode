@@ -6,19 +6,19 @@ import { combineReducers } from 'redux';
 // import intercom from './intercom';
 // import meta from './meta';
 // import tickets from './tickets';
-// import planning from './planningApp';
 // import presentation from './presentation';
 
 // ** DOMAIN
-// import errorHandler from './errorHandler';
 // import imageModal from './imageModal';
 
 import toast from './toast';
 import cv from './cv';
 import media from './media';
 import contact from './contact';
+import planningApp from './planningApp';
 
 export const reducers = combineReducers({
+  planningApp,
   contact,
   toast,
   cv,

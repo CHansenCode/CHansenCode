@@ -1,0 +1,39 @@
+.wrapper {
+  position: relative;
+
+  box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0);
+  margin-bottom: 0.5rem;
+}
+
+.title_and_version {
+  display: grid;
+  grid-template: 'title version' 1fr / 2fr 1fr;
+  gap: 0.5rem;
+  > div {
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+}
+
+.subtasks_button {
+  width: 100%;
+
+  color: currentColor;
+  background: transparent;
+  border: thin solid transparent;
+
+  display: flex;
+}
+
+.delete_button {
+  position: absolute;
+  z-index: 10;
+  top: 0.5rem;
+  right: 0.5rem;
+
+  height: 1rem;
+  width: 1rem;
+
+  border-color: currentColor !important;
+  color: red;
+}

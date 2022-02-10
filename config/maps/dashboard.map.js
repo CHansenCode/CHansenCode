@@ -5,6 +5,7 @@ export const dashConstructor = [
       { as: 'Media DB', href: '/media' },
       { as: "Cv's", href: '/cvCreator' },
       { as: 'Contact form', href: '/contactBackside' },
+      { as: 'Planning app', href: '/planningApp' },
     ],
   },
   {

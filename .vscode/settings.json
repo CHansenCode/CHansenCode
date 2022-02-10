@@ -4,9 +4,9 @@
     "editor.selectionBackground": "#00f7ff23",
     "editor.lineHighlightBackground": "#ffffff00",
     "editor.lineHighlightBorder": "#00f7ff07",
-    "editorLineNumber.foreground": "#ffffff13",
+    "editorLineNumber.foreground": "#ffffff0c",
     "editorIndentGuide.activeBackground": "#696969",
-    "editorIndentGuide.background": "#3a3a3a1c"
+    "editorIndentGuide.background": "#3a3a3a07"
   },
   "files.exclude": {
     //  dep's
