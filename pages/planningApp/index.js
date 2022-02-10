@@ -2,18 +2,20 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { FullSection, SectionMenu, Button } from 'components';
-import { Label, Flex } from 'components';
+import { Label, Flex, ObjectViewer } from 'components';
 
 import { List, Item } from 'page-components/planningApp';
 import { Project, Stage, Task, Subtask } from 'page-components/planningApp';
 import { initFormData, initController } from 'page-components/planningApp';
+import { NewStage, NewTask, NewSubtask } from 'page-components/planningApp';
 
 import * as api from 'api-axios/planningApp';
+import { useDebouncedCallback } from 'lib';
 
 import { GET_PLANS, CREATE_PLAN, PATCH_PLAN, DELETE_PLAN } from 'actions';
 import { TOAST } from 'actions';
 
-export default function PlanningApp({ ...props }) {
+export default function PlanningApp() {
   const dispatch = useDispatch();
   //
 
@@ -122,9 +124,27 @@ export default function PlanningApp({ ...props }) {
   }
   //#endregion
 
-  props = {
-    ...props,
+  //#region AUTOSAVE func.
+  //  update func
+  async function updateProject(activeId, formData) {
+    patchOne(activeId, formData);
+  }
+
+  //  debounce handler
+  const [debounceHandler] = useDebouncedCallback(
+    (activeId, formData) => updateProject(activeId, formData),
+    1000,
+  );
+
+  //  listener
+  useEffect(() => {
+    controller.triggerDB > 0 && debounceHandler(activeId, formData);
+  }, [controller.triggerDB]);
+  //#endregion
+
+  let props = {
     controller,
+    setController,
     formData,
     setFormData,
   };
@@ -164,10 +184,10 @@ export default function PlanningApp({ ...props }) {
       {activeId ? (
         activePost && (
           <>
-            <Project data={activePost} />
+            <Project data={formData} {...props} />
 
             <Stages>
-              {activePost.stages.map((s, i) => (
+              {formData.stages.map((s, i) => (
                 <Stage
                   key={s._id || s.id}
                   index={{ stage: i }}
@@ -189,12 +209,25 @@ export default function PlanningApp({ ...props }) {
                           {...props}
                         />
                       ))}
+
+                      {controller.isEditing && (
+                        <NewSubtask
+                          index={{ stage: i, task: ind }}
+                          {...props}
+                        />
+                      )}
                     </Task>
                   ))}
+
+                  {controller.isEditing && (
+                    <NewTask index={{ stage: i }} {...props} />
+                  )}
                 </Stage>
               ))}
 
-              {activePost.stages.length < 2 && <div>cow</div>}
+              {formData.stages.length < 4 && controller.isEditing && (
+                <NewStage {...props} />
+              )}
             </Stages>
           </>
         )
@@ -229,7 +262,7 @@ const Stages = ({ children }) => {
 
             display: grid;
             grid-template: 'a b c d' 1fr / 1fr 1fr 1fr 1fr;
-            gap: 2rem;
+            gap: 1rem;
           }
         `}
       </style>

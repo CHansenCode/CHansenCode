@@ -7,7 +7,7 @@ export const getAll = async () => {
     const { data } = await axios.get(url);
     return data;
   } catch (error) {
-    console.log(`Error: fetchAll from "${url}" in "./apiCalls/x.js"`);
+    console.log(`Error: fetchAll from "${url}" in "./api-axios/x.js"`);
   }
 };
 
@@ -16,7 +16,7 @@ export const postOne = async formData => {
     const { data } = await axios.post(url, formData);
     return data;
   } catch (error) {
-    console.log(`Error: postOne to "${url}" in "./apiCalls/x.js"`);
+    console.log(`Error: postOne to "${url}" in "./api-axios/x.js"`);
   }
 };
 
@@ -25,6 +25,6 @@ export const deleteOne = async id => {
     const { data } = await axios.delete(`${url}/${id}`);
     return data;
   } catch (error) {
-    console.log(`Error: delete in "${url}" in "./apiCalls/x.js"`);
+    console.log(`Error: delete in "${url}" in "./api-axios/x.js"`);
   }
 };

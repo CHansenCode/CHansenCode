@@ -7,7 +7,7 @@ export const getAll = async () => {
     const { data } = await axios.get(url);
     return data;
   } catch (error) {
-    console.log(`Error: fetchAll from "${url}" in "./apiCalls/x.js"`);
+    console.log(`Error: fetchAll from "${url}" in "./api-axios/x.js"`);
   }
 };
 export const postOne = async formData => {
@@ -15,7 +15,7 @@ export const postOne = async formData => {
     const { data } = await axios.post(url, formData);
     return data;
   } catch (error) {
-    console.log(`Error: postOne to "${url}" in "./apiCalls/x.js"`);
+    console.log(`Error: postOne to "${url}" in "./api-axios/x.js"`);
   }
 };
 export const getOne = async id => {
@@ -23,7 +23,7 @@ export const getOne = async id => {
     const { data } = await axios.get(`${url}/${id}`);
     return data;
   } catch (error) {
-    console.log(`Error: getOne from "${url}" in "./apiCalls/x.js"`);
+    console.log(`Error: getOne from "${url}" in "./api-axios/x.js"`);
   }
 };
 export const patchOne = async (id, formData) => {
@@ -31,7 +31,7 @@ export const patchOne = async (id, formData) => {
     const { data } = await axios.patch(`${url}/${id}`, formData);
     return data;
   } catch (error) {
-    console.log(`Error: patchOne in "${url}" in "./apiCalls/x.js"`);
+    console.log(`Error: patchOne in "${url}" in "./api-axios/x.js"`);
   }
 };
 export const deleteOne = async id => {
@@ -39,6 +39,6 @@ export const deleteOne = async id => {
     const { data } = await axios.delete(`${url}/${id}`);
     return data;
   } catch (error) {
-    console.log(`Error: delete in "${url}" in "./apiCalls/x.js"`);
+    console.log(`Error: delete in "${url}" in "./api-axios/x.js"`);
   }
 };

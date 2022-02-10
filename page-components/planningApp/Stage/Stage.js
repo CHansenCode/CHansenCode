@@ -22,12 +22,14 @@ export const Stage = ({ data, controller, ...props }) => {
         <TypeInput
           label="deadline"
           value={data.deadline}
+          onChange={handleStageChange}
           disabled={!controller.isEditing}
         />
         <TypeInput
           type="textarea"
           label="body"
           value={data.body}
+          onChange={handleStageChange}
           disabled={!controller.isEditing}
         />
 

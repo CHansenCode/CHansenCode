@@ -1,7 +1,10 @@
+import { uniqueIdGenerator } from 'lib';
+
 export const initController = {
   isCreating: false,
   isEditing: false,
   isDeleting: false,
+  triggerDB: 0,
 };
 
 export const initFormData = {
@@ -49,4 +52,45 @@ export const initFormData = {
       ],
     },
   ],
+};
+
+export const newStage = {
+  id: uniqueIdGenerator(),
+  title: '',
+  descr: '',
+
+  tasks: [
+    {
+      title: '',
+      assignedTo: [],
+      id: uniqueIdGenerator(),
+      subtasks: [
+        {
+          id: uniqueIdGenerator(),
+          title: '',
+          timeRemaining: 0,
+          resolved: false,
+        },
+      ],
+    },
+  ],
+};
+export const newTask = {
+  title: '',
+  assignedTo: [],
+  id: uniqueIdGenerator(),
+  subtasks: [
+    {
+      id: uniqueIdGenerator(),
+      title: '',
+      timeRemaining: 0,
+      resolved: false,
+    },
+  ],
+};
+export const newSubtask = {
+  id: uniqueIdGenerator(),
+  title: '',
+  timeRemaining: 0,
+  resolved: false,
 };
