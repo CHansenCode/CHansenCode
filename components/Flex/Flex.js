@@ -17,7 +17,7 @@ export const Flex = ({ ...props }) => {
   };
 
   return (
-    <div style={iStyle} className={css.wrapper}>
+    <div style={iStyle} className={css.wrapper} onClick={props.onClick}>
       {props.children}
     </div>
   );

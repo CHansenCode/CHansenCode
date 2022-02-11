@@ -24,3 +24,10 @@ export const GET_PLAN = 'GET_PLAN';
 export const CREATE_PLAN = 'CREATE_PLAN';
 export const PATCH_PLAN = 'PATCH_PLAN';
 export const DELETE_PLAN = 'DELETE_PLAN';
+
+// ** SLIDES APP
+export const GET_SLIDES = 'GET_SLIDES';
+export const GET_SLIDE = 'GET_SLIDE';
+export const CREATE_SLIDE = 'CREATE_SLIDE';
+export const PATCH_SLIDE = 'PATCH_SLIDE';
+export const DELETE_SLIDE = 'DELETE_SLIDE';

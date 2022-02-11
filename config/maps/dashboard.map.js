@@ -6,6 +6,7 @@ export const dashConstructor = [
       { as: "Cv's", href: '/cvCreator' },
       { as: 'Contact form', href: '/contactBackside' },
       { as: 'Planning app', href: '/planningApp' },
+      { as: 'Slides', href: '/slidesApp' },
     ],
   },
   {

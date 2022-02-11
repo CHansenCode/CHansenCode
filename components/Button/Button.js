@@ -10,7 +10,7 @@ export const Button = ({ active, text, ...props }) => {
     padding: props.padding && props.padding,
     margin: props.margin && props.margin,
     width: props.width && props.width,
-    heght: props.height && props.height,
+    height: props.height && props.height,
     textTransform: props.uppercase && 'uppercase',
     fontSize: props.fontSize && props.fontSize,
     opacity: props.disabled && 0.5,

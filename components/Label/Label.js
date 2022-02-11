@@ -29,8 +29,8 @@ export const Label = ({ ...props }) => {
 
       <p style={iStyle.body} className={props.bodyClass}>
         {props.body}
-        {props.children}
       </p>
+      <div>{props.children}</div>
     </div>
   );
 };

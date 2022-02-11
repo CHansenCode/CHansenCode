@@ -16,6 +16,7 @@ import cv from './cv';
 import media from './media';
 import contact from './contact';
 import planningApp from './planningApp';
+import slides from './slides';
 
 export const reducers = combineReducers({
   planningApp,
@@ -23,4 +24,5 @@ export const reducers = combineReducers({
   toast,
   cv,
   media,
+  slides,
 });

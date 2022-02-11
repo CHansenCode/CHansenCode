@@ -2,7 +2,6 @@ import { withIronSessionApiRoute } from 'iron-session/next';
 import { sessionOptions } from 'lib/session';
 import bcrypt from 'bcrypt';
 import { auth } from 'api-db/auth';
-import { database } from 'middleware/database';
 
 export default withIronSessionApiRoute(async (req, res) => {
   const { username, password } = await req.body;

@@ -4,6 +4,8 @@ export const initController = {
   isCreating: false,
   isEditing: false,
   isDeleting: false,
+  forceOpenTasks: false,
+  forceOpenSubtasks: false,
   triggerDB: 0,
 };
 

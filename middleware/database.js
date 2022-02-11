@@ -14,7 +14,6 @@ const getClient = async () => {
   await global.mongo.client.connect();
   return global.mongo.client;
 };
-
 export async function database(req, res, next) {
   req.dbClient = await getClient();
   req.db = global.mongo.client.db('chansendesign');

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { FullSection, SectionMenu, Button } from 'components';
-import { Label, Flex, ObjectViewer } from 'components';
+import { Label, Flex, ObjectViewer, Empty } from 'components';
 
 import { List, Item } from 'page-components/planningApp';
 import { Project, Stage, Task, Subtask } from 'page-components/planningApp';
@@ -229,6 +229,8 @@ export default function PlanningApp() {
                 <NewStage {...props} />
               )}
             </Stages>
+
+            <Empty height="15vh" />
           </>
         )
       ) : (

@@ -13,7 +13,7 @@ export const Item = ({ data, ...props }) => {
           <Label label="owners">
             <Flex>
               {data.owners.map((o, i) => (
-                <div key={o._id} className={`pc5b ${css.owners_users}`}>
+                <div key={o} className={`pc5b ${css.owners_users}`}>
                   <p className="sc">{o}</p>
                 </div>
               ))}
@@ -22,7 +22,7 @@ export const Item = ({ data, ...props }) => {
           <Label label="users">
             <Flex>
               {data.users.map((o, i) => (
-                <div key={o._id} className={`pc5b ${css.owners_users}`}>
+                <div key={o} className={`pc5b ${css.owners_users}`}>
                   <p className="sc">{o}</p>
                 </div>
               ))}
