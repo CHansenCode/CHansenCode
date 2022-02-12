@@ -2,68 +2,94 @@ import { Flex, Button, Diode } from 'components';
 
 import css from './style.module.scss';
 
-export const Item = ({ type, data, ...props }) => {
-  switch (type) {
-    case 'slide':
-      return (
-        <div className={css.item_wrapper}>
-          <li className={`pc3b ${css.item}`} onClick={props.onClick}>
-            <Flex justifyContent="space-between">
-              <p className="sc">{data.title}</p>
-            </Flex>
+export const Item = ({ ...props }) => {
+  //
 
-            <div>
+  return (
+    <div className={`pc3b ${css.item_wrapper}`}>
+      <Card {...props} />
+
+      {props.controller.isDeleting && (
+        <Button
+          text="x"
+          className={`alert alert-bg1 ${css.delete_button}`}
+          onClick={props.onDelete}
+        />
+      )}
+    </div>
+  );
+};
+
+const Card = ({ type, data, ...props }) => {
+  return (
+    <li className={css.item} onClick={props.onClick}>
+      <>
+        {type === 'slide' ? (
+          <>
+            <header>
+              <Flex justifyContent="space-between">
+                <p>{data.title}</p>
+              </Flex>
+
               <p>{data.subtitle}</p>
-            </div>
+            </header>
 
-            <Flex justifyContent="space-between">
-              <h5></h5>
-              <h5>
-                <i>p.</i> {props.pageIndex}
-              </h5>
+            <Flex>
+              <Flex>
+                <h5>cow</h5>
+              </Flex>
+
+              <h6>{props.index}</h6>
             </Flex>
-          </li>
+          </>
+        ) : (
+          <>
+            <header>
+              <Flex margin="0 0 1rem 0" justifyContent="space-between">
+                <p>{data.title}</p>
+                {!props.controller.isDeleting && (
+                  <Diode size="0.5rem" toggle={data.published} />
+                )}
+              </Flex>
 
-          {props.controller.isDeleting && (
-            <Button
-              text="x"
-              className={`alert alert-bg1 alert-b3 ${css.delete_button}`}
-              onClick={props.onDelete}
-            />
-          )}
-        </div>
-      );
-      break;
+              <Flex>
+                <h5 className={css.descr}>
+                  <i>" </i>
+                  {data.descr
+                    ? data.descr.substring(0, 70)
+                    : 'no description added'}
 
-    case 'presentation':
-      return (
-        <div className={css.item_wrapper}>
-          <li className={`pc3b ${css.item}`} onClick={props.onClick}>
-            <Flex justifyContent="space-between">
-              <p className="sc">{data.title}</p>
+                  <i> "</i>
+                </h5>
+              </Flex>
+            </header>
 
-              {!props.controller.isDeleting && (
-                <Diode size="0.5rem" toggle={data.published} />
-              )}
-            </Flex>
-          </li>
+            <footer>
+              <Flex margin="0 0 0.5rem 0">
+                <h6>users: </h6>
+                {data.users.map((o, i) => (
+                  <h5 key={o} className="sc">
+                    {` ${o},`}
+                  </h5>
+                ))}
+              </Flex>
 
-          {props.controller.isDeleting && (
-            <Button
-              text="x"
-              className={`alert alert-bg1 alert-b3 ${css.delete_button}`}
-              onClick={props.onDelete}
-            />
-          )}
-        </div>
-      );
+              <Flex justifyContent="space-between">
+                <Flex>
+                  <h6>owner: </h6>
+                  {data.owner.map((o, i) => (
+                    <h5 key={o} className="sc">
+                      {` ${o}`}
+                    </h5>
+                  ))}
+                </Flex>
 
-    default:
-      return (
-        <div className={css.wrapper} onClick={props.onClick}>
-          <li className={`pc3b ${css.item}`}>NO TYPE PROP FOUND</li>
-        </div>
-      );
-      break;
-  }
+                <h5 className="sc">{data.createdAt.substring(0, 10)}</h5>
+              </Flex>
+            </footer>
+          </>
+        )}
+      </>
+    </li>
+  );
 };

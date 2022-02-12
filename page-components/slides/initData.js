@@ -1,6 +1,6 @@
 import { uniqueIdGenerator } from 'lib';
 
-export const initController = {
+export const initContr = {
   isCreating: false,
   isEditing: false,
   isDeleting: false,
@@ -21,8 +21,7 @@ export const initForm = {
   createdAt: '',
 };
 
-export const newSlide = {
-  id: uniqueIdGenerator(),
+export const initSlide = {
   title: '',
   subtitle: '',
   objectFit: 'cover',

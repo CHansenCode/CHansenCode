@@ -7,3 +7,5 @@ export * from './CreateNew';
 export * from './Presentation';
 
 export * from './Slide';
+
+export * from './Buttons';

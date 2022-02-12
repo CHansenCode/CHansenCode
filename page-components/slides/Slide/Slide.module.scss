@@ -1,8 +1,6 @@
 .wrapper {
   height: 100%;
   width: 100%;
-
-  border: thin dashed purple;
 }
 
 .menu {
@@ -10,12 +8,10 @@
   width: 90%;
   display: flex;
 }
-
 .menu > button {
   height: 2rem;
   width: 2rem;
 }
-
 .menu h4 {
   margin: 0 1.5rem;
 }

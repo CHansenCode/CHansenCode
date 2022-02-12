@@ -3,11 +3,6 @@ import { TypeInput, RichText, SlideGrid } from 'components';
 import css from './Slide.module.scss';
 
 export const Slide = ({ data, ...props }) => {
-  //
-  //   const iStyle = {
-  //     objectFit: data.objectFit,
-  //   };
-
   return (
     <div className={css.wrapper}>
       <SlideGrid type={'horizontal'}>
@@ -24,7 +19,7 @@ export const Slide = ({ data, ...props }) => {
           objKey="rich"
         />
 
-        <img src="https://media.chansen.design/placeholder.jpg"></img>
+        <img src="https://media.chansen.design/placeholder.jpg" />
       </SlideGrid>
     </div>
   );

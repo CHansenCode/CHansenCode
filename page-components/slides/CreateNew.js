@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { Button, Flex, TypeInput } from 'components';
 
-export const CreateNew = ({ data, type, ...props }) => {
+export const CreateNew = ({ data, ...props }) => {
   //
   const [open, setOpen] = useState(false);
 
@@ -16,7 +16,12 @@ export const CreateNew = ({ data, type, ...props }) => {
       <div className="create_new_item pc1b">
         {open ? (
           <>
-            <TypeInput value={props.value} onChange={props.onChange} />
+            <TypeInput
+              label="New title name"
+              value={props.value}
+              onChange={props.onChange}
+            />
+
             <Flex>
               <Button
                 className="sc bg"
@@ -29,7 +34,7 @@ export const CreateNew = ({ data, type, ...props }) => {
               </Button>
 
               <Button padding="0.25rem 0" width="35%" onClick={handleClear}>
-                <p>CLEAR</p>
+                <p>close</p>
               </Button>
             </Flex>
           </>
@@ -54,7 +59,9 @@ export const CreateNew = ({ data, type, ...props }) => {
 
             padding: 1rem;
 
-            box-shadow: inset 0 0 2rem -1rem transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
 
             transition: 0.2s ease;
           }

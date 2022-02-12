@@ -22,17 +22,18 @@
   justify-content: space-between;
   align-items: space-between;
 }
-
-.item h4 {
-  font-size: 1.15rem;
-  letter-spacing: 0.5px;
+.item h5,
+.item h6 {
+  white-space: nowrap;
 }
-.item h5 > i {
+.item h6 {
+  margin-right: 0.5rem;
+}
+.item i {
   opacity: 0.5;
 }
-
-.item .label {
-  font-size: 0.7rem;
+.descr {
+  white-space: normal !important;
 }
 
 .delete_button {
