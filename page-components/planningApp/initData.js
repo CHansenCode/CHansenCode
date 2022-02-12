@@ -56,7 +56,7 @@ export const initFormData = {
   ],
 };
 
-export const newStage = {
+export const emptyStage = {
   id: uniqueIdGenerator(),
   title: '',
   descr: '',

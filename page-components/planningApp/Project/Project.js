@@ -48,7 +48,7 @@ export const Project = ({ data, controller, ...props }) => {
         </aside>
       </div>
 
-      <div></div>
+      <div className={css.stages_wrapper}>{props.children}</div>
     </>
   );
 };

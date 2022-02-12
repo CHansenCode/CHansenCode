@@ -1,13 +1,11 @@
 import { useState } from 'react';
 
-import { newStage } from '../initData';
+import { emptyStage } from '../initData';
 
 export const NewStage = ({ ...props }) => {
   const [hover, setHover] = useState(false);
 
   async function createNewStage() {
-    let newStages = [...props.formData.stages, newStage];
-
     props.setFormData({
       ...props.formData,
       stages: newStages,
