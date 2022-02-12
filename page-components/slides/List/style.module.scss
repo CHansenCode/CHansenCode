@@ -1,15 +1,19 @@
 .list {
+  position: relative;
+
   display: flex;
   flex-wrap: wrap;
 
   transition: 0.3s ease;
 }
 
+.item_wrapper {
+  position: relative;
+  margin: 0 0.5rem 0.5rem 0;
+}
 .item {
   height: 12rem;
   width: 20rem;
-
-  margin: 0 0.5rem 0.5rem 0;
 
   padding: 0.75rem;
 
@@ -23,10 +27,23 @@
   font-size: 1.15rem;
   letter-spacing: 0.5px;
 }
-.item h5 i {
-  opacity: 0.3;
+.item h5 > i {
+  opacity: 0.5;
 }
 
 .item .label {
   font-size: 0.7rem;
+}
+
+.delete_button {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+
+  height: 1.5rem;
+  width: 1.5rem;
+
+  font-size: 1.25rem;
+
+  border-radius: 0.25rem;
 }

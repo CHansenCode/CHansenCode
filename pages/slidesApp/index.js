@@ -4,9 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FullSection, SectionMenu, Button, TypeInput } from 'components';
 import { useDebouncedCallback } from 'lib';
 
+import { uniqueIdGenerator } from 'lib';
+
 //  page-specific
 import { List, Item, CreateNew } from 'page-components/slides';
-import { Presentation, Slide } from 'page-components/slides';
+import { SlideMenu, Slide } from 'page-components/slides';
+import { Presentation, PresentationMenu } from 'page-components/slides';
 import {
   initForm,
   initController,
@@ -30,6 +33,7 @@ export default function PlanningApp() {
   const [valid, setValid] = useState({ title: false });
   const [activeId, setActiveId] = useState('');
   const [activeSlide, setActiveSlide] = useState('');
+  const [slideIndex, setSlideIndex] = useState(null);
   //#endregion
 
   //#region LIVE VALIDATOR
@@ -101,6 +105,7 @@ export default function PlanningApp() {
     }
   }
   async function patchOne(id, formData) {
+    console.log('patch');
     try {
       const data = await api.patchOne(id, formData);
       dispatch({ type: PATCH_SLIDE, payload: data });
@@ -139,20 +144,63 @@ export default function PlanningApp() {
     postOne(data);
   }
   async function createSlide(initSlide, title) {
-    let newSlide = { ...initSlide, title: title };
-    // let newSlides = [...formData.slides, newSlide];
+    let data = { ...formData };
+    let newSlide = { ...initSlide, title: title, id: uniqueIdGenerator() };
+    let newSlides = [...data.slides, newSlide];
 
-    console.log('slide', newSlide);
+    data.slides = newSlides;
 
-    // setFormData({ ...formData, slides: newSlides });
+    patchOne(activeId, data);
   }
+  async function deleteSlide(formData, slideId, activeId) {
+    let data = await { ...formData, slides: [...formData.slides] };
+    let newSlides = await data.slides.filter((s, i) => !(s.id === slideId));
 
+    data.slides = newSlides;
+
+    patchOne(activeId, data);
+  }
+  async function deletePresentation(id) {
+    deleteOne(id);
+  }
+  async function goBack() {
+    if (slideIndex === null) {
+      setActiveId('');
+    } else {
+      setSlideIndex(null);
+    }
+  }
   async function clear(e) {
     e && e.preventDefault();
     setController({ ...controller, isCreating: false });
     setFormData({ ...initForm });
     setActiveId('');
   }
+  async function toggleObjectFit(formData, slideIndex) {
+    console.log(formData.slides[slideIndex]);
+  }
+  //#endregion
+
+  //#region AUTOSAVE
+
+  //  call function & listener
+  async function debouncedDbUpdate() {
+    console.log('triggered controller');
+    setController({ ...controller, triggerDB: controller.triggerDB + 1 });
+  }
+  useEffect(() => {
+    controller.triggerDB > 0 && debounceHandler(activeId, formData);
+  }, [controller.triggerDB]);
+  //  debounce
+  const [debounceHandler] = useDebouncedCallback(
+    (activeId, formData) => updateProject(activeId, formData),
+    1000,
+  );
+  //  execute func
+  async function updateProject(activeId, formData) {
+    patchOne(activeId, formData);
+  }
+
   //#endregion
 
   let props = {
@@ -160,6 +208,8 @@ export default function PlanningApp() {
     setController,
     formData,
     setFormData,
+    slideIndex,
+    setSlideIndex,
   };
 
   return (
@@ -167,11 +217,11 @@ export default function PlanningApp() {
       <SectionMenu>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           {(activeId || controller.isCreating) && (
-            <Button text="<" fontSize="1.25rem" onClick={clear} />
+            <Button text="<" fontSize="1.25rem" onClick={goBack} />
           )}
 
-          <p>{activeId && activeId.substring(0, 8)}</p>
-          <p>{activeSlide && activeSlide.substring(0, 8)}</p>
+          {activeId && slideIndex === null && <PresentationMenu {...props} />}
+          {slideIndex !== null && <SlideMenu {...props} />}
         </div>
 
         <div>
@@ -191,28 +241,33 @@ export default function PlanningApp() {
       {activeId ? (
         formData && (
           <>
-            {activeSlide ? (
-              <Slide data={data} />
+            {slideIndex !== null ? (
+              <Slide data={formData.slides[slideIndex]} {...props} />
             ) : (
               <List data={formData}>
                 {formData.slides.map((s, i) => (
-                  <Item key={s.id || s._id} type="slide" data={s} />
+                  <Item
+                    key={s.id || s._id}
+                    pageIndex={i + 1}
+                    type="slide"
+                    data={s}
+                    onClick={() => setSlideIndex(i)}
+                    onDelete={() => deleteSlide(formData, s.id, activeId)}
+                    {...props}
+                  />
                 ))}
 
                 <CreateNew
-                  onClick={() => createSlide(newSlide, titleData)}
-                  onClear={() =>
-                    setTitleData({ ...titleData, slide: initTitle.slide })
+                  value={titleData.slide}
+                  onChange={e =>
+                    setTitleData({ ...titleData, slide: e.target.value })
                   }
-                >
-                  <TypeInput
-                    label="Title of new slide"
-                    value={titleData.slide}
-                    onChange={e =>
-                      setTitleData({ ...titleData, slide: e.target.value })
-                    }
-                  />
-                </CreateNew>
+                  onClick={() => {
+                    createSlide(newSlide, titleData.slide);
+                    setTitleData({ ...initTitle });
+                  }}
+                  onClear={() => setTitleData({ ...initTitle })}
+                />
               </List>
             )}
           </>
@@ -225,44 +280,24 @@ export default function PlanningApp() {
               type="presentation"
               data={p}
               onClick={() => setActiveId(p._id)}
+              onDelete={() => deleteOne(p._id)}
+              {...props}
             />
           ))}
 
           <CreateNew
-            onClick={() => createPresentation(initFormData, titleData)}
-            onClear={() =>
-              setTitleData({
-                ...titleData,
-                presentation: initTitle.presentation,
-              })
+            value={titleData.presentation}
+            onChange={e =>
+              setTitleData({ ...titleData, presentation: e.target.value })
             }
-          >
-            <TypeInput
-              label="Title of new presentation"
-              value={titleData.presentation}
-              onChange={e => setTitleData(e.target.value)}
-            />
-          </CreateNew>
+            onClick={() => {
+              createPresentation(initForm, titleData.presentation);
+              setTitleData({ ...initTitle });
+            }}
+            onClear={() => setTitleData({ ...initTitle })}
+          />
         </List>
       )}
     </FullSection>
   );
 }
-
-//#region AUTOSAVE func.
-//  update func
-// async function updateProject(activeId, formData) {
-//   patchOne(activeId, formData);
-// }
-
-// //  debounce handler
-// const [debounceHandler] = useDebouncedCallback(
-//   (activeId, formData) => updateProject(activeId, formData),
-//   1000,
-// );
-
-// //  listener
-// useEffect(() => {
-//   controller.triggerDB > 0 && debounceHandler(activeId, formData);
-// }, [controller.triggerDB]);
-//#endregion

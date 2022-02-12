@@ -1,36 +1,69 @@
-import { Flex, Label, Diode } from 'components';
+import { Flex, Button, Diode } from 'components';
 
 import css from './style.module.scss';
 
-export const Item = ({ data, ...props }) => {
-  return (
-    <div className={css.wrapper}>
-      <li className={`pc3b ${css.item}`} onClick={props.onClick}>
-        <Flex justifyContent="space-between">
-          <h4 className="sc">{data.title}</h4>
-          <Diode toggle={data.published} size="0.5rem" opacity="0.5" />
-        </Flex>
+export const Item = ({ type, data, ...props }) => {
+  switch (type) {
+    case 'slide':
+      return (
+        <div className={css.item_wrapper}>
+          <li className={`pc3b ${css.item}`} onClick={props.onClick}>
+            <Flex justifyContent="space-between">
+              <p className="sc">{data.title}</p>
+            </Flex>
 
-        <Flex center={true}>
-          <h5>
-            <i>"</i>
-            {data.descr ? data.descr : '...'}
-            <i>"</i>
-          </h5>
-        </Flex>
+            <div>
+              <p>{data.subtitle}</p>
+            </div>
 
-        <Flex justifyContent="space-between">
-          <Flex>
-            <h6 className={css.label}>slides: </h6>
-            <h6>{data.slides.length}</h6>
-          </Flex>
+            <Flex justifyContent="space-between">
+              <h5></h5>
+              <h5>
+                <i>p.</i> {props.pageIndex}
+              </h5>
+            </Flex>
+          </li>
 
-          <Flex width="min-content">
-            <h6 className={css.label}>by: </h6>
-            <h6>{data.createdBy}</h6>
-          </Flex>
-        </Flex>
-      </li>
-    </div>
-  );
+          {props.controller.isDeleting && (
+            <Button
+              text="x"
+              className={`alert alert-bg1 alert-b3 ${css.delete_button}`}
+              onClick={props.onDelete}
+            />
+          )}
+        </div>
+      );
+      break;
+
+    case 'presentation':
+      return (
+        <div className={css.item_wrapper}>
+          <li className={`pc3b ${css.item}`} onClick={props.onClick}>
+            <Flex justifyContent="space-between">
+              <p className="sc">{data.title}</p>
+
+              {!props.controller.isDeleting && (
+                <Diode size="0.5rem" toggle={data.published} />
+              )}
+            </Flex>
+          </li>
+
+          {props.controller.isDeleting && (
+            <Button
+              text="x"
+              className={`alert alert-bg1 alert-b3 ${css.delete_button}`}
+              onClick={props.onDelete}
+            />
+          )}
+        </div>
+      );
+
+    default:
+      return (
+        <div className={css.wrapper} onClick={props.onClick}>
+          <li className={`pc3b ${css.item}`}>NO TYPE PROP FOUND</li>
+        </div>
+      );
+      break;
+  }
 };

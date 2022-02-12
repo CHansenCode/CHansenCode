@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Button, Flex } from 'components';
+import { Button, Flex, TypeInput } from 'components';
 
 export const CreateNew = ({ data, type, ...props }) => {
   //
@@ -13,20 +13,21 @@ export const CreateNew = ({ data, type, ...props }) => {
 
   return (
     <>
-      <div className="create_new_item">
+      <div className="create_new_item pc1b">
         {open ? (
           <>
-            {props.children}
+            <TypeInput value={props.value} onChange={props.onChange} />
             <Flex>
               <Button
                 className="sc bg"
                 padding="0.25rem 0"
                 margin="0 5% 0 0"
                 width="60%"
-                onClick={() => setOpen(false)}
+                onClick={props.onClick}
               >
                 <p>CREATE NEW</p>
               </Button>
+
               <Button padding="0.25rem 0" width="35%" onClick={handleClear}>
                 <p>CLEAR</p>
               </Button>
@@ -34,7 +35,9 @@ export const CreateNew = ({ data, type, ...props }) => {
           </>
         ) : (
           <div className="inner_new_item" onClick={() => setOpen(true)}>
-            <p>CREATE NEW</p>
+            <p>
+              <span style={{ fontSize: '1.1rem' }}>+ </span> CREATE NEW
+            </p>
           </div>
         )}
       </div>
@@ -51,8 +54,6 @@ export const CreateNew = ({ data, type, ...props }) => {
 
             padding: 1rem;
 
-            border: thin dotted rgba(255, 100, 255, 0.4);
-
             box-shadow: inset 0 0 2rem -1rem transparent;
 
             transition: 0.2s ease;
@@ -65,9 +66,17 @@ export const CreateNew = ({ data, type, ...props }) => {
             height: 100%;
             width: 100%;
 
+            opacity: 0.6;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
+            transition: 0.1s ease;
+          }
+          .inner_new_item:hover {
+            background: rgba(0, 200, 255, 0.05);
+            opacity: 1;
           }
         `}
       </style>

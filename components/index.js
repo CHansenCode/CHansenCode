@@ -40,6 +40,9 @@ export * from './List';
 export * from './Label';
 export * from './FlexWrap';
 
+//  Special
+export * from './SlideGrid'; // For slidesApp / presentation. renders grid based on cb input
+
 //  Dev
 export * from './ObjectViewer'; //object/array viewer
 

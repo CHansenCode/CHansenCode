@@ -1,0 +1,40 @@
+.base {
+  display: grid;
+  height: 100%;
+  width: 100%;
+
+  padding: 5%;
+  gap: 2%;
+
+  > * {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
+
+  > :nth-child(1) {
+    grid-area: title;
+  }
+  > :nth-child(2) {
+    grid-area: richtext;
+  }
+  > :nth-child(3) {
+    grid-area: img;
+  }
+}
+
+.classic {
+  grid-template: 'title richtext img' 1fr / 1fr 1fr 1fr;
+}
+
+.horizontal {
+  grid-template:
+    'img' 1fr
+    'title' auto
+    'richtext' auto / 1fr;
+}

@@ -1,5 +1,31 @@
-import React from 'react';
+import { TypeInput, RichText, SlideGrid } from 'components';
 
-export const Slide = () => {
-  return <div>Slide</div>;
+import css from './Slide.module.scss';
+
+export const Slide = ({ data, ...props }) => {
+  //
+  //   const iStyle = {
+  //     objectFit: data.objectFit,
+  //   };
+
+  return (
+    <div className={css.wrapper}>
+      <SlideGrid type={'horizontal'}>
+        <TypeInput
+          value="cow"
+          onChange={e => e.preventDefault()}
+          disabled={!props.controller.isEditing}
+        />
+
+        <RichText
+          value={data.rich}
+          formData={props.formData}
+          setFormData={props.setFormData}
+          objKey="rich"
+        />
+
+        <img src="https://media.chansen.design/placeholder.jpg"></img>
+      </SlideGrid>
+    </div>
+  );
 };

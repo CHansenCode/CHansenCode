@@ -4,6 +4,7 @@ export const initController = {
   isCreating: false,
   isEditing: false,
   isDeleting: false,
+  triggerDB: 0,
 };
 
 export const initForm = {
@@ -24,7 +25,8 @@ export const newSlide = {
   id: uniqueIdGenerator(),
   title: '',
   subtitle: '',
-  rich: [],
+  objectFit: 'cover',
+  rich: [{ type: 'paragraph', children: [{ text: '' }] }],
 };
 
 export const initTitle = {
