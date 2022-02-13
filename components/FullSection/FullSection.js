@@ -3,6 +3,9 @@ import React, { Children } from 'react';
 import css from './FullSection.module.scss';
 
 export const FullSection = ({ title, hasMenu, children, ...props }) => {
+  const iStyle = {
+    height: '100%',
+  };
   return (
     <section className={css.section}>
       {(hasMenu || title) && (
@@ -15,7 +18,7 @@ export const FullSection = ({ title, hasMenu, children, ...props }) => {
         </header>
       )}
 
-      <div className={css.child_wrapper}>
+      <div style={iStyle} className={css.child_wrapper}>
         <div className={css.scrollable}>
           {hasMenu
             ? //If hasMenu is true, steal the first child and place in header instead

@@ -1,0 +1,55 @@
+.wrapper {
+  height: 100%;
+  width: 100%;
+
+  display: grid;
+  grid-template: 'intro list' 1fr / 20rem 2fr;
+  gap: 10vw;
+
+  padding: 5vw 10vw;
+}
+
+.intro {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  > h4,
+  > p {
+    width: 100%;
+  }
+  > h4 {
+    letter-spacing: 2.6px;
+    margin-bottom: 1rem;
+  }
+  > p {
+    max-width: 20rem;
+    text-align: justify;
+    word-spacing: -1px;
+  }
+}
+
+.wrapper > div {
+  height: 100%;
+  width: 100%;
+
+  border: thin solid;
+
+  p {
+    margin-bottom: 1rem;
+  }
+}
+
+.wrapper ul {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  > h4 {
+    margin-bottom: 2rem;
+  }
+}

@@ -1,0 +1,16 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  width: 19rem;
+
+  margin: 0 0.5rem 0.5rem 0;
+
+  > button {
+    height: 100%;
+    width: 100%;
+    padding: 0.5rem 0;
+  }
+}

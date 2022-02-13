@@ -16,7 +16,6 @@ $header-height: 4rem;
 
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.3);
 }
-
 .title {
   height: 100%;
   padding: 0 1rem;
@@ -24,7 +23,6 @@ $header-height: 4rem;
   display: flex;
   align-items: center;
 }
-
 .header button {
   height: 2.5rem;
   width: 2.5rem;
@@ -40,7 +38,6 @@ $header-height: 4rem;
 }
 
 .scrollable {
-  height: 100%;
   padding: 1rem 0.75rem;
   overflow: auto;
 }

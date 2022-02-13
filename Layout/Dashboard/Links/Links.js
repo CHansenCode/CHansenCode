@@ -10,7 +10,7 @@ export const Links = () => {
     <ul className={css.links}>
       {dashConstructor.map((cat, i) => (
         <div className={css.category} key={`navCat${i}`}>
-          <h5 className="pc7">{cat.category} :</h5>
+          <h5 className="sc7">{cat.category} :</h5>
 
           {cat.pages.map((l, i) => (
             <NextLink exact={true} key={l.as} href={l.href}>

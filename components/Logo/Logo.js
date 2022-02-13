@@ -1,6 +1,12 @@
-export const Logo = ({ pc, sc, height, width }) => {
+export const Logo = ({ pc, sc, height, width, ...props }) => {
+  const iStyle = {
+    border: props.border && props.border,
+    margin: props.margin && props.margin,
+  };
+
   return (
     <svg
+      style={iStyle}
       height={height}
       width={width}
       xmlns="http://www.w3.org/2000/svg"

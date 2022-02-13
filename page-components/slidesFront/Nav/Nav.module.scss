@@ -1,0 +1,35 @@
+.nav {
+  height: calc(100% - 2rem);
+  width: 5rem;
+
+  display: grid;
+  padding: 1.5rem 0;
+  gap: 2rem;
+  margin: 1rem 0 1rem 1rem;
+  grid-template:
+    'logoetc' auto
+    'pagination' 1fr
+    'buttons' auto / 1fr;
+
+  box-shadow: 0 0 2rem -1rem rgba(0, 0, 0, 0.4);
+}
+
+.nav header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  > button {
+    height: 3rem;
+    width: 3rem;
+  }
+}
