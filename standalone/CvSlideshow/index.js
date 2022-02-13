@@ -31,11 +31,7 @@ export default function CvSlideshow({ data, ...props }) {
   return (
     <Main>
       <SlideView>
-        {page === 1 && (
-          <SlideWrapper>
-            <Cv {...props} />
-          </SlideWrapper>
-        )}
+        {page === 1 && <SlideWrapper>{/* <Cv {...props} /> */}</SlideWrapper>}
         {page === 2 && (
           <SlideWrapper>
             <Letter data={data} {...props} />

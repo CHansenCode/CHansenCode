@@ -13,8 +13,9 @@ export const SectionMenu = ({ children, ...props }) => {
       <div className={css.normal}>{children[0]}</div>
 
       <div className={css.folding_menu}>
-        <ControllerMenu {...props} />
-        <div className={fold ? css.fold : css.unfold}></div>
+        <div className={fold ? css.fold : css.unfold}>
+          <ControllerMenu {...props} />
+        </div>
 
         <Button active={!fold} className="pc5b" onClick={() => setFold(!fold)}>
           <AiOutlineSetting size="1.5rem" />
@@ -24,10 +25,10 @@ export const SectionMenu = ({ children, ...props }) => {
   );
 };
 
-const ControllerMenu = () => {
+const ControllerMenu = ({ ...props }) => {
   return (
     <>
-      <Button></Button>
+      <Button text="EDIT" />
     </>
   );
 };

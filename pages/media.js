@@ -18,8 +18,6 @@ import {
 export default function MediaDb({ ...props }) {
   const dispatch = useDispatch();
 
-  console.log(props);
-
   //#region STATES
   const [formData, setFormData] = useState({ ...initForm });
   const [activeId, setActiveId] = useState('');
