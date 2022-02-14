@@ -7,50 +7,33 @@ export const NoPid = () => {
   const router = useRouter();
   const [formData, setFormData] = useState('');
 
-  console.log(router.pathname);
-
   async function handleSubmit(e, formData) {
     e.preventDefault();
-
-    router.push(`${router.pathname}/?pid=${formData}`);
+    router.replace(`${router.pathname}/?pid=${formData}`);
   }
 
   return (
     <>
       <div className="cv_no_pid">
         <div className="cv_no_pid_inner">
-          <p>
-            {`This is a page that i have developed to share Applications with
-            potential employers.`}
-          </p>
+          <p className="sc">* Restricted Access</p>
 
-          <br />
-
-          <p>
-            {`You are seeing this text because the unique key "?pid= <u>NAME</u> "
-          wasn't provided. If you haven't received an email from me with the
-          corresponding link then you are asked to go back to the homepage and
-          continue browsing`}
-          </p>
-
-          <br />
           <br />
 
           <Form
+            padding="0"
             style={{ border: 'transparent' }}
             onSubmit={e => handleSubmit(e, formData)}
           >
             <TypeInput
-              label="pId"
+              label="Please enter your provided key"
               value={formData}
               onChange={e => setFormData(e.target.value)}
             />
 
-            {router.pathname}
-
             <br />
 
-            <Button padding="0.5rem 1rem" text="submit" />
+            <Button width="100%" padding="0.5rem 1rem" text="submit" />
           </Form>
         </div>
       </div>

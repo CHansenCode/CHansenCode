@@ -1,34 +1,34 @@
-.posts {
+.row_jobs {
   position: relative;
   width: 100%;
-  border-top: thick solid rgba(255, 0, 0, 0.1);
 }
-.posts_education {
-  border-top: thick solid rgba(0, 0, 255, 0.1);
+.row_education {
+  position: relative;
+  width: 100%;
 }
-.posts_extra {
-  border-top: thick solid rgba(0, 255, 0, 0.1);
+.row_extra {
+  position: relative;
+  width: 100%;
 }
 
 .post {
   position: absolute;
-  z-index: 100;
+  z-index: 1;
 
   height: 3rem;
-  padding: 0.25rem 0.5rem;
 
-  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  // box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 
   overflow: hidden;
   transition: 0.3s ease;
 
-  > h6 {
+  > button {
+    padding-left: 0.35rem;
     font-weight: 500;
     font-size: 0.85rem;
+    align-items: flex-start;
+    flex-direction: column;
+
     white-space: nowrap;
   }
-}
-.post:hover {
-  cursor: pointer;
-  box-shadow: 0 0 2rem -0.5rem black;
 }

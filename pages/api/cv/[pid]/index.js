@@ -9,12 +9,10 @@ handler.use(middleware);
 //
 
 handler.get(async (req, res) => {
-  const { id } = req.query; //whom
+  const { pid } = req.query;
 
   try {
-    let resData = await findOne(req.db, id);
-
-    res.json(resData);
+    res.json(pid);
   } catch (error) {
     res.status(400).json({ error: 'something wong' });
   }

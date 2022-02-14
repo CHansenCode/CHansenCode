@@ -4,39 +4,45 @@ import { useRouter } from 'next/router';
 import CvSlideshow from 'standalone/CvSlideshow';
 import { NoPid } from 'page-components/cv/NoPid';
 
-import { TypeInput, Button } from 'components';
+import { TypeInput, Button, ObjectViewer } from 'components';
 
 import * as api from 'api-axios/cv';
+import getOne from 'api-axios/cv';
+import axios from 'axios';
 
-export default function CV() {
+export default function CV({ pid }) {
   const [data, setData] = useState({});
-  const router = useRouter();
-  const { pid } = router.query;
+  const [noUser, setNoUser] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
-  async function getData() {
-    setData(await api.getOne(pid));
+  useEffect(() => fetchData(pid), [pid]);
+  async function fetchData(pid) {
+    try {
+      const { data } = await axios.get(`./api/cv/?pid=${pid}`);
+      setData(data);
+
+      setNoUser(false);
+      setLoaded(true);
+    } catch (error) {
+      setNoUser(true);
+      setLoaded(true);
+    }
   }
 
-  useEffect(() => {
-    async function getData() {
-      setData(await api.getOne(pid));
-    }
-
-    getData();
-  }, [pid]);
-
   return (
-    <View>
-      <>{pid ? <CvSlideshow data={data} /> : <NoPid />}</>
-    </View>
+    loaded && (
+      <View>
+        <>{!noUser ? <CvSlideshow data={data} /> : <NoPid />}</>
+      </View>
+    )
   );
 }
 
-const View = ({ pid, children }) => {
+const View = props => {
   return (
     <>
       <div className="cv_view_wrapper">
-        <div className="cv_view_child_wrapper"> {children}</div>
+        <div className="cv_view_child_wrapper">{props.children}</div>
       </div>
 
       <style jsx>
@@ -59,3 +65,17 @@ const View = ({ pid, children }) => {
     </>
   );
 };
+
+export async function getServerSideProps({ query }) {
+  const { pid } = query;
+
+  if (pid) {
+    return {
+      props: { pid },
+    };
+  } else {
+    return {
+      props: {},
+    };
+  }
+}

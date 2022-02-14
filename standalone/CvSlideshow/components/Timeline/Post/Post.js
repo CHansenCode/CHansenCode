@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { Button } from '../../Button';
+
 import css from './Post.module.scss';
 
 import useDates from '../../../lib/useDates';
@@ -9,9 +11,9 @@ export const Post = ({ data, scope, ...props }) => {
 
   const { y } = useDates();
 
-  // relative max (100% width)
-  let scopeYears = scope;
-  let scopeMonths = scopeYears * 12;
+  // relative max-width
+  let scopeInYears = scope;
+  let scopeInMonths = scopeInYears * 12;
 
   //from (ex. 2018-07)
   let fromTime = data.from.split('-');
@@ -25,15 +27,15 @@ export const Post = ({ data, scope, ...props }) => {
 
   //Width calculation of 'Post' relative to 'scope'
   let totalMonths = (endYear - fromYear) * 12 + (endMonth - fromMonth);
-  let percentageOfScope = Math.round((totalMonths * 100) / scopeMonths);
+  let percentageOfScope = Math.round((totalMonths * 100) / scopeInMonths);
   //#endregion
 
   //offset right calculation of 'Post' relative to 'today's date' within 'scope'
   let endMonthsAgo = y * 12 - endYear * 12 - endMonth + 12;
-  let relativeToScope = (endMonthsAgo * 100) / scopeMonths;
+  let relativeToScope = (endMonthsAgo * 100) / scopeInMonths;
 
   const iStyle = {
-    width: hover ? 'min-content' : `${percentageOfScope}%`,
+    width: `${percentageOfScope}%`,
     right: `${relativeToScope}%`,
   };
 
@@ -41,14 +43,17 @@ export const Post = ({ data, scope, ...props }) => {
     data && (
       <>
         <div
-          className={`${css.post} bg pc3b`}
+          className={css.post}
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           style={iStyle}
+          onClick={props.onClick}
           {...props}
         >
-          <h6>{data.short}</h6>
-          <h6>{data.title}</h6>
+          <Button className="bg pc5b" size="100%" onClick={props.onClick}>
+            <h6 className="sc">{data.short}</h6>
+            <h6>{data.title}</h6>
+          </Button>
         </div>
       </>
     )

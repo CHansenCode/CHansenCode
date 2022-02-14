@@ -7,21 +7,6 @@ export default function CvSlideshow({ data, ...props }) {
   const [page, setPage] = useState(1);
   const [activeId, setActiveId] = useState('');
 
-  let pages = [
-    {
-      type: 'cv',
-    },
-    {
-      type: 'letter',
-    },
-    {
-      type: 'web',
-    },
-    {
-      type: 'contact',
-    },
-  ];
-
   props = {
     ...props,
     activeId,
@@ -31,7 +16,11 @@ export default function CvSlideshow({ data, ...props }) {
   return (
     <Main>
       <SlideView>
-        {page === 1 && <SlideWrapper>{/* <Cv {...props} /> */}</SlideWrapper>}
+        {page === 1 && (
+          <SlideWrapper>
+            <Cv {...props} />
+          </SlideWrapper>
+        )}
         {page === 2 && (
           <SlideWrapper>
             <Letter data={data} {...props} />

@@ -13,6 +13,7 @@ export const Button = ({ active, text, ...props }) => {
     height: props.height && props.height,
     textTransform: props.uppercase && 'uppercase',
     fontSize: props.fontSize && props.fontSize,
+    //
     opacity: props.disabled && 0.5,
     pointerEvents: props.disabled ? 'none' : 'all',
   };

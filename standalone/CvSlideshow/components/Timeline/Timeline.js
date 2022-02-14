@@ -17,13 +17,8 @@ export const Timeline = ({ data, ...props }) => {
   }
 
   return (
-    <div className={css.timeline}>
-      <div className={css.buttons}>
-        <Button text="+" fontSize="2rem" onClick={increaseScope} />
-        <Button text="-" fontSize="2rem" onClick={decreaseScope} />
-      </div>
-
-      <div>
+    <div className={`pc3b ${css.wrapper}`}>
+      <div className={css.bg_and_posts}>
         {data ? (
           <MapPosts data={data} scope={scope} setScope={setScope} {...props} />
         ) : (
@@ -32,6 +27,33 @@ export const Timeline = ({ data, ...props }) => {
 
         <Background scope={scope} />
       </div>
+
+      <PrevBtn onClick={increaseScope} />
+      <NextBtn onClick={decreaseScope} />
     </div>
+  );
+};
+
+const PrevBtn = ({ ...props }) => {
+  return (
+    <Button
+      text="-"
+      size="2rem"
+      borderRadius="50%"
+      className={`bg pc5b ${css.prev_btn}`}
+      onClick={props.onClick}
+    />
+  );
+};
+
+const NextBtn = ({ ...props }) => {
+  return (
+    <Button
+      text="+"
+      size="2rem"
+      borderRadius="50%"
+      className={`bg pc5b ${css.next_btn}`}
+      onClick={props.onClick}
+    />
   );
 };

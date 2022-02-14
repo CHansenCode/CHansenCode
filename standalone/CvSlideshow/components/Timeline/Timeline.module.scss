@@ -1,22 +1,11 @@
-.timeline {
+.wrapper {
   position: relative;
 
   height: 12rem;
   width: 100%;
-
-  // display: grid;
-  // grid-template: 'buttons view' 1fr / 3rem 1fr;
-  // gap: 1rem;
-
-  > :nth-child(1) {
-    grid-area: buttons;
-  }
-  > :nth-child(2) {
-    grid-area: view;
-  }
 }
 
-.timeline > div {
+.bg_and_posts {
   position: relative;
   height: 100%;
   width: 100%;
@@ -24,19 +13,17 @@
   overflow: hidden;
 }
 
-.timeline button {
-  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.1);
+.next_btn,
+.prev_btn {
+  position: absolute;
+  z-index: 100;
+  top: calc(50% - 1rem);
+
+  font-size: 1rem;
 }
-
-.buttons {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-
-  > button {
-    height: calc(50% - 0.5rem);
-    width: 100%;
-  }
+.next_btn {
+  left: -0.95rem;
+}
+.prev_btn {
+  right: -0.95rem;
 }

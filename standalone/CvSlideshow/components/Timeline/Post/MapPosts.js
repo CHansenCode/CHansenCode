@@ -2,9 +2,7 @@ import { Post } from './Post';
 
 import css from './Post.module.scss';
 
-export const MapPosts = ({ data, activeId, setActiveId, ...props }) => {
-  //
-
+export const MapPosts = ({ data, setActiveId, ...props }) => {
   const iStyle = {
     row_one: {
       marginTop: '1rem',
@@ -18,14 +16,13 @@ export const MapPosts = ({ data, activeId, setActiveId, ...props }) => {
 
   return (
     <>
-      <div style={iStyle.row_one} className={css.posts}>
+      <div style={iStyle.row_one} className={css.row_jobs}>
         {data.map(
           (c, i) =>
             c.category === 'job' && (
               <Post
                 key={`${c._id}`}
                 data={c}
-                activeId={activeId}
                 onClick={() => setActiveId(c._id)}
                 {...props}
               />
@@ -33,14 +30,13 @@ export const MapPosts = ({ data, activeId, setActiveId, ...props }) => {
         )}
       </div>
 
-      <div style={iStyle.row_two} className={css.posts_education}>
+      <div style={iStyle.row_two} className={css.row_education}>
         {data.map(
           (c, i) =>
             c.category === 'education' && (
               <Post
                 key={`${c._id}`}
                 data={c}
-                activeId={activeId}
                 onClick={() => setActiveId(c._id)}
                 {...props}
               />
@@ -48,14 +44,13 @@ export const MapPosts = ({ data, activeId, setActiveId, ...props }) => {
         )}
       </div>
 
-      <div style={iStyle.row_three} className={css.posts_extra}>
+      <div style={iStyle.row_three} className={css.row_extra}>
         {data.map(
           (c, i) =>
             c.category === 'extra' && (
               <Post
                 key={`${c._id}`}
                 data={c}
-                activeId={activeId}
                 onClick={() => setActiveId(c._id)}
                 {...props}
               />

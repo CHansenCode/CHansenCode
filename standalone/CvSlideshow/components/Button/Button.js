@@ -24,15 +24,16 @@ export const Button = ({ text, ...props }) => {
     ...iStyle,
   };
 
-  props.className += ` pc7b ${css.button}${hover ? ` sc` : ''}`;
+  props.className += ` ${css.button}${hover ? ` sc` : ''}`;
 
   return (
     <button
       ref={props.myRef}
       style={props.style}
+      className={props.className}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      {...props}
+      onClick={props.onClick}
     >
       {text}
       {props.children}

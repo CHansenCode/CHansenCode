@@ -5,41 +5,34 @@ import css from './Background.module.scss';
 export const Background = ({ scope, ...props }) => {
   const [years, setYears] = useState([]);
 
-  useEffect(() => {
-    function createYearsArray(activeYearScope) {
-      let now = new Date();
-      let currentYear = now.getFullYear();
+  function yearsArrayFromInteger(scope) {
+    let now = new Date();
+    let currentYear = now.getFullYear();
 
-      const yArr = [...Array(activeYearScope)].map((_, i) => currentYear - i);
-      yArr.sort((a, b) => a - b);
+    const yArr = [...Array(scope)].map((_, i) => currentYear - i);
+    yArr.sort((a, b) => a - b);
 
-      setYears(yArr);
-    }
-    createYearsArray(scope);
-  }, [scope]);
+    setYears(yArr);
+  }
+  useEffect(() => yearsArrayFromInteger(scope), [scope]);
 
-  const propStyle = {
+  const iStyle = {
     width: `${100 / scope}%`,
   };
 
   return (
-    <div className={`pc3b ${css.main}`}>
+    <div className={`${css.main}`}>
       {years &&
-        years.map((year, i) => (
-          <div key={`bg${year}${i}`} style={propStyle} className={css.year}>
-            <h6>{year}</h6>
-            {monthsArr.map((m, i) => (
-              <div key={`bg${year}${m}${i}`} className={css.month} />
-            ))}
-          </div>
+        years.map((y, i) => (
+          <YearCard key={`bg${y}${i}`} year={y} width={iStyle.width} />
         ))}
     </div>
   );
 };
 
 const monthsArr = [
-  'jan',
-  'feb',
+  'january',
+  'february',
   'marsh',
   'april',
   'may',
@@ -51,3 +44,15 @@ const monthsArr = [
   'november',
   'december',
 ];
+
+const YearCard = ({ year, ...props }) => {
+  return (
+    <div style={{ width: props.width }} className={css.year}>
+      <h6>{year}</h6>
+
+      {monthsArr.map((m, i) => (
+        <div key={`bg${year}${m}${i}`} className={css.month} />
+      ))}
+    </div>
+  );
+};

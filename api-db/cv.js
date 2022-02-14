@@ -31,7 +31,6 @@ export async function findOne(db, whom) {
 }
 
 export async function findByIdAndUpdate(db, id, data) {
-  console.log(data.richTextOne);
   try {
     const { value } = await db.collection(col).findOneAndUpdate(
       { _id: new ObjectId(id) },

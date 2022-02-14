@@ -25,15 +25,28 @@
   width: 100%;
 
   display: flex;
-  border-right: thin solid;
 
   > h6 {
     position: absolute;
     width: 100%;
+    bottom: 0.25rem;
+
     font-size: 0.7rem;
-    bottom: 0.5rem;
+    font-weight: 500;
     text-align: center;
   }
+}
+.year::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  content: '';
+
+  border-right: thin solid currentColor;
+  opacity: 0.2;
 }
 
 .month {
@@ -46,7 +59,7 @@
   position: absolute;
   height: 100%;
 
-  opacity: 0.2;
+  opacity: 0.15;
 
   content: ' ';
   border: thin solid currentColor;

@@ -1,7 +1,7 @@
 import nextConnect from 'next-connect';
 import middleware from 'middleware/database';
 
-import { getAll, postOne } from 'api-db/cv';
+import { getAll, findOne, postOne } from 'api-db/cv';
 
 const handler = nextConnect();
 handler.use(middleware);
@@ -9,9 +9,15 @@ handler.use(middleware);
 //
 
 handler.get(async (req, res) => {
-  const response = await getAll(req.db);
+  const { pid } = req.query;
 
-  res.json(response);
+  pid
+    ? (res.data = await findOne(req.db, pid))
+    : (res.data = await getAll(req.db));
+
+  res.data ? res.json(res.data) : res.status(400).json('no user found');
+
+  res.json(res.data);
 });
 
 handler.post(async (req, res) => {
