@@ -1,0 +1,46 @@
+.details {
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  padding: 2rem;
+
+  overflow: hidden;
+
+  display: grid;
+  gap: 1rem;
+  grid-template:
+    'title' 3rem
+    'info' 8rem
+    'descr' 2fr
+    'tags' auto
+    'dates' 1fr / 1fr;
+
+  > * {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.header h4 {
+  position: relative;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.pseudo_underscore {
+  width: 100%;
+  border-bottom: thin solid currentColor;
+  opacity: 0.5;
+}
+
+.descr {
+  height: 100%;
+  width: 100%;
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  margin-right: 0.5rem;
+}

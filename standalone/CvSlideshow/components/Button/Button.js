@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import css from './Button.module.scss';
 
-export const Button = ({ text, ...props }) => {
+export const Button = ({ text, active, ...props }) => {
   const [hover, setHover] = useState(false);
 
   const iStyle = {
@@ -24,7 +24,9 @@ export const Button = ({ text, ...props }) => {
     ...iStyle,
   };
 
-  props.className += ` ${css.button}${hover ? ` sc` : ''}`;
+  props.className += ` ${css.button}${hover ? ` sc` : ''}${
+    active ? ` sc` : ''
+  }`;
 
   return (
     <button

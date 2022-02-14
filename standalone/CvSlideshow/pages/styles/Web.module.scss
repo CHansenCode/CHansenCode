@@ -1,6 +1,10 @@
 .wrapper {
   height: 100%;
-  width: 100%;
+  width: 1200px;
+}
 
-  border: thin solid;
+.test {
+  height: 2rem;
+  width: 50%;
+  border: thin solid currentColor;
 }

@@ -1,0 +1,35 @@
+.interactive_box {
+  position: relative;
+  height: 1.5rem;
+  width: 1.5rem;
+
+  margin: 0 0.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.4s ease;
+  cursor: pointer;
+}
+
+.graphical_dot {
+  border: thin solid currentColor;
+  border-radius: 50%;
+
+  box-shadow: inset 0 0 1rem -0.5rem currentColor;
+
+  transition: 0.4s ease;
+}
+.dot:hover {
+  cursor: pointer;
+}
+
+.page_name {
+  position: absolute;
+  top: -1.5rem;
+  pointer-events: none;
+
+  transition: 0.3s ease;
+  white-space: nowrap;
+}

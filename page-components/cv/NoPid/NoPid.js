@@ -41,7 +41,7 @@ export const NoPid = () => {
       <style jsx>
         {`
           .cv_no_pid {
-            height: 100%;
+            height: 100vh;
             width: 100%;
 
             display: flex;

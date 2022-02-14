@@ -5,6 +5,9 @@ export default function useDates() {
   let m = now.getMonth() + 1;
   let y = now.getFullYear();
 
+  let mm = m < 10 ? `0${m}` : m;
+  let dd = d < 10 ? `0${d}` : d;
+
   let DoW = now.getDay();
   let weekday =
     DoW === 0
@@ -23,5 +26,5 @@ export default function useDates() {
       ? 'saturday'
       : 'sunday';
 
-  return { y: y, m: m, d: d, weekday: weekday };
+  return { y: y, mm: mm, m: m, dd: dd, d: d, weekday: weekday };
 }

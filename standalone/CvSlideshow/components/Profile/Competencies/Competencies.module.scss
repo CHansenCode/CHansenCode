@@ -1,0 +1,31 @@
+.main {
+  height: 100%;
+}
+
+.header {
+  margin-bottom: 1rem;
+  p {
+    margin-right: 1rem;
+  }
+}
+
+.main button:focus {
+  outline: none;
+}
+
+.body {
+  display: grid;
+  gap: 2rem;
+  grid-template: 'a b' 1fr / 1fr 1fr;
+  > div {
+    grid-template-rows: repeat(4, 1fr);
+  }
+}
+
+//elements
+.main button {
+  border-radius: 0.5rem;
+  margin-right: 1rem;
+  padding: 0 0.5rem;
+  opacity: 0.8;
+}

@@ -1,0 +1,44 @@
+.score_card {
+  height: 1rem;
+  width: 100%;
+  border: thin solid dashed;
+
+  display: grid;
+  align-items: center;
+  grid-template: 'icon title score info' 1fr / 2rem 5rem 1fr 1rem;
+
+  margin-bottom: 0.25rem;
+
+  .icon {
+    height: 1rem;
+    width: 1rem;
+    overflow: hidden;
+  }
+
+  > h6 {
+    font-size: 0.8rem;
+  }
+
+  > div {
+    height: 0.5rem;
+
+    > div {
+      height: 100%;
+      background: currentColor;
+      opacity: 0.3;
+    }
+  }
+}
+
+.score_card h5 {
+  height: 1rem;
+  width: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.7;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25%;
+}

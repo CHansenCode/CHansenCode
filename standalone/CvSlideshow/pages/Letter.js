@@ -1,53 +1,37 @@
 import { RenderRichText } from 'components';
+import { FadeIn } from '../components';
 
 import css from './styles/Letter.module.scss';
 
 export const Letter = ({ data }) => {
   return (
-    <>
-      <div className={css.letters}>
-        <h4>title</h4>
+    <FadeIn>
+      <div className={`pc3b ${css.main}`}>
+        <header>
+          <h4 className="sc">Letter of motivation</h4>
+        </header>
 
-        <Paragraph>
-          <RenderRichText data={data.richTextOne} />
-        </Paragraph>
+        <div>
+          <Paragraph>
+            <RenderRichText data={data.richTextOne} />
+          </Paragraph>
 
-        <Paragraph>
-          {data.richTextTwo &&
-            data.richTextTwo.map((t, i) => (
-              <span key={`rt${t.type}${i}`}>
-                {t.children.map((a, i) => (
-                  <span key={`${a}${i}`}>{a.text}</span>
-                ))}
-              </span>
-            ))}
-        </Paragraph>
+          <Paragraph>
+            <RenderRichText data={data.richTextTwo} />
+          </Paragraph>
 
-        <Paragraph>
-          {data.richTextThree &&
-            data.richTextThree.map((t, i) => (
-              <span key={`rt${t.type}${i}`}>
-                {t.children.map((a, i) => (
-                  <span key={`${a}${i}`}>{a.text}</span>
-                ))}
-              </span>
-            ))}
-        </Paragraph>
+          <Paragraph>
+            <RenderRichText data={data.richTextThree} />
+          </Paragraph>
 
-        <Paragraph>
-          {data.richTextFour &&
-            data.richTextFour.map((t, i) => (
-              <span key={`rt${t.type}${i}`}>
-                {t.children.map((a, i) => (
-                  <Leaf key={`${a}${i}`} data={a}>
-                    {a.text}
-                  </Leaf>
-                ))}
-              </span>
-            ))}
-        </Paragraph>
+          <Paragraph>
+            <RenderRichText data={data.richTextFour} />
+          </Paragraph>
+        </div>
+
+        <p>Kind regards, Christoffer Hansen</p>
       </div>
-    </>
+    </FadeIn>
   );
 };
 

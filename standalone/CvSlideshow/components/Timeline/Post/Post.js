@@ -48,7 +48,6 @@ export const Post = ({ data, scope, ...props }) => {
           onMouseLeave={() => setHover(false)}
           style={iStyle}
           onClick={props.onClick}
-          {...props}
         >
           <Button className="bg pc5b" size="100%" onClick={props.onClick}>
             <h6 className="sc">{data.short}</h6>

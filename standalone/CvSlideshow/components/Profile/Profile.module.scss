@@ -1,0 +1,34 @@
+.profile {
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  padding: 2rem;
+
+  overflow: hidden;
+
+  display: grid;
+  gap: 1rem;
+  grid-template:
+    'title' 3rem
+    'info' 12rem
+    'descr' 3fr
+    'tags' auto / 1fr;
+
+  //   > * {
+  //     border: thin dashed rgba(128, 0, 128, 0.2);
+  //   }
+}
+
+//elements
+.pseudo_underscore {
+  height: 1px;
+  width: 100%;
+  border-bottom: thin solid currentColor;
+  opacity: 0.5;
+}
+
+.profile h4 {
+  margin: 0;
+  padding: 0;
+}
