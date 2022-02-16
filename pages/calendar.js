@@ -1,8 +1,9 @@
-import { FullSection, Flex, PlannedFeature } from 'components';
+import { BacksideView } from 'components/BacksideView';
+import { Flex, PlannedFeature } from 'components';
 
 export default function CalendarPage({ ...props }) {
   return (
-    <FullSection>
+    <BacksideView>
       <Flex flexDirection="column" center={true}>
         <Flex height="min-content" maxWidth="600px" flexDirection="column">
           <h3 className="sc">Calendar</h3>
@@ -31,6 +32,6 @@ export default function CalendarPage({ ...props }) {
           </div>
         </Flex>
       </Flex>
-    </FullSection>
+    </BacksideView>
   );
 }

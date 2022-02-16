@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import CvSlideshow from 'standalone/CvSlideshow';
 import { NoPid } from 'page-components/cv/NoPid';
 
-import * as api from 'api/cv';
+import * as api from 'api-lib/dispatch/cv';
 
 export default function CV({ ...props }) {
   //#region loaded

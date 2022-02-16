@@ -29,7 +29,11 @@ export const Controllers = ({ controller, setController, ...props }) => {
 
   return (
     <div className={css.controllers}>
-      <Settings onClick={() => setFold(!fold)} active={!fold} />
+      {(props.delete === true ||
+        props.edit === true ||
+        props.create === true) && (
+        <Settings onClick={() => setFold(!fold)} active={!fold} />
+      )}
 
       <div className={fold ? css.fold : css.unfold}>
         {props.create === true && (

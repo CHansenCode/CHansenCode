@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
-import { FullSection, Flex, PlannedFeature } from 'components';
+import { BacksideView } from 'components/BacksideView';
+import { Flex, PlannedFeature } from 'components';
 
 export default function Welcome() {
   return (
-    <FullSection>
+    <BacksideView>
       <Flex flexDirection="column" center={true}>
         <Flex height="min-content" maxWidth="600px" flexDirection="column">
           <h3 className="sc">Backside homepage</h3>
@@ -36,6 +36,6 @@ export default function Welcome() {
           </div>
         </Flex>
       </Flex>
-    </FullSection>
+    </BacksideView>
   );
 }

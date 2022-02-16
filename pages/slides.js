@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Nav, LandingPage } from 'page-components/slidesFront';
 import { View, KeyEvents, Slide } from 'page-components/slidesFront';
 
-import * as api from 'api/slides';
+import * as api from 'api-lib/dispatch/slides';
 
 export default function Slides({ ...props }) {
   const dispatch = useDispatch();

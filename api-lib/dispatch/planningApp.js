@@ -8,7 +8,7 @@ import {
   TOAST,
 } from 'actions';
 
-const url = './api/planningApp';
+const url = '/api/planningApp';
 
 export const getAll = () => async dispatch => {
   try {

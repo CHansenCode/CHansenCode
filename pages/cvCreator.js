@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { FormStyle, initController, initFormData } from 'page-components/cv';
 import { List, Item } from 'page-components/cv';
-import { FullSection, SectionMenu, Button, ControllerMenu } from 'components';
-import { Form, TypeInput, RichText } from 'components';
+import { BacksideView, Menu, Controllers } from 'components/BacksideView';
+import { Form, TypeInput, RichText, Button } from 'components';
 
 import * as api from 'api-axios/cv';
 import { GET_CV, CREATE_CV, PATCH_CV, DELETE_CV, TOAST } from 'actions';
@@ -26,17 +26,10 @@ export default function CvCreator({ ...props }) {
     }
   }
 
-  //#region   Data fetcher listener
-  useEffect(() => {
-    getAll();
-  }, [dispatch]);
+  useEffect(() => getAll(), [dispatch]);
   const storeData = useSelector(s => s.cv);
-
   const activePost = useSelector(s => s.cv.find((o, i) => o._id === activeId));
-  useEffect(() => {
-    activePost && setFormData({ ...activePost });
-  }, [activePost]);
-  //#endregion
+  useEffect(() => activePost && setFormData({ ...activePost }), [activePost]);
 
   //#region   CRUD & DISPATCH
   async function getAll() {
@@ -137,9 +130,9 @@ export default function CvCreator({ ...props }) {
   //#endregion
 
   return (
-    <FullSection hasMenu="true" title="Cv creator">
-      <SectionMenu>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+    <BacksideView hasMenu="true" title="Cv creator">
+      <Menu>
+        <span style={{ display: 'flex', alignItems: 'center' }}>
           <Button
             text="NEW"
             active={controller.isCreating}
@@ -151,10 +144,10 @@ export default function CvCreator({ ...props }) {
               <h4>{`ᐊ`}</h4>
             </Button>
           )}
-        </div>
+        </span>
 
-        <ControllerMenu delete create edit {...props} />
-      </SectionMenu>
+        <Controllers delete={true} create={true} edit={true} {...props} />
+      </Menu>
 
       <div style={{ height: '100%' }}>
         {controller.isCreating || activeId ? (
@@ -270,7 +263,7 @@ export default function CvCreator({ ...props }) {
           </List>
         )}
       </div>
-    </FullSection>
+    </BacksideView>
   );
 }
 

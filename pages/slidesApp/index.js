@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { FullSection, SectionMenu, Button, TypeInput } from 'components';
+import { BacksideView, Menu, Controllers } from 'components/BacksideView';
 import { useDebouncedCallback } from 'lib';
 
 import { uniqueIdGenerator } from 'lib';
@@ -13,7 +13,7 @@ import { PresentationMenu } from 'page-components/slides';
 import { initForm, initContr, initTitle } from 'page-components/slides';
 import { initSlide } from 'page-components/slides';
 
-import * as api from 'api/slides';
+import * as api from 'api-lib/dispatch/slides';
 
 export default function PlanningApp() {
   const dispatch = useDispatch();
@@ -27,14 +27,12 @@ export default function PlanningApp() {
   const [slideIndex, setSlideIndex] = useState(null);
   //#endregion
 
-  //#region DATA LISTENERS
   const storeData = useSelector(s => s.slides);
   const activePost = useSelector(s =>
     s.slides.find((o, i) => o._id === activeId),
   );
   useEffect(() => dispatch(api.getAll()), [dispatch]);
   useEffect(() => activePost && setFormData({ ...activePost }), [activePost]);
-  //#endregion
 
   //#region AUTOSAVE
   async function triggerPatch() {
@@ -51,7 +49,6 @@ export default function PlanningApp() {
     dispatch(api.patchOne(activeId, formData));
   }
   //#endregion
-
   //#region  FORM HANDLING
   async function createPresentation(initForm, title) {
     let data = await { ...initForm, title: title };
@@ -90,8 +87,8 @@ export default function PlanningApp() {
   };
 
   return (
-    <FullSection hasMenu="true" title="Slides App">
-      <SectionMenu>
+    <BacksideView hasMenu="true" title="Slides App">
+      <Menu>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           {activeId && <GoBack {...props} />}
 
@@ -99,26 +96,8 @@ export default function PlanningApp() {
           {slideIndex !== null && <SlideMenu {...props} />}
         </div>
 
-        <div>
-          <Button
-            text="DEL"
-            active={controller.isDeleting}
-            onClick={() =>
-              setController({
-                ...controller,
-                isDeleting: !controller.isDeleting,
-              })
-            }
-          />
-          <Button
-            text="EDIT"
-            active={controller.isEditing}
-            onClick={() =>
-              setController({ ...controller, isEditing: !controller.isEditing })
-            }
-          />
-        </div>
-      </SectionMenu>
+        <Controllers edit={true} delete={true} {...props} />
+      </Menu>
 
       {activeId ? (
         formData && (
@@ -180,6 +159,6 @@ export default function PlanningApp() {
           />
         </List>
       )}
-    </FullSection>
+    </BacksideView>
   );
 }

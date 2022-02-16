@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { FullSection, Button, SectionMenu, Loading, Empty } from 'components';
+import { initContr } from 'config/initData';
+import { BacksideView, Menu, Controllers } from 'components/BacksideView';
 import { Card } from 'page-components/contact';
 
 import { GET_CONTACT, DELETE_CONTACT, TOAST } from 'actions';
@@ -9,17 +10,11 @@ import { GET_CONTACT, DELETE_CONTACT, TOAST } from 'actions';
 import * as api from 'api-axios/contact';
 
 export default function ContactBackside() {
+  const [controller, setController] = useState({ ...initContr });
+
   const dispatch = useDispatch();
 
-  const [controller, setController] = useState({
-    isCreating: false,
-    isDeleting: false,
-    isEditing: false,
-  });
-
-  useEffect(() => {
-    getAll();
-  }, [dispatch]);
+  useEffect(() => getAll(), [dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
   const storeData = useSelector(s => s.contact);
 
   async function getAll() {
@@ -49,23 +44,19 @@ export default function ContactBackside() {
       });
     }
   }
-  async function toggleDeleting() {
-    setController({ ...controller, isDeleting: !controller.isDeleting });
-  }
+
+  let props = {
+    controller,
+    setController,
+  };
 
   return (
-    <FullSection hasMenu={true} title="Contact form">
-      <SectionMenu>
-        <div></div>
+    <BacksideView hasMenu={true}>
+      <Menu title="Contact form">
+        <span></span>
 
-        <div>
-          <Button
-            text="DEL"
-            active={controller.isDeleting}
-            onClick={toggleDeleting}
-          />
-        </div>
-      </SectionMenu>
+        <Controllers delete={true} {...props} />
+      </Menu>
 
       <List>
         {storeData.map((p, i) => (
@@ -77,7 +68,7 @@ export default function ContactBackside() {
           />
         ))}
       </List>
-    </FullSection>
+    </BacksideView>
   );
 }
 

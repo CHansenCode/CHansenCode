@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { initContr } from 'config/initData';
 import { List, ListHeader, Item, initForm, Fixed } from 'page-components/media';
-import { FullSection, Button, Flex, SectionMenu, Cimage } from 'components';
-import { Form, Input, Textarea, Select, Loading, Grid } from 'components';
+import { BacksideView, Menu, Controllers } from 'components/BacksideView';
+import { Button, Flex, Cimage, Loading } from 'components';
+import { Form, Input, Textarea } from 'components';
 
 import * as api from 'api-axios/media';
 
@@ -16,25 +18,12 @@ import {
 } from 'actions';
 
 export default function MediaDb({ ...props }) {
-  const dispatch = useDispatch();
-
-  //#region STATES
   const [formData, setFormData] = useState({ ...initForm });
   const [activeId, setActiveId] = useState('');
-  const [controller, setController] = useState({
-    isCreating: false,
-    isDeleting: false,
-    isEditing: false,
-  });
-  //#endregion
+  const [controller, setController] = useState({ ...initContr });
 
-  //#region   Controller
-  async function enableDeleting() {
-    setController({ ...controller, isDeleting: !controller.isDeleting });
-  }
-  async function enableEditing() {
-    setController({ ...controller, isEditing: !controller.isEditing });
-  }
+  const dispatch = useDispatch();
+
   async function toggleCreating() {
     if (activeId && !controller.isCreating) {
       clearIdAndFormdata();
@@ -54,20 +43,13 @@ export default function MediaDb({ ...props }) {
       setActiveId(id);
     }
   }
-  //#endregion
 
-  //#region   Data fetcher listener
-  useEffect(() => {
-    getAll();
-  }, [dispatch]);
+  useEffect(() => getAll(), [dispatch]);
   const storeData = useSelector(s => s.media);
   const activePost = useSelector(s =>
     s.media.find((o, i) => o._id === activeId),
   );
-  useEffect(() => {
-    activePost && setFormData({ ...activePost });
-  }, [activePost]);
-  //#endregion
+  useEffect(() => activePost && setFormData({ ...activePost }), [activePost]);
 
   //#region   CRUD
   async function getAll() {
@@ -139,7 +121,6 @@ export default function MediaDb({ ...props }) {
   }
   //#endregion
 
-  //#region   Form handling
   async function handleChange(e, objKey) {
     setFormData({ ...formData, [objKey]: e.target.value });
   }
@@ -162,34 +143,26 @@ export default function MediaDb({ ...props }) {
     setActiveId('');
     setFormData({ ...initForm });
   }
-  //#endregion
 
   props = {
-    ...props,
     controller,
     setController,
   };
 
   return (
     <>
-      <FullSection hasMenu="true" title="Media Database editor">
-        <SectionMenu>
-          <div>
+      <BacksideView hasMenu={true}>
+        <Menu title="Media Database">
+          <span>
             <Button
               text="NEW"
               active={controller.isCreating}
               onClick={toggleCreating}
             />
-          </div>
+          </span>
 
-          <div>
-            <Button
-              text="DEL"
-              active={controller.isDeleting}
-              onClick={enableDeleting}
-            />
-          </div>
-        </SectionMenu>
+          <Controllers delete={true} {...props} />
+        </Menu>
 
         <Fixed toggle={controller.isCreating || activeId ? true : false}>
           <Form
@@ -294,7 +267,7 @@ export default function MediaDb({ ...props }) {
             </Flex>
           )}
         </List>
-      </FullSection>
+      </BacksideView>
     </>
   );
 }

@@ -14,7 +14,6 @@ export * from './Diode';
 
 //  Structural
 export * from './Section'; //section for frontside, title="" & myRef={} props for layout and pageNav
-export * from './FullSection'; //fullpage section for backside
 
 //  Elements
 export * from './Empty'; //spacer
@@ -32,7 +31,6 @@ export * from './NextLink'; //extension of Link/next with active={boolean} toggl
 export * from './Text'; //extension of p, if we wanna restyle bread text on the site without breaking scss
 
 //  Enhanced Elements
-export * from './SectionMenu'; //Page header for FullSection menu buttons
 export * from './Flex'; //Quick Flex grid, main props: center={true} (ali & justi), flexDirection, hei,wid,pad,mar
 export * from './Grid'; //Grid
 export * from './RichText'; //RichText editor, has internal state logic, <-- overriden by passing setFormData in props

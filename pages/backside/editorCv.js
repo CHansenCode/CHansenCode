@@ -17,7 +17,7 @@ export default function EditorCv({ ...props }) {
 
   useEffect(() => {
     dispatch(api.getAll());
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   props = {
     controller,

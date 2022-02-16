@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { Form, TypeInput, Button } from 'components';
 
-import * as api from 'api/cv';
+import * as api from 'api-lib/dispatch/cv';
 
 export const NoPid = ({ ...props }) => {
   const dispatch = useDispatch();

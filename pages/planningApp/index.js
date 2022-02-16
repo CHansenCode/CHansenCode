@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { BacksideView, Menu, Controllers } from 'components/BacksideView';
 import { FullSection, SectionMenu } from 'components';
 import { Flex, Button, Empty } from 'components';
 
@@ -10,7 +11,7 @@ import { NewStage, NewTask, NewSubtask } from 'page-components/planningApp';
 import { initFormData, initController } from 'page-components/planningApp';
 
 import { useDebouncedCallback } from 'lib';
-import * as api from 'api/planningApp';
+import * as api from 'api-lib/dispatch/planningApp';
 
 export default function PlanningApp() {
   const dispatch = useDispatch();
@@ -60,9 +61,9 @@ export default function PlanningApp() {
   };
 
   return (
-    <FullSection hasMenu="true" title="Planning APP">
-      <SectionMenu>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+    <BacksideView hasMenu="true">
+      <Menu title="Planning App">
+        <span>
           <Button
             text="NEW"
             active={controller.isCreating}
@@ -77,13 +78,10 @@ export default function PlanningApp() {
           {(activeId || controller.isCreating) && (
             <Button text="<" fontSize="1.25rem" onClick={clear} />
           )}
+        </span>
 
-          <div>aID: {activeId && activeId.substring(0, 5)}</div>
-          <div>aFO: {formData && formData._id.substring(0, 5)}</div>
-        </div>
-
-        {/* SETTINGS MENU */}
-      </SectionMenu>
+        <Controllers {...props} />
+      </Menu>
 
       {activeId ? (
         activePost && (
@@ -150,6 +148,6 @@ export default function PlanningApp() {
           )}
         </List>
       )}
-    </FullSection>
+    </BacksideView>
   );
 }
