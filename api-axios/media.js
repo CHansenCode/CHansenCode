@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = './api/media';
+const url = '/api/media';
 
 export const getAll = async () => {
   try {

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = './api/users';
+const url = '/api/users';
 
 export const getAll = async () => {
   try {

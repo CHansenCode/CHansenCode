@@ -1,5 +1,7 @@
 import { Button } from 'components';
 
+import css from './style.module.scss';
+
 export const Create = ({ ...props }) => {
   //
   async function toggleIsCreating() {
@@ -9,5 +11,11 @@ export const Create = ({ ...props }) => {
     });
   }
 
-  return <Button text="ADD" onClick={() => toggleIsCreating()} />;
+  return (
+    <Button
+      className={css.button}
+      text="ADD"
+      onClick={() => toggleIsCreating()}
+    />
+  );
 };

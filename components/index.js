@@ -19,6 +19,7 @@ export * from './FullSection'; //fullpage section for backside
 //  Elements
 export * from './Empty'; //spacer
 export * from './Button';
+export * from './ButtonType'; //switch on prop 'type' for common buttonTypes
 export * from './Dropdown';
 export * from './Form';
 export * from './Input';

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = './api/contact';
+const url = '/api/contact';
 
 export const getAll = async () => {
   try {

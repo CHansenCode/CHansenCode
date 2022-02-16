@@ -9,7 +9,7 @@ import {
   TOAST,
 } from 'actions';
 
-const url = './api/cv';
+const url = '/api/cv';
 
 export const getAll = () => async dispatch => {
   try {
@@ -99,5 +99,3 @@ export const deleteOne = id => async dispatch => {
     });
   }
 };
-
-// const { data } = await axios.patch(`${url}?pid=${pid ? pid : 'cow'}`);

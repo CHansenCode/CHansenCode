@@ -2,6 +2,7 @@ export const dashConstructor = [
   {
     category: 'Backside',
     pages: [
+      { as: 'CV editor', href: '/backside/editorCv' },
       { as: 'Media DB', href: '/media' },
       { as: "Cv's", href: '/cvCreator' },
       { as: 'Contact form', href: '/contactBackside' },

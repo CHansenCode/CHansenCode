@@ -16,17 +16,6 @@ export default function CvCreator({ ...props }) {
   const [formData, setFormData] = useState({ ...initFormData });
   const [activeId, setActiveId] = useState('');
 
-  async function toggleCreating() {
-    if (activeId && !controller.isCreating) {
-      clearIdAndFormdata();
-      setController({ ...controller, isCreating: true });
-    } else {
-      clearIdAndFormdata();
-      setController({ ...controller, isCreating: !controller.isCreating });
-    }
-  }
-
-  //#region   Data fetcher listener
   useEffect(() => {
     getAll();
   }, [dispatch]);
@@ -36,7 +25,6 @@ export default function CvCreator({ ...props }) {
   useEffect(() => {
     activePost && setFormData({ ...activePost });
   }, [activePost]);
-  //#endregion
 
   //#region   CRUD & DISPATCH
   async function getAll() {

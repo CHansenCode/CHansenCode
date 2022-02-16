@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = './api/auth';
+const url = '/api/auth';
 
 export const postOne = async formData => {
   try {

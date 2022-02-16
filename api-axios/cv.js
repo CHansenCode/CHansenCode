@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-//#region   MEDIA
-const url = './api/cv';
+const url = '/api/cv';
 
 export const getAll = async () => {
   try {
@@ -43,4 +42,3 @@ export const deleteOne = async id => {
     console.log(`Error: delete in "${url}" in "./api-axios/x.js"`);
   }
 };
-//#endregion

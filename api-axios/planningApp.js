@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = './api/planningApp';
+const url = '/api/planningApp';
 
 export const getAll = async () => {
   try {

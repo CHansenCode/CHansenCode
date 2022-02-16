@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = './api/slides';
+const url = '/api/slides';
 
 export const getAll = async () => {
   try {

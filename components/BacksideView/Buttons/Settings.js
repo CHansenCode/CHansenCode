@@ -3,15 +3,13 @@ import { Button } from 'components';
 
 import css from './style.module.scss';
 
-export const Settings = () => {
+export const Settings = ({ ...props }) => {
   return (
     <Button
-      size="2rem"
-      borderRadius="50%"
-      className={css.button}
-      active={!fold}
-      className="pc5b"
-      onClick={() => setFold(!fold)}
+      className={`pc3b ${css.button}`}
+      onClick={props.onClick}
+      disabled={props.disabled}
+      active={props.active}
     >
       <AiOutlineSetting size="1.5rem" />
     </Button>
