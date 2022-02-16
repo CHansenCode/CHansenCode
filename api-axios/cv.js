@@ -8,7 +8,7 @@ export const getAll = async () => {
     const { data } = await axios.get(url);
     return data;
   } catch (error) {
-    console.log(`Error: fetchAll from "${url}" in "./api-axios/x.js"`);
+    console.log(`Error: fetchAll from "${url}" in "./api-axios/x.js"`, error);
   }
 };
 export const postOne = async formData => {

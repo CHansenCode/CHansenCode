@@ -5,7 +5,7 @@ export const Delete = ({ ...props }) => {
   async function toggleIsDeleting() {
     props.setController({
       ...props.controller,
-      isDeleting: !props.controller.isEditing,
+      isDeleting: !props.controller.isDeleting,
     });
   }
   return <Button text="DEL" onClick={() => toggleIsDeleting()} />;

@@ -24,7 +24,6 @@ export const dashConstructor = [
       { as: 'webdesign', href: '/webdesign' },
       { as: 'about', href: '/about' },
       { as: 'contact', href: '/contact' },
-      { as: 'cv', href: '/cv?pid=sara' },
     ],
   },
 ];

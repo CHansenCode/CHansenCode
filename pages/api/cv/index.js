@@ -9,15 +9,9 @@ handler.use(middleware);
 //
 
 handler.get(async (req, res) => {
-  const { pid } = req.query;
+  const response = await getAll(req.db);
 
-  pid
-    ? (res.data = await findOne(req.db, pid))
-    : (res.data = await getAll(req.db));
-
-  res.data ? res.json(res.data) : res.status(400).json('no user found');
-
-  res.json(res.data);
+  res.json(response);
 });
 
 handler.post(async (req, res) => {
@@ -32,3 +26,13 @@ handler.post(async (req, res) => {
 });
 
 export default handler;
+
+// const { pid } = req.query;
+
+// pid
+//   ? (res.data = await findOne(req.db, pid))
+//   : (res.data = await getAll(req.db));
+
+// res.data ? res.json(res.data) : res.status(400).json('no user found');
+
+// res.json(res.data);

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { FormStyle, initController, initFormData } from 'page-components/cv';
 import { List, Item } from 'page-components/cv';
-import { FullSection, SectionMenu, Button, ObjectViewer } from 'components';
+import { FullSection, SectionMenu, Button, ControllerMenu } from 'components';
 import { Form, TypeInput, RichText } from 'components';
 
 import * as api from 'api-axios/cv';
@@ -42,7 +42,6 @@ export default function CvCreator({ ...props }) {
 
   const activePost = useSelector(s => s.cv.find((o, i) => o._id === activeId));
   useEffect(() => {
-    console.log('setFormData from activeId');
     activePost && setFormData({ ...activePost });
   }, [activePost]);
   //#endregion
@@ -162,18 +161,7 @@ export default function CvCreator({ ...props }) {
           )}
         </div>
 
-        <div>
-          <Button
-            text="DEL"
-            active={controller.isDeleting}
-            onClick={enableDeleting}
-          />
-          <Button
-            text="EDIT"
-            active={controller.isEditing}
-            onClick={enableEditing}
-          />
-        </div>
+        <ControllerMenu delete create edit {...props} />
       </SectionMenu>
 
       <div style={{ height: '100%' }}>

@@ -2,7 +2,6 @@ import nextConnect from 'next-connect';
 import middleware from 'middleware/database';
 
 import { getAll, postOne } from 'api-db/slides';
-import axios from 'axios';
 
 const handler = nextConnect();
 handler.use(middleware);
