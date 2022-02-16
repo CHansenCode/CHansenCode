@@ -1,7 +1,7 @@
 import nextConnect from 'next-connect';
 import middleware from 'middleware/database';
 
-import { findByIdAndUpdate, findByIdAndDelete, findOne } from 'api-db/cv';
+import { findByIdAndUpdate, findByIdAndDelete, findOneByWhom } from 'api-db/cv';
 
 const handler = nextConnect();
 handler.use(middleware);
@@ -12,9 +12,11 @@ handler.get(async (req, res) => {
   const { pid } = req.query;
 
   try {
-    res.json(pid);
-  } catch (error) {
-    res.status(400).json({ error: 'something wong' });
+    const cv = await findOneByWhom(req.db, pid);
+
+    res.json(cv);
+  } catch (e) {
+    res.status(400).json(e.message);
   }
 });
 
@@ -26,7 +28,7 @@ handler.patch(async (req, res) => {
 
     res.json(response);
   } catch (error) {
-    res.status(400).json({ error: 'something wong' });
+    res.status(400).json({ error: 'something wrong' });
   }
 });
 
@@ -38,7 +40,7 @@ handler.delete(async (req, res) => {
 
     res.json(response);
   } catch (error) {
-    res.status(400).json({ error: 'something wong' });
+    res.status(400).json({ error: 'something wrong' });
   }
 });
 

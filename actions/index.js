@@ -1,5 +1,6 @@
 // ** OCCUPATION
 export const GET_CV = 'GET_CV';
+export const GET_ONE_CV = 'GET_ONE_CV';
 export const CREATE_CV = 'CREATE_CV';
 export const PATCH_CV = 'PATCH_CV';
 export const DELETE_CV = 'DELETE_CV';

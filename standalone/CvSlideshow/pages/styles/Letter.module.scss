@@ -1,11 +1,22 @@
 .main {
   height: 100%;
+  width: 100%;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paper {
+  height: 100%;
   max-width: 700px;
   padding: 3rem;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: space-between;
+  gap: 2rem;
+
+  > :nth-last-child(1) {
+    margin-top: auto;
+  }
 }

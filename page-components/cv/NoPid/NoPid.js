@@ -1,15 +1,17 @@
 import { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
 
 import { Form, TypeInput, Button } from 'components';
 
-export const NoPid = () => {
-  const router = useRouter();
+import * as api from 'api/cv';
+
+export const NoPid = ({ ...props }) => {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState('');
 
   async function handleSubmit(e, formData) {
     e.preventDefault();
-    router.replace(`${router.pathname}/?pid=${formData}`);
+    formData.length > 1 && dispatch(api.findOneByWhom(formData));
   }
 
   return (
@@ -33,7 +35,12 @@ export const NoPid = () => {
 
             <br />
 
-            <Button width="100%" padding="0.5rem 1rem" text="submit" />
+            <Button
+              width="100%"
+              padding="0.5rem 1rem"
+              text="submit"
+              disabled={formData.length < 2 ? true : false}
+            />
           </Form>
         </div>
       </div>

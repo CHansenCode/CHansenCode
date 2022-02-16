@@ -20,13 +20,15 @@ export async function postOne(db, formData) {
   }
 }
 
-export async function findOne(db, whom) {
+export async function findOneByWhom(db, whom) {
   try {
-    const response = await db.collection(col).findOne({ whom: whom }); //res = {?}
+    const post = await db.collection(col).findOne({ whom: whom });
 
-    return response;
+    if (!post) throw `No cv found with key: ${whom}`;
+
+    return post;
   } catch (error) {
-    console.log(error);
+    console.log(`No cv found with key: ${whom}`);
   }
 }
 

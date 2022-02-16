@@ -6,30 +6,32 @@ import css from './styles/Letter.module.scss';
 export const Letter = ({ data }) => {
   return (
     <FadeIn>
-      <div className={`pc3b ${css.main}`}>
-        <header>
-          <h4 className="sc">Letter of motivation</h4>
-        </header>
+      <div className={css.main}>
+        <div className={`pc3b ${css.paper}`}>
+          <header>
+            <h4 className="sc">Letter of motivation</h4>
+          </header>
 
-        <div>
-          <Paragraph>
-            <RenderRichText data={data.richTextOne} />
-          </Paragraph>
+          <div>
+            <Paragraph>
+              <RenderRichText data={data.richTextOne} />
+            </Paragraph>
 
-          <Paragraph>
-            <RenderRichText data={data.richTextTwo} />
-          </Paragraph>
+            <Paragraph>
+              <RenderRichText data={data.richTextTwo} />
+            </Paragraph>
 
-          <Paragraph>
-            <RenderRichText data={data.richTextThree} />
-          </Paragraph>
+            <Paragraph>
+              <RenderRichText data={data.richTextThree} />
+            </Paragraph>
 
-          <Paragraph>
-            <RenderRichText data={data.richTextFour} />
-          </Paragraph>
+            <Paragraph>
+              <RenderRichText data={data.richTextFour} />
+            </Paragraph>
+          </div>
+
+          <p>Kind regards, Christoffer Hansen</p>
         </div>
-
-        <p>Kind regards, Christoffer Hansen</p>
       </div>
     </FadeIn>
   );

@@ -1,8 +1,15 @@
 import axios from 'axios';
 
-import { GET_CV, CREATE_CV, PATCH_CV, DELETE_CV, TOAST } from 'actions';
+import {
+  GET_CV,
+  GET_ONE_CV,
+  CREATE_CV,
+  PATCH_CV,
+  DELETE_CV,
+  TOAST,
+} from 'actions';
 
-const url = './api/slides';
+const url = './api/cv';
 
 export const getAll = () => async dispatch => {
   try {
@@ -33,6 +40,25 @@ export const postOne = formData => async dispatch => {
     dispatch({
       type: TOAST,
       payload: { type: 'alert', message: 'Failed to post' },
+    });
+  }
+};
+
+export const findOneByWhom = pid => async dispatch => {
+  try {
+    const { data } = await axios.get(`${url}/${pid}`);
+
+    if (!data) throw new Error(`No post matched key: _ ${pid} _`);
+
+    dispatch({
+      type: GET_ONE_CV,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: TOAST,
+      payload: { type: 'alert', message: error.message },
     });
   }
 };
@@ -73,3 +99,5 @@ export const deleteOne = id => async dispatch => {
     });
   }
 };
+
+// const { data } = await axios.patch(`${url}?pid=${pid ? pid : 'cow'}`);

@@ -81,8 +81,8 @@ export function Dev() {
               </Flex>
             </Fold>
 
-            <Fold title="Redux-store" fold={true}>
-              <Fold title="store.cv" fold={true}>
+            <Fold title="Redux-store" fold={false}>
+              <Fold title="store.cv" fold={false}>
                 <ObjectViewer
                   title="store.cv"
                   data={storeData.cv}

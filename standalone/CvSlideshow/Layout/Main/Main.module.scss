@@ -4,18 +4,29 @@
 
   overflow: hidden;
 
-  display: flex;
+  padding: 5% 0;
+
+  display: grid;
+  gap: 2rem;
+  grid-template:
+    'view' 1fr
+    'nav' auto / 1fr;
+
   align-items: center;
   justify-content: center;
 
   > div {
-    height: 90vh;
+    position: relative;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
     max-width: 1200px;
+  }
 
-    display: grid;
-    gap: 2rem;
-    grid-template:
-      'view' 1fr
-      'nav' auto / 1fr;
+  > nav {
+    height: 100%;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 }

@@ -1,4 +1,4 @@
-import { GET_CV, CREATE_CV, PATCH_CV, DELETE_CV } from 'actions';
+import { GET_CV, GET_ONE_CV, CREATE_CV, PATCH_CV, DELETE_CV } from 'actions';
 
 const initialProps = [];
 
@@ -6,6 +6,8 @@ const cvs = (cvPosts = initialProps, action) => {
   switch (action.type) {
     case GET_CV:
       return action.payload;
+    case GET_ONE_CV:
+      return [action.payload];
     case CREATE_CV:
       return [...cvPosts, action.payload];
     case PATCH_CV:
