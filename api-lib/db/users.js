@@ -3,7 +3,10 @@ const col = 'Users';
 export async function getAll(db) {
   try {
     const response = await db.collection(col).find().toArray(); //res = [...posts]
-    return response;
+
+    const data = response.map(u => ({ ...u, password: 'protected' }));
+
+    return data;
   } catch (error) {
     console.log(error);
   }

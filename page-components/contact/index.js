@@ -1,2 +1,3 @@
-export * from './init';
-export * from './Card';
+export * as init from './init';
+
+export * from './ContactForm';

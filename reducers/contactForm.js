@@ -1,10 +1,10 @@
-import { GET_CONTACT, DELETE_CONTACT } from 'actions';
+import { GET_CONTACTS, DELETE_CONTACT } from 'actions';
 
 const initialProps = [];
 
-const contact = (posts = initialProps, action) => {
+const contactForm = (posts = initialProps, action) => {
   switch (action.type) {
-    case GET_CONTACT:
+    case GET_CONTACTS:
       return action.payload;
     case DELETE_CONTACT:
       return posts.filter(p => !(p._id === action.payload));
@@ -13,4 +13,4 @@ const contact = (posts = initialProps, action) => {
   }
 };
 
-export default contact;
+export default contactForm;

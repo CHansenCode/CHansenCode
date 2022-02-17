@@ -1,0 +1,12 @@
+.form {
+  height: 100%;
+}
+
+.header {
+  display: grid;
+  gap: 2rem;
+  grid-template:
+    'input input' 2rem
+    'input input' 2rem
+    'input input' 2rem / 1fr 1fr;
+}

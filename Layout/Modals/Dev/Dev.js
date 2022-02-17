@@ -82,35 +82,7 @@ export function Dev() {
             </Fold>
 
             <Fold title="Redux-store" fold={false}>
-              <Fold title="store.cv" fold={false}>
-                <ObjectViewer
-                  title="store.cv"
-                  data={storeData.cv}
-                  fontSize="0.9rem"
-                />
-              </Fold>
-              <Fold title="store.media" fold={true}>
-                <ObjectViewer
-                  title="store.media"
-                  data={storeData.media}
-                  fontSize="0.9rem"
-                />
-              </Fold>
-              <Fold title="store.toast" fold={true}>
-                <ObjectViewer
-                  title="store.toast"
-                  data={storeData.toast}
-                  fontSize="0.9rem"
-                />
-              </Fold>
-              <Fold title="store.contact" fold={true}>
-                <ObjectViewer
-                  title="store.toast"
-                  data={storeData.contact}
-                  fontSize="0.9rem"
-                />
-              </Fold>
-              <Fold title="store" fold={true}>
+              <Fold title="store" fold={false}>
                 <ObjectViewer
                   title="store"
                   data={storeData}

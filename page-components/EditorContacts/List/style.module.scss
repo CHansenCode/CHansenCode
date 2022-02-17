@@ -1,13 +1,22 @@
-.card {
+.list {
+  width: 100%;
+
+  overflow: auto;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
   position: relative;
+  height: min-content;
   width: 300px;
   max-width: 300px;
 
   margin: 0 0.5rem 0.5rem 0;
   padding: 1rem;
 }
-
-.card p {
+.item p {
   margin-left: 0.75rem;
 }
 
@@ -26,15 +35,6 @@
   &:hover {
     background: rgba(255, 0, 0, 0.05);
   }
-}
-
-.white_fade {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-
-  height: 3rem;
-  width: 100%;
 }
 
 .hover_box {

@@ -8,7 +8,7 @@ export const Settings = () => {
   const router = useRouter();
   const { pathname } = useRouter();
 
-  let path = '/settings';
+  let path = '/dashboard/settings';
   let active = pathname === path;
 
   async function goTo() {

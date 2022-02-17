@@ -16,7 +16,7 @@ export const TOAST = 'TOAST';
 export const DELETE_TOAST = 'DELETE_TOAST';
 
 // ** CONTACT FORM
-export const GET_CONTACT = 'GET_CONTACT';
+export const GET_CONTACTS = 'GET_CONTACTS';
 export const DELETE_CONTACT = 'DELETE_CONTACT';
 
 // ** PLANNING APP
@@ -32,3 +32,9 @@ export const GET_SLIDE = 'GET_SLIDE';
 export const CREATE_SLIDE = 'CREATE_SLIDE';
 export const PATCH_SLIDE = 'PATCH_SLIDE';
 export const DELETE_SLIDE = 'DELETE_SLIDE';
+
+// ** USERS
+export const GET_USERS = 'GET_USERS';
+export const CREATE_USER = 'CREATE_USER';
+export const PATCH_USER = 'PATCH_USER';
+export const DELETE_USER = 'DELETE_USER';

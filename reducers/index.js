@@ -14,15 +14,17 @@ import { combineReducers } from 'redux';
 import toast from './toast';
 import cv from './cv';
 import media from './media';
-import contact from './contact';
+import contactForm from './contactForm';
 import planningApp from './planningApp';
 import slides from './slides';
+import users from './users';
 
 export const reducers = combineReducers({
   planningApp,
-  contact,
+  contactForm,
   toast,
   cv,
   media,
   slides,
+  users,
 });
