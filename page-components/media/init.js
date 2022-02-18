@@ -1,4 +1,11 @@
-export const initForm = {
+export const contr = {
+  isCreating: false,
+  isEditing: false,
+  isDeleting: false,
+  listView: 'list',
+};
+
+export const form = {
   title: '',
   alt: '',
   category: '',

@@ -28,17 +28,15 @@ export const Score = ({ type, title, score, info }) => {
   };
   return (
     <div className={css.score_card}>
-      <div className={css.icon}>
+      <div className={`${css.icon}`}>
         <IconSwitch type={type} />
       </div>
 
-      <h6>{title}</h6>
+      <h6 className="sc">{title}</h6>
 
       <div className={`pc3b ${css.score_Sheet}`}>
         <div style={iStyle} className={css.score_indicator} />
       </div>
-
-      <h5 className="pc3b">!</h5>
     </div>
   );
 };
@@ -58,11 +56,7 @@ const IconSwitch = ({ type }) => {
       return <CgSweden />;
       break;
     case 'den':
-      return (
-        <div style={{ color: 'red', fill: 'red' }}>
-          <CgSweden />
-        </div>
-      );
+      return <CgSweden />;
       break;
     case 'gb':
       return <GiUnionJack />;

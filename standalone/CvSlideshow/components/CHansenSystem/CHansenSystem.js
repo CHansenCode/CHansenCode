@@ -18,21 +18,19 @@ export const CHansenSystem = ({ ...props }) => {
         <h3 className="sc">Portfolio - webdesign</h3>
       </header>
 
-      {/* <Header {...props} /> */}
-
-      <div className={css.test}>
-        <h4>FEATURES:</h4>
-        {apps.map((p, i) => (
-          <div key={`p${i}${p.title}`}>cow</div>
-        ))}
-      </div>
+      <ToggleWidth {...props}>
+        <Cards {...props} />
+        <Details {...props} />
+      </ToggleWidth>
     </div>
   );
 };
 
 {
-  /* <ToggleWidth {...props}>
-  <Cards {...props} />
-  <Details {...props} />
-</ToggleWidth>; */
+  /* <div className={css.test}>
+        <h4>FEATURES:</h4>
+        {apps.map((p, i) => (
+          <div key={`p${i}${p.title}`}>cow</div>
+        ))}
+      </div> */
 }

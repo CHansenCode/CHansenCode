@@ -1,6 +1,9 @@
 import { useState } from 'react';
 
-import { Cv, Letter, Web, Contact, Portfolio, PortfolioArch } from './pages';
+import { Cv, Letter, Web, Contact } from './pages';
+
+//testing
+import { Webdesign, Portfolio, PortfolioArch } from './pages';
 
 import { Layout } from './Layout';
 
@@ -11,6 +14,7 @@ export default function CvSlideshow({ data, ...props }) {
     'cv',
     'letter of motivation',
     'my webdev',
+    'Webdesign',
     'portfolio',
     'portfolioArch',
     'contact form',
@@ -28,6 +32,7 @@ export default function CvSlideshow({ data, ...props }) {
       {page === 1 && <Cv {...props} />}
       {page === 2 && <Letter data={data} {...props} />}
       {page === 3 && <Web {...props} />}
+      {page === 4 && <Webdesign {...props} />}
       {page === 4 && <Portfolio {...props} />}
       {page === 5 && <PortfolioArch {...props} />}
       {page === 6 && <Contact {...props} />}

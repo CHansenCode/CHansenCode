@@ -1,7 +1,5 @@
-export * from './List';
-export * from './ListHeader';
-export * from './Item';
+export * as init from './init';
 
-export * from './Fixed'; //fixed container with toggle show/hidden prop
-
-export * from './initForm';
+export * as List from './List';
+export * from './Form';
+export * from './Fixed';

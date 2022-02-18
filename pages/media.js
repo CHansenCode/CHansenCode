@@ -44,82 +44,12 @@ export default function MediaDb({ ...props }) {
     }
   }
 
-  useEffect(() => getAll(), [dispatch]);
+  useEffect(() => dispatch(api.getAll()), [dispatch]);
   const storeData = useSelector(s => s.media);
   const activePost = useSelector(s =>
     s.media.find((o, i) => o._id === activeId),
   );
   useEffect(() => activePost && setFormData({ ...activePost }), [activePost]);
-
-  //#region   CRUD
-  async function getAll() {
-    try {
-      const data = await api.getAll();
-      dispatch({ type: GET_MEDIA, payload: data });
-    } catch (error) {
-      console.log('Error in "pages/media" dispatching data => ', error);
-    }
-  }
-  async function postOne(formData) {
-    try {
-      const data = await api.postOne(formData);
-      dispatch({ type: CREATE_MEDIA, payload: data });
-      clear();
-      dispatch({
-        type: TOAST,
-        payload: { type: 'success', message: 'Post created!' },
-      });
-    } catch (error) {
-      console.log('ErrorIn: pages/media, action: postMedia', error);
-      dispatch({
-        type: TOAST,
-        payload: {
-          type: 'warning',
-          message: 'Post attempt failed, please try again.',
-        },
-      });
-    }
-  }
-  async function deleteOne(id) {
-    try {
-      const data = await api.deleteOne(id);
-      dispatch({ type: DELETE_MEDIA, payload: data._id });
-      dispatch({
-        type: TOAST,
-        payload: { type: 'success', message: 'Post deleted!' },
-      });
-    } catch (error) {
-      console.log('cow');
-      dispatch({
-        type: TOAST,
-        payload: {
-          type: 'warning',
-          message: 'Delete attempt failed, please try again.',
-        },
-      });
-    }
-  }
-  async function patchOne(id, formData) {
-    try {
-      const data = await api.patchOne(id, formData);
-      dispatch({ type: PATCH_MEDIA, payload: data });
-      clear();
-      dispatch({
-        type: TOAST,
-        payload: { type: 'success', message: 'Post updated!' },
-      });
-    } catch (error) {
-      console.log('cow');
-      dispatch({
-        type: TOAST,
-        payload: {
-          type: 'warning',
-          message: 'Update attempt failed, please try again.',
-        },
-      });
-    }
-  }
-  //#endregion
 
   async function handleChange(e, objKey) {
     setFormData({ ...formData, [objKey]: e.target.value });
@@ -128,9 +58,9 @@ export default function MediaDb({ ...props }) {
     e.preventDefault();
 
     if (activeId) {
-      patchOne(activeId, formData);
+      dispatch(api.patchOne(activeId, formData));
     } else {
-      postOne(formData);
+      dispatch(api.postOne(formData));
     }
   }
   async function clear(e) {
@@ -256,7 +186,7 @@ export default function MediaDb({ ...props }) {
                     ? () => selectProject(p._id)
                     : console.log('Toggle deleting to set id')
                 }
-                onDelete={() => deleteOne(p._id)}
+                onDelete={() => dispatch(api.deleteOne(p._id))}
                 {...props}
               />
             ))

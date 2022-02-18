@@ -31,9 +31,9 @@ export const Card = ({ i, top, cardData, left, setActiveId, ...props }) => {
           <></>
         ) : (
           <>
-            <h6 className={css.prefix}>{cardData.prefix}.</h6>
             <h5 className={`${css.name} sc`}>{props.name}</h5>
             <h6 className={css.suffix}>{`.design`}</h6>
+            <h6>{`/ ${cardData.prefix}`}</h6>
           </>
         )}
       </div>

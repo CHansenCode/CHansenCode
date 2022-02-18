@@ -1,25 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { initContr } from 'config/initData';
-import { List, ListHeader, Item, initForm, Fixed } from 'page-components/media';
+import { init, List, FixedForm } from 'page-components/media';
 import { BacksideView, Menu, Controllers } from 'components/BacksideView';
 import { Button, Flex, Cimage, Loading } from 'components';
-import { Form, Input, Textarea } from 'components';
 
 import * as api from 'api-lib/dispatch/media';
 
-import {
-  GET_MEDIA,
-  CREATE_MEDIA,
-  PATCH_MEDIA,
-  DELETE_MEDIA,
-  TOAST,
-} from 'actions';
-
 export default function Media({ ...props }) {
-  const [controller, setController] = useState({ ...initContr });
-  const [formData, setFormData] = useState({ ...initForm });
+  const [controller, setController] = useState({ ...init.contr });
+  const [formData, setFormData] = useState({ ...init.form });
   const [activeId, setActiveId] = useState('');
 
   const dispatch = useDispatch();
@@ -29,87 +19,18 @@ export default function Media({ ...props }) {
   useEffect(() => dispatch(api.getAll()), [dispatch]);
   useEffect(() => activePost && setFormData({ ...activePost }), [activePost]);
 
-  async function postOne(formData) {
-    try {
-      const data = await api.postOne(formData);
-      dispatch({ type: CREATE_MEDIA, payload: data });
-      clear();
-      dispatch({
-        type: TOAST,
-        payload: { type: 'success', message: 'Post created!' },
-      });
-    } catch (error) {
-      console.log('ErrorIn: pages/media, action: postMedia', error);
-      dispatch({
-        type: TOAST,
-        payload: {
-          type: 'warning',
-          message: 'Post attempt failed, please try again.',
-        },
-      });
-    }
-  }
-  async function deleteOne(id) {
-    try {
-      const data = await api.deleteOne(id);
-      dispatch({ type: DELETE_MEDIA, payload: data._id });
-      dispatch({
-        type: TOAST,
-        payload: { type: 'success', message: 'Post deleted!' },
-      });
-    } catch (error) {
-      console.log('cow');
-      dispatch({
-        type: TOAST,
-        payload: {
-          type: 'warning',
-          message: 'Delete attempt failed, please try again.',
-        },
-      });
-    }
-  }
-  async function patchOne(id, formData) {
-    try {
-      const data = await api.patchOne(id, formData);
-      dispatch({ type: PATCH_MEDIA, payload: data });
-      clear();
-      dispatch({
-        type: TOAST,
-        payload: { type: 'success', message: 'Post updated!' },
-      });
-    } catch (error) {
-      console.log('cow');
-      dispatch({
-        type: TOAST,
-        payload: {
-          type: 'warning',
-          message: 'Update attempt failed, please try again.',
-        },
-      });
-    }
-  }
-
   async function handleChange(e, objKey) {
     setFormData({ ...formData, [objKey]: e.target.value });
-  }
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    if (activeId) {
-      patchOne(activeId, formData);
-    } else {
-      postOne(formData);
-    }
   }
   async function clear(e) {
     e && e.preventDefault();
     setController({ ...controller, isCreating: false });
-    setFormData({ ...initForm });
+    setFormData({ ...init.form });
     setActiveId('');
   }
   async function clearIdAndFormdata() {
     setActiveId('');
-    setFormData({ ...initForm });
+    setFormData({ ...init.form });
   }
   async function toggleCreating() {
     if (activeId && !controller.isCreating) {
@@ -134,16 +55,34 @@ export default function Media({ ...props }) {
   props = {
     controller,
     setController,
+    formData,
+    setFormData,
+    activeId,
+    setActiveId,
   };
 
   return (
     <>
       <BacksideView hasMenu={true}>
         <Menu title="Media Database">
+          <span>
+            <Button
+              text="view"
+              onClick={() =>
+                setController({
+                  ...controller,
+                  listView: (controller.listView = 'thumb' ? 'list' : 'thumb'),
+                })
+              }
+            />
+          </span>
+
           <Controllers delete={true} create={true} {...props} />
         </Menu>
 
-        <Fixed toggle={controller.isCreating || activeId ? true : false}>
+        <FixedForm {...props} />
+
+        {/* <Fixed toggle={controller.isCreating || activeId ? true : false}>
           <Form
             title={activeId ? `Editing: ${activeId}` : 'creating new'}
             onSubmit={e => e.preventDefault()}
@@ -191,61 +130,9 @@ export default function Media({ ...props }) {
               <Button padding="1rem" text={'clear'} onClick={e => clear(e)} />
             </Flex>
           </Form>
-        </Fixed>
+        </Fixed> */}
 
-        <List>
-          <ListHeader>
-            <Button width="2rem" padding="0" />
-            <Button
-              width="9rem"
-              margin="0 1rem"
-              padding="0.25rem 0"
-              text="title"
-            />
-            <Button
-              width="9rem"
-              margin="0 1rem"
-              padding="0.25rem 0"
-              text={`category`}
-            />
-            <Button
-              width="9rem"
-              margin="0 1rem"
-              padding="0.25rem 0"
-              text={`project`}
-            />
-            <Button
-              width="9rem"
-              margin="0 1rem"
-              padding="0.25rem 0"
-              text={`Creation date :`}
-            />
-          </ListHeader>
-
-          {store.length ? (
-            store.map((p, i) => (
-              <Item
-                className={`${i % 2 ? 'pc05bg' : ''}${
-                  activeId === p._id ? ` sc sc1bg` : ''
-                }`}
-                key={p._id}
-                data={p}
-                onClick={
-                  !controller.isDeleting
-                    ? () => selectProject(p._id)
-                    : console.log('Toggle deleting to set id')
-                }
-                onDelete={() => deleteOne(p._id)}
-                {...props}
-              />
-            ))
-          ) : (
-            <Flex>
-              <Loading />
-              <h4>Fetching data...</h4>
-            </Flex>
-          )}
-        </List>
+        <List.Map mapData={store} {...props} />
       </BacksideView>
     </>
   );

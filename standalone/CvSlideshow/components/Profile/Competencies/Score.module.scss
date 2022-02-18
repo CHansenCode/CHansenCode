@@ -1,18 +1,25 @@
 .score_card {
-  height: 1rem;
+  height: 1.2rem;
   width: 100%;
-  border: thin solid dashed;
 
   display: grid;
   align-items: center;
-  grid-template: 'icon title score info' 1fr / 2rem 5rem 1fr 1rem;
+  grid-template: 'icon title score' 1fr / 2rem 5rem 1fr;
 
   margin-bottom: 0.25rem;
 
   .icon {
-    height: 1rem;
-    width: 1rem;
+    height: 1.2rem;
+    width: 1.2rem;
     overflow: hidden;
+
+    display: flex;
+    align-items: center;
+
+    svg {
+      height: 1rem;
+      width: 1rem;
+    }
   }
 
   > h6 {

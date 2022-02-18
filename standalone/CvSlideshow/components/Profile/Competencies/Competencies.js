@@ -62,15 +62,15 @@ const Scores = ({ category }) => {
           <div>
             <Score title="React" type="react" score={90} />
             <Score title="Next.js" type="next" score={89} />
-            <Score title="Vercel" type="vercel" score={95} />
-            <Score title="JS" type="js" score={91} />
+            <Score title="Vercel" type="vercel" score={84} />
+            <Score title="JS" type="js" score={90} />
           </div>
 
           <div>
-            <Score title="testing" type="blender" score={22} />
-            <Score title=".php" type="" score={84} />
-            <Score title="Vray" type="" score={84} />
-            <Score title="TS" type="ts" score={32} />
+            <Score title=".svg anim" type="" score={85} />
+            <Score title=".php" type="" score={45} />
+            <Score title="testing" type="" score={25} />
+            <Score title="TS" type="ts" score={30} />
           </div>
         </>
       );
@@ -83,7 +83,7 @@ const Scores = ({ category }) => {
             <Score title="Swedish" type="swe" score={100} />
             <Score title="English" type="gb" score={100} />
             <Score title="Danish" type="swe" score={65} />
-            <div style={{ height: '1rem', marginBottom: '0.25rem' }} />
+            <div style={{ height: '1.2rem', marginBottom: '0.25rem' }} />
           </div>
 
           <div></div>
