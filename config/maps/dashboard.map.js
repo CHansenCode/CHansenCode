@@ -2,11 +2,11 @@ export const dashConstructor = [
   {
     category: 'Backside',
     pages: [
-      { as: 'Contact Form', href: '/backside/contactForm' },
-      { as: 'CV editor', href: '/backside/editorCv' },
+      { as: 'Contact Form', href: '/back/contactForm' },
+      { as: 'CV editor', href: '/back/editorCv' },
+      { as: 'Slides editor', href: '/back/editorSlides' },
       { as: 'Media DB', href: '/media' },
       { as: 'Planning app', href: '/planningApp' },
-      { as: 'Slides creator', href: '/slidesApp' },
     ],
   },
   {

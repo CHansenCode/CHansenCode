@@ -1,0 +1,82 @@
+.page {
+  height: 100%;
+  width: 100%;
+}
+
+.menu {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.list {
+  width: 100%;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  position: relative;
+  width: 14rem;
+  height: 10rem;
+  padding: 1rem;
+
+  margin: 0 0.5rem 0.5rem 0;
+
+  .title {
+    height: 2rem;
+  }
+  .card {
+    height: 100%;
+    width: 100%;
+
+    display: grid;
+    grid-template:
+      'title' 2rem
+      'body' 1fr
+      'footer' auto / 1fr;
+  }
+}
+
+.delete_button {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.item_new {
+  color: gray;
+
+  width: 14rem;
+  height: 10rem;
+  padding: 1rem;
+
+  margin: 0 0.5rem 0.5rem 0;
+
+  input {
+    font-size: 0.9rem;
+  }
+}
+
+.index {
+  display: flex;
+  justify-content: flex-end;
+  width: 3.5rem;
+  margin-right: 0.5rem;
+
+  > :nth-child(2) {
+    width: 1rem;
+    margin-left: 0.35rem;
+    margin-right: -0.25rem;
+  }
+  > :nth-child(3) {
+    width: 1rem;
+  }
+}

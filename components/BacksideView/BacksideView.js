@@ -8,8 +8,6 @@ export const BacksideView = ({ ...props }) => {
   let isParent = props.children ? true : false;
   let hasMenu = props.hasMenu ? true : false;
 
-  console.log(hasMenu);
-
   return (
     <>
       <div id="main_view_bs" style={iStyle} className={css.main}>

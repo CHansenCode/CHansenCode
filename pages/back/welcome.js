@@ -1,9 +1,11 @@
 import { BacksideView } from 'components/BacksideView';
-import { Flex, PlannedFeature } from 'components';
+import { Flex, PlannedFeature, Empty } from 'components';
 
 export default function Welcome() {
   return (
     <BacksideView>
+      <Empty height="20vh" />
+
       <Flex flexDirection="column" center={true}>
         <Flex height="min-content" maxWidth="600px" flexDirection="column">
           <h3 className="sc">Backside homepage</h3>

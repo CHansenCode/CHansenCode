@@ -8,7 +8,7 @@ export const Home = () => {
   const router = useRouter();
   const { pathname } = useRouter();
 
-  let path = '/welcome';
+  let path = '/back/welcome';
   let active = pathname === path;
 
   async function goTo() {

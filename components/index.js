@@ -8,6 +8,7 @@ export * from './AnimatedLogo';
 export * from './Logo';
 export * from './LayeredImage';
 export * from './Loading';
+export * from './BsLoading'; //Loading wrapped in full paged flex-center component
 export * from './PlannedFeature';
 export * from './RenderRichText';
 export * from './Diode';

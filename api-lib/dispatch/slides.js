@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { uniqueIdGenerator } from 'lib';
 
 import {
   GET_SLIDES,
@@ -26,10 +27,10 @@ export const getAll = () => async dispatch => {
 };
 
 export const postOne = formData => async dispatch => {
-  let user = await axios.get('./api/user');
+  let user = await axios.get('/api/user');
 
   formData = {
-    ...formData,
+    title: formData,
     createdBy: user.data.username,
     group: [user.data.group],
     users: [user.data.username],
@@ -54,9 +55,9 @@ export const postOne = formData => async dispatch => {
   }
 };
 
-export const patchOne = (id, formData) => async dispatch => {
+export const patchOne = (formData, title) => async dispatch => {
   try {
-    const { data } = await axios.patch(`${url}/${id}`, formData);
+    const { data } = await axios.patch(`${url}/${formData._id}`, formData);
 
     dispatch({ type: PATCH_SLIDE, payload: data });
 
@@ -87,6 +88,57 @@ export const deleteOne = id => async dispatch => {
     dispatch({
       type: TOAST,
       payload: { type: 'alert', message: 'Failed to delete post' },
+    });
+  }
+};
+
+export const createSlide = (formData, title) => async dispatch => {
+  let newSlide = {
+    title: title,
+    id: uniqueIdGenerator(),
+    subtitle: '',
+    objectFit: 'cover',
+    rich: [{ type: 'paragraph', children: [{ text: '' }] }],
+  };
+
+  formData.slides = [...formData.slides, newSlide];
+
+  try {
+    const { data } = await axios.patch(`${url}/${formData._id}`, formData);
+
+    dispatch({ type: PATCH_SLIDE, payload: data });
+
+    dispatch({
+      type: TOAST,
+      payload: { type: 'success', message: 'Updated post in db' },
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: TOAST,
+      payload: { type: 'alert', message: 'Failed to update post' },
+    });
+  }
+};
+
+export const deleteSlide = (formData, slideId) => async dispatch => {
+  let filter = await formData.slides.filter(s => !(s.id === slideId));
+  formData.slides = filter;
+
+  try {
+    const { data } = await axios.patch(`${url}/${formData._id}`, formData);
+
+    dispatch({ type: PATCH_SLIDE, payload: data });
+
+    dispatch({
+      type: TOAST,
+      payload: { type: 'success', message: 'Updated post in db' },
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: TOAST,
+      payload: { type: 'alert', message: 'Failed to update post' },
     });
   }
 };

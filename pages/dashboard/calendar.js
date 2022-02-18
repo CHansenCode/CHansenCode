@@ -1,12 +1,13 @@
 import { BacksideView } from 'components/BacksideView';
-import { Flex, PlannedFeature } from 'components';
+import { Flex, PlannedFeature, Empty } from 'components';
 
-export default function Intercom({ ...props }) {
+export default function CalendarPage({ ...props }) {
   return (
     <BacksideView>
+      <Empty height="20vh" />
       <Flex flexDirection="column" center={true}>
         <Flex height="min-content" maxWidth="600px" flexDirection="column">
-          <h3 className="sc">Intercom</h3>
+          <h3 className="sc">Calendar</h3>
 
           <br />
 
@@ -22,12 +23,12 @@ export default function Intercom({ ...props }) {
           <div style={{ padding: '1rem' }}>
             <h4 style={{ marginBottom: '1rem' }}>Planned features :</h4>
             <PlannedFeature
-              title="Intercom / Chat"
-              text={`This will be a chat page where you can connect to team-members and customers alike.`}
+              title="Calendar"
+              text={`Calendar focused on being an interactive tool in conjunction with project planning and progress`}
             />
             <PlannedFeature
-              title="Project chat / webhooks"
-              text={`Discussion and updates regarding project progress and cooperation`}
+              title="Todays-To-Do-List"
+              text={`Advanced feature: Generate to-do list for the day based on hours left to deadline in projects`}
             />
           </div>
         </Flex>

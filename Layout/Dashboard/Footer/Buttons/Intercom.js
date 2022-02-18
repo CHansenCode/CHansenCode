@@ -8,7 +8,7 @@ export const Intercom = () => {
   const router = useRouter();
   const { pathname } = useRouter();
 
-  let path = '/intercom';
+  let path = '/dashboard/intercom';
   let active = pathname === path;
 
   async function goTo() {

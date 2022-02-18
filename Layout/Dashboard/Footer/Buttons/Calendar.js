@@ -8,7 +8,7 @@ export const Calendar = () => {
   const router = useRouter();
   const { pathname } = useRouter();
 
-  let path = '/calendar';
+  let path = '/dashboard/calendar';
   let active = pathname === path;
 
   async function goTo() {

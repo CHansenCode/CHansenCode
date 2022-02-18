@@ -234,6 +234,12 @@ export const GlobalStyles = ({ colors }) => {
           .alert-b3 {
             border: thin solid rgba(${colors.alert}, 0.3);
           }
+          .alert-b5 {
+            border: thin solid rgba(${colors.alert}, 0.5);
+          }
+          .alert-b7 {
+            border: thin solid rgba(${colors.alert}, 0.7);
+          }
           //#endregion
         `}
       </style>

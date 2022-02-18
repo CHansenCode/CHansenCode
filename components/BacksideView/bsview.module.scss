@@ -58,9 +58,19 @@
 }
 
 .page_menu {
+  height: 100%;
+  width: 100%;
   grid-area: page;
   display: flex;
   align-items: center;
+
+  > * {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+  }
 }
 
 .controllers {
