@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Nav, LandingPage } from 'page-components/slidesFront';
-import { View, KeyEvents, Slide } from 'page-components/slidesFront';
+import { Nav, LandingPage } from 'page-components/viewSlides';
+import { View, KeyEvents, Slide } from 'page-components/viewSlides';
 
 import * as api from 'api-lib/dispatch/slides';
 

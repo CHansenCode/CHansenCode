@@ -12,11 +12,17 @@ export const Main = ({ children, ...props }) => {
 
   const iStyle = {
     marginLeft:
-      (router.pathname === '/cv' || router.pathname === '/slides') && 0,
+      (router.pathname === '/viewer/cv' ||
+        router.pathname === '/viewer/slides') &&
+      0,
     marginBottom:
-      (router.pathname === '/cv' || router.pathname === '/slides') && 0,
+      (router.pathname === '/viewer/cv' ||
+        router.pathname === '/viewer/slides') &&
+      0,
     width:
-      (router.pathname === '/cv' || router.pathname === '/slides') && '100vw',
+      (router.pathname === '/viewer/cv' ||
+        router.pathname === 'viewer/slides') &&
+      '100vw',
   };
 
   return (

@@ -1,5 +1,4 @@
 import { TypeInput, Label } from 'components';
-import { initController } from 'page-components/cv';
 
 import css from './Project.module.scss';
 

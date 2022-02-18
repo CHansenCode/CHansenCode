@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 
 import CvSlideshow from 'standalone/CvSlideshow';
-import { NoPid } from 'page-components/cv/NoPid';
+import { NoPid } from 'standalone/CvSlideshow/components';
 
 import * as api from 'api-lib/dispatch/cv';
 

@@ -1,23 +1,28 @@
 export const dashConstructor = [
   {
-    category: 'Backside',
+    category: 'Editors',
     pages: [
+      { as: 'PlanningApp', href: '/back/editorPlanning' },
+      { as: 'Slides', href: '/back/editorSlides' },
+      { as: 'CV', href: '/back/editorCv' },
+    ],
+  },
+  {
+    category: 'Databases',
+    pages: [
+      { as: 'Media Gallery', href: '/back/media' },
       { as: 'Contact Form', href: '/back/contactForm' },
-      { as: 'CV editor', href: '/back/editorCv' },
-      { as: 'Slides editor', href: '/back/editorSlides' },
-      { as: 'Media DB', href: '/media' },
-      { as: 'Planning app', href: '/planningApp' },
     ],
   },
   {
     category: 'View apps',
     pages: [
-      { as: 'cv', href: '/cv' },
-      { as: 'Slides', href: '/slides' },
+      { as: 'cv', href: '/viewer/cv' },
+      { as: 'Slides', href: '/viewer/slides' },
     ],
   },
   {
-    category: 'Pages',
+    category: 'Frontside',
     pages: [
       { as: 'home', href: '/' },
       { as: 'architecture', href: '/architecture' },

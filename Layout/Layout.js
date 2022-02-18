@@ -43,7 +43,8 @@ export function Layout({ ...props }) {
       <Meta {...props} />
       <GlobalStyles {...props} />
 
-      {router.pathname === '/cv' || router.pathname === '/slides' ? (
+      {router.pathname === '/viewer/cv' ||
+      router.pathname === '/viewer/slides' ? (
         <></>
       ) : (
         <>

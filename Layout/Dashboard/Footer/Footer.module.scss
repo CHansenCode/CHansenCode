@@ -8,6 +8,10 @@
     'toggles' 3rem
     'navigation' 3rem
     'logOut' 3rem / 1fr;
+
+  button:focus {
+    outline: transparent;
+  }
 }
 
 .button_menu {

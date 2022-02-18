@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { BacksideView, Menu, Controllers } from 'components/BacksideView';
-import { FullSection, SectionMenu } from 'components';
 import { Flex, Button, Empty } from 'components';
 
 import { List, Item } from 'page-components/planningApp';
@@ -14,13 +13,13 @@ import { useDebouncedCallback } from 'lib';
 import * as api from 'api-lib/dispatch/planningApp';
 
 export default function PlanningApp() {
-  const dispatch = useDispatch();
-
   //#region STATES
   const [controller, setController] = useState({ ...initController });
   const [formData, setFormData] = useState({ ...initFormData });
   const [activeId, setActiveId] = useState('');
   //#endregion
+
+  const dispatch = useDispatch();
 
   //#region DATA LISTENERS
   const storeData = useSelector(s => s.planningApp);
@@ -80,7 +79,7 @@ export default function PlanningApp() {
           )}
         </span>
 
-        <Controllers {...props} />
+        <Controllers edit={true} delete={true} {...props} />
       </Menu>
 
       {activeId ? (

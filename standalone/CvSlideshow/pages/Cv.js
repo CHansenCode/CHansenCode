@@ -16,7 +16,7 @@ export const Cv = ({ ...props }) => {
   );
 
   async function getOccupations() {
-    const { data } = await axios.get('./api/cv/occupations');
+    const { data } = await axios.get('/api/cv/occupations');
     setOccupations(data);
   }
   useEffect(() => getOccupations(), []);
