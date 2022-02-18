@@ -6,6 +6,11 @@ import {
   SiBlender,
   SiAutodesk,
   SiVisualstudiocode,
+  SiReact,
+  SiNextdotjs,
+  SiVercel,
+  SiJavascript,
+  SiTypescript,
 } from 'react-icons/si';
 import { CgSweden } from 'react-icons/cg';
 import { GiUnionJack } from 'react-icons/gi';
@@ -67,6 +72,21 @@ const IconSwitch = ({ type }) => {
       break;
     case 'vscode':
       return <SiVisualstudiocode />;
+      break;
+    case 'react':
+      return <SiReact />;
+      break;
+    case 'next':
+      return <SiNextdotjs />;
+      break;
+    case 'vercel':
+      return <SiVercel />;
+      break;
+    case 'js':
+      return <SiJavascript />;
+      break;
+    case 'ts':
+      return <SiTypescript />;
       break;
 
     default:

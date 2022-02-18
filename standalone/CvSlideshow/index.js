@@ -6,7 +6,6 @@ import { Layout } from './Layout';
 
 export default function CvSlideshow({ data, ...props }) {
   const [page, setPage] = useState(1);
-  const [activeId, setActiveId] = useState('');
 
   const pages = [
     'cv',
@@ -21,8 +20,6 @@ export default function CvSlideshow({ data, ...props }) {
     ...props,
     page,
     setPage,
-    activeId,
-    setActiveId,
     pages,
   };
 

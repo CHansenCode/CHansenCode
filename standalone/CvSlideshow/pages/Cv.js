@@ -1,20 +1,18 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-import { Flex, Label, MapTags, Paragraph, FadeIn } from '../components';
+import { FadeIn, Details, Timeline, Profile } from '../components';
 
 import css from './styles/Cv.module.scss';
-import { Details, Timeline, Profile } from '../components';
-import axios from 'axios';
 
 export const Cv = ({ ...props }) => {
   const [occupations, setOccupations] = useState([]);
-  const [activePost, setActivePost] = useState({ ...initData });
+  const [activePost, setActivePost] = useState(null);
+  const [activeId, setActiveId] = useState('');
 
   useEffect(
-    () =>
-      props.activeId &&
-      setActivePost(occupations.find((p, i) => p._id === props.activeId)),
-    [props.activeId],
+    () => setActivePost(occupations.find((p, i) => p._id === activeId)),
+    [activeId],
   );
 
   async function getOccupations() {
@@ -28,28 +26,12 @@ export const Cv = ({ ...props }) => {
       <div className={css.main}>
         <Profile />
 
-        <Details data={activePost && activePost} />
+        <Details data={activePost} />
 
-        <Timeline data={occupations} setActiveId={props.setActiveId} />
+        <Timeline data={occupations} setActiveId={setActiveId} />
       </div>
     </FadeIn>
   ) : (
     <div>{`Loading ...`}</div>
   );
-};
-
-const initData = {
-  category: '', // 'job', 'education' or 'extra'
-
-  id: '', // any, as long as unique
-  short: '', // for viewing in the timeline
-  employer: '',
-  role: '',
-  title: '',
-  location: '',
-  tags: [''],
-  descr: '',
-
-  from: '',
-  to: '',
 };

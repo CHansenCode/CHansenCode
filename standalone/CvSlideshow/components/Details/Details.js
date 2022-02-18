@@ -24,7 +24,7 @@ export const Details = ({ data }) => {
   //
 
   useEffect(() => {
-    data.title && setDetailsData({ ...data });
+    data && setDetailsData({ ...data });
   }, [data]);
 
   return (

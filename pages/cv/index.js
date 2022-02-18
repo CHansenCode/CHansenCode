@@ -9,11 +9,9 @@ import { NoPid } from 'page-components/cv/NoPid';
 import * as api from 'api-lib/dispatch/cv';
 
 export default function CV({ ...props }) {
-  //#region loaded
   const [loaded, setLoaded] = useState(false);
 
   const dispatch = useDispatch();
-  //#endregion
 
   const { query } = useRouter();
   const { pid } = query;
@@ -21,12 +19,9 @@ export default function CV({ ...props }) {
   const pidCorrect = useSelector(store => store.cv);
 
   useEffect(() => {
-    if (pid) {
-      !pidCorrect && dispatch(api.findOneByWhom(pid)).then(setLoaded(true));
-    } else {
-      setLoaded(true);
-    }
-  }, []);
+    if (pid) dispatch(api.findOneByWhom(pid));
+    setLoaded(true);
+  }, [pid]);
 
   return (
     loaded && (

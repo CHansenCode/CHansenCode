@@ -19,8 +19,7 @@
 }
 
 .button:focus {
-  border: thin solid currentColor;
-  outline: thin solid currentColor;
+  outline: thin solid;
 }
 
 .button:hover {

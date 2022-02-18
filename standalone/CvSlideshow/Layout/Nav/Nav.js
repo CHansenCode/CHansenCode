@@ -72,6 +72,7 @@ const SettingsMenu = ({ ...props }) => {
   return (
     <div className={css.settings}>
       <Button
+        style={{ outline: 'transparent' }}
         className="pc3b"
         size="2rem"
         borderRadius="50%"
