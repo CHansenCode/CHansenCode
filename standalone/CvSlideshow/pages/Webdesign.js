@@ -20,14 +20,13 @@ const Project = () => {
   return (
     <>
       <div className="cow">
-        <h4></h4>
+        <h4>cow</h4>
       </div>
 
       <style jsx>
         {`
           .cow {
             width: 100%;
-            height: 1rem;
 
             border: thin solid;
           }

@@ -16,11 +16,7 @@ const initFormData = {
 
 export const Login = ({ ...props }) => {
   const dispatch = useDispatch();
-
-  const { mutateUser } = useUser({
-    redirectIfFound: false,
-    redirectTo: '/welcome',
-  });
+  const { mutateUser } = useUser();
 
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({ ...initFormData });

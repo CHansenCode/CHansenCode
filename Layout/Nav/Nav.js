@@ -24,7 +24,7 @@ export function Nav() {
           )}
         </div>
 
-        <div></div>
+        <div />
 
         {/* <Links /> */}
 

@@ -58,7 +58,7 @@ export function Layout({ ...props }) {
 
       <Main {...props} />
 
-      {!user?.isLoggedIn && <Footer />}
+      {/* {!user?.isLoggedIn && <Footer />} */}
     </>
   );
 }

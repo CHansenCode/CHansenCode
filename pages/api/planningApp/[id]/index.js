@@ -1,7 +1,7 @@
 import nextConnect from 'next-connect';
 import middleware from 'middleware/database';
 
-import { findByIdAndUpdate, findByIdAndDelete } from 'api-db/planningApp';
+import { findByIdAndUpdate, findByIdAndDelete } from 'api-lib/db/planningApp';
 
 const handler = nextConnect();
 handler.use(middleware);

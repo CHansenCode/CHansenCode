@@ -23,6 +23,7 @@ export const Footer = ({ id, ...props }) => {
   async function logOut(e) {
     e.preventDefault();
     mutateUser(await fetchJson('/api/logout', { method: 'POST' }), false);
+    router.push('/');
   }
 
   return (

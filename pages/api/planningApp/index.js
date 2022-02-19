@@ -1,7 +1,7 @@
 import nextConnect from 'next-connect';
 import middleware from 'middleware/database';
 
-import { getAll, postOne } from 'api-db/planningApp';
+import { getAll, postOne } from 'api-lib/db/planningApp';
 
 const handler = nextConnect();
 handler.use(middleware);

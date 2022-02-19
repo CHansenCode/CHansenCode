@@ -1,7 +1,11 @@
 import nextConnect from 'next-connect';
 import middleware from 'middleware/database';
 
-import { findByIdAndUpdate, findByIdAndDelete, findOneByWhom } from 'api-db/cv';
+import {
+  findByIdAndUpdate,
+  findByIdAndDelete,
+  findOneByWhom,
+} from 'api-lib/db/cv';
 
 const handler = nextConnect();
 handler.use(middleware);

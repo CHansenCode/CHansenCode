@@ -1,7 +1,5 @@
-import axios from 'axios';
-
 import { Section, AnimatedLogo, Flex, Empty } from 'components';
-import { LayeredImage, RenderRichText } from 'components';
+import { LayeredImage } from 'components';
 
 export default function Home({ ...props }) {
   //
@@ -28,11 +26,3 @@ export default function Home({ ...props }) {
     </>
   );
 }
-
-// export async function getStaticProps(context) {
-//   const { data } = await axios.get('http://localhost:3000/api/cv');
-
-//   return {
-//     props: { texts: data }, // will be passed to the page component as props
-//   };
-// }

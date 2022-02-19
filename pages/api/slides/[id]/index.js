@@ -1,7 +1,7 @@
 import nextConnect from 'next-connect';
 import middleware from 'middleware/database';
 
-import { findByIdAndUpdate, findByIdAndDelete } from 'api-db/slides';
+import { findByIdAndUpdate, findByIdAndDelete } from 'api-lib/db/slides';
 
 const handler = nextConnect();
 handler.use(middleware);

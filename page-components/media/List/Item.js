@@ -50,6 +50,7 @@ export const Item = ({ data, ...props }) => {
           <p>{data.title}</p>
           <p>{data.category}</p>
           <p>{data.project}</p>
+          <p>{data.createdAt && data.createdAt.substring(0, 40)}</p>
         </div>
       </li>
     </>
