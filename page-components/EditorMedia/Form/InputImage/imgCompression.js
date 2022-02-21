@@ -26,7 +26,6 @@ export const web = file =>
       100,
       0,
       uri => {
-        console.log(uri.length);
         resolve(uri);
       },
       'base64',
