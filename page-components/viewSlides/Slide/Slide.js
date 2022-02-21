@@ -1,6 +1,8 @@
 import css from './Slide.module.scss';
 
 export const Slide = ({ activeSlide, ...props }) => {
+  console.log(activeSlide);
+
   return activeSlide ? (
     <div className={css.slide}>
       <div className={css.inner_window}>

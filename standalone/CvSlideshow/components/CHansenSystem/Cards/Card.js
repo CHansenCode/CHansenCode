@@ -1,41 +1,40 @@
 import React from 'react';
 
-import css from './Card.module.scss';
+import css from './style.module.scss';
 
-export const Card = ({ i, top, cardData, left, setActiveId, ...props }) => {
+export const Card = ({ i, left, data, setActiveId, ...props }) => {
   //
   async function onClickSetActiveId() {
-    setActiveId(cardData.id);
+    setActiveId(data.id);
   }
+
+  let active = props.activeId === data.id ? true : false;
+
+  left = data.category === 'backside' ? 10 : left;
+  left = data.category === 'content' ? 40 : left;
+  left = data.category === 'consumer' ? 70 : left;
 
   const istyle = {
     width: props.activeId ? '60%' : '20%',
-    top: !props.activeId ? `${top * 10}rem` : `${10 + i * 2.5}rem`,
+
+    top: !props.activeId ? `${(i + 1) * 8}rem` : `${10 + i * 2.5}rem`,
     left: props.activeId ? `10%` : `${left}%`,
   };
 
   return (
     <div
-      className={`${css.card} bg pc1b`}
+      className={`${css.card} bg pc5b`}
       style={istyle}
       onClick={onClickSetActiveId}
     >
-      <h4
-        className={`${css.role} ${props.activeId === cardData.id ? 'sc' : ''}`}
-      >
-        {cardData.role ? cardData.role : 'server'}
-      </h4>
+      <header>
+        <h4 className={active ? 'sc' : ''}>{data.role}</h4>
+      </header>
 
-      <div className={css.constr}>
-        {cardData.name === 'database' ? (
-          <></>
-        ) : (
-          <>
-            <h5 className={`${css.name} sc`}>{props.name}</h5>
-            <h6 className={css.suffix}>{`.design`}</h6>
-            <h6>{`/ ${cardData.prefix}`}</h6>
-          </>
-        )}
+      <div>
+        <>
+          <p>{data.name}</p>
+        </>
       </div>
     </div>
   );

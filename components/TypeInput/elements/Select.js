@@ -2,7 +2,7 @@ import css from './elements.module.scss';
 
 export const Select = props => {
   return (
-    <select
+    <div
       value={props.value}
       placeholder={props.placeholder}
       rows={props.rows}
@@ -20,6 +20,6 @@ export const Select = props => {
       onBlur={props.onBlur}
     >
       {props.children}
-    </select>
+    </div>
   );
 };

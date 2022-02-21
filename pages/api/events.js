@@ -1,6 +1,5 @@
 import { withIronSessionApiRoute } from 'iron-session/next';
 import { sessionOptions } from 'lib/session';
-import useSWR from 'swr';
 
 export default withIronSessionApiRoute(eventsRoute, sessionOptions);
 

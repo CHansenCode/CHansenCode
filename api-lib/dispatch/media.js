@@ -27,7 +27,13 @@ export const getAll = () => async dispatch => {
 
 export const postOne = formData => async dispatch => {
   try {
-    const { data } = await axios.post(url, formData);
+    const { data } = await axios({
+      method: 'post',
+      url: url,
+      data: formData,
+      maxContentLength: 100000000,
+      maxBodyLength: 100000000,
+    });
 
     dispatch({ type: CREATE_MEDIA, payload: data });
     dispatch({

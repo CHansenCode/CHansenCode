@@ -28,12 +28,12 @@ export const Button = ({ active, text, ...props }) => {
   return (
     <>
       <button
-        className="chansen_button"
+        className={props.className}
         ref={props.myRef}
         style={props.style}
         onMouseOver={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        {...props}
+        onClick={props.onClick ? props.onClick : e => e.preventDefault()}
       >
         {text}
         {props.children}

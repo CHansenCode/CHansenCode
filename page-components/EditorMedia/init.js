@@ -16,4 +16,11 @@ export const form = {
   createdBy: '',
   drawingType: '',
   tags: [],
+  uri: {
+    retina: '',
+    web: '',
+    mobile: '',
+    thumb: '',
+    icon: '',
+  },
 };

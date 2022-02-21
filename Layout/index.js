@@ -2,6 +2,7 @@ export * from './Layout';
 
 //modals
 export * from './Modals/Toast';
+export * from './Modals/Image';
 
 //general
 export * from './GlobalStyles';

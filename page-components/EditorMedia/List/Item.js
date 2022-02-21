@@ -39,12 +39,12 @@ export const Item = ({ data, ...props }) => {
 
         <div className={`${css.card}`} onClick={onClicksetActiveId}>
           <div className={css.img_wrapper}>
-            <Cimage
+            {/* <Cimage
               height="100%"
               width="100%"
               src={`${data.url}`}
               layout="fill"
-            />
+            /> */}
           </div>
 
           <p>{data.title}</p>

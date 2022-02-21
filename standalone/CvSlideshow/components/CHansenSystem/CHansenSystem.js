@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { Cards, Header, Details, ToggleWidth } from './';
+import { MapCards, Details, ToggleWidth } from './';
 
 import { apps } from './data';
 
@@ -15,22 +15,13 @@ export const CHansenSystem = ({ ...props }) => {
   return (
     <div className={css.main}>
       <header>
-        <h3 className="sc">Portfolio - webdesign</h3>
+        <h3 className="sc">Portfolio selection :</h3>
       </header>
 
       <ToggleWidth {...props}>
-        <Cards {...props} />
+        <MapCards {...props} />
         <Details {...props} />
       </ToggleWidth>
     </div>
   );
 };
-
-{
-  /* <div className={css.test}>
-        <h4>FEATURES:</h4>
-        {apps.map((p, i) => (
-          <div key={`p${i}${p.title}`}>cow</div>
-        ))}
-      </div> */
-}

@@ -22,7 +22,7 @@
     "**/package.json": true,
     "**/package-lock.json": true,
     "**/jsconfig.json": true,
-    "**/next.config.js": true,
+    "**/next.config.js": false,
 
     //  others
     "**/middleware": false,

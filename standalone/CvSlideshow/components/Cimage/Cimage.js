@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { useDispatch } from 'react-redux';
 
 export const Cimage = ({ ...props }) => {
   //
@@ -8,14 +7,12 @@ export const Cimage = ({ ...props }) => {
     position: 'relative',
     height: props.height,
     width: props.width,
-    overflow: 'hidden',
-    pointerEvents: props.onClick ? props.onClick : 'none',
+    overflow: props.overflow,
   };
-
-  let alt = 'CHansen design architecture webdev alt text missing on this image';
 
   return (
     <div
+      ref={props.myRef}
       style={props.style}
       className={props.className}
       onMouseEnter={props.onMouseEnter}
@@ -23,14 +20,12 @@ export const Cimage = ({ ...props }) => {
       onClick={props.onClick}
     >
       <Image
-        height={!(props.objectFit === 'contain') && '100%'}
-        width={!(props.objectFit === 'contain') && '100%'}
-        layout={props.objectFit === 'contain' ? 'fill' : 'responsive'}
+        height="100%"
+        width="100%"
+        layout="responsive"
         objectFit={props.objectFit}
-        src={
-          props.src ? props.src : 'https://media.chansen.design/placeholder.jpg'
-        }
-        alt={props.alt ? props.alt : alt}
+        src={props.src}
+        alt={props.alt}
       />
     </div>
   );
@@ -40,4 +35,14 @@ Cimage.defaultProps = {
   height: '15rem',
   width: '15rem',
   objectFit: 'cover',
+  overflow: 'hidden',
+
+  src: 'https://media.chansen.design/placeholder.jpg',
+  alt: 'CHansen design architecture webdev alt text missing on this image',
 };
+
+// Next.js Image
+// objectFit :
+//   cover     - fill out to edge
+//   contain   - max size within container
+//   fixed     - exact size to given size

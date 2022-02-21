@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { init, List, FixedForm, MenuButtons } from 'page-components/media';
+import {
+  init,
+  List,
+  FixedForm,
+  MenuButtons,
+} from 'page-components/EditorMedia';
 import { BacksideView, Menu, Controllers } from 'components/BacksideView';
 
 import * as api from 'api-lib/dispatch/media';
@@ -12,6 +17,9 @@ export default function Media({ ...props }) {
   const [activeId, setActiveId] = useState('');
 
   const dispatch = useDispatch();
+
+  // DEV!
+  // useEffect(() => console.log(formData), [formData]);
 
   const store = useSelector(s => s.media);
   const activePost = useSelector(s => s.media.find(o => o._id === activeId));

@@ -18,3 +18,4 @@ export * from './FadeIn';
 export * from './Details';
 export * from './Profile';
 export * from './NoPid';
+export * from './Cimage';

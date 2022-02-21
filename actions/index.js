@@ -38,3 +38,7 @@ export const GET_USERS = 'GET_USERS';
 export const CREATE_USER = 'CREATE_USER';
 export const PATCH_USER = 'PATCH_USER';
 export const DELETE_USER = 'DELETE_USER';
+
+// ** IMG MODAL
+export const POPULATE_MODAL = 'POPULATE_MODAL';
+export const DEPOPULATE_MODAL = 'DEPOPULATE_MODAL';
