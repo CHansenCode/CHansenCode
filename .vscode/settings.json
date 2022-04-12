@@ -10,19 +10,19 @@
   },
   "files.exclude": {
     //  dep's
-    "**/.git": true,
+    "**/.git": false,
     "**/.next": false,
-    "**/node_modules": true,
+    "**/node_modules": false,
 
     //  settings
-    "**/.gitignore": true,
-    "**/.prettierrc": true,
-    "**/.eslintrc.json": true,
+    "**/.gitignore": false,
+    "**/.prettierrc": false,
+    "**/.eslintrc.json": false,
     //  proj.Settings
-    "**/package.json": true,
-    "**/package-lock.json": true,
-    "**/jsconfig.json": true,
-    "**/next.config.js": true,
+    "**/package.json": false,
+    "**/package-lock.json": false,
+    "**/jsconfig.json": false,
+    "**/next.config.js": false,
 
     //  others
     "**/middleware": false,
