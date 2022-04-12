@@ -6,6 +6,7 @@ import css from './style.module.scss';
 
 export function TypeInput({ ...props }) {
   //
+
   const RenderType = useCallback(props => {
     switch (props.type) {
       case 'input':
@@ -34,6 +35,7 @@ export function TypeInput({ ...props }) {
 
   const iStyle = {
     ...props.style,
+    height: props.type === 'file' && '100%',
     marginBottom: props.marginBottom && props.marginBottom,
     maxWidth: props.maxWidth && props.maxWidth,
   };

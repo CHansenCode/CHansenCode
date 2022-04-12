@@ -1,8 +1,6 @@
 import nextConnect from 'next-connect';
 import middleware from 'middleware/database';
 
-import { authRequest } from 'api-db/auth';
-
 const handler = nextConnect();
 handler.use(middleware);
 

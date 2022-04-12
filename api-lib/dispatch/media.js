@@ -24,25 +24,31 @@ export const getAll = () => async dispatch => {
     });
   }
 };
-
 export const postOne = formData => async dispatch => {
-  try {
-    const { data } = await axios.post(url, formData);
+  const postData = {
+    ...formData,
+    alt: `${formData.alt} chansen design architecture webdesign`,
+  };
 
+  const { data } = await axios.post(url, postData);
+
+  try {
     dispatch({ type: CREATE_MEDIA, payload: data });
     dispatch({
       type: TOAST,
-      payload: { type: 'success', message: 'Successfully created post!' },
+      payload: {
+        type: 'success',
+        message: 'Successfully created new media post in db!',
+      },
     });
   } catch (error) {
     console.log(error);
     dispatch({
       type: TOAST,
-      payload: { type: 'alert', message: 'Failed to post' },
+      payload: { type: 'alert', message: 'Failed to create post' },
     });
   }
 };
-
 export const patchOne = (id, formData) => async dispatch => {
   try {
     const { data } = await axios.patch(`${url}/${id}`, formData);
@@ -61,10 +67,10 @@ export const patchOne = (id, formData) => async dispatch => {
     });
   }
 };
-
-export const deleteOne = id => async dispatch => {
+export const deleteOne = data => async dispatch => {
+  let { _id, cloudId } = data;
   try {
-    const { data } = await axios.delete(`${url}/${id}`);
+    const { data } = await axios.delete(`${url}/${_id}?cloudId=${cloudId}`);
 
     dispatch({ type: DELETE_MEDIA, payload: data._id });
     dispatch({
@@ -77,5 +83,17 @@ export const deleteOne = id => async dispatch => {
       type: TOAST,
       payload: { type: 'alert', message: 'Failed to delete post' },
     });
+  }
+};
+
+//
+
+export const getShowcase = async () => {
+  try {
+    const { data } = await axios.get('/api/showcase');
+
+    return data;
+  } catch (error) {
+    console.log(error);
   }
 };

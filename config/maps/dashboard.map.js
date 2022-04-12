@@ -10,7 +10,7 @@ export const dashConstructor = [
   {
     category: 'Databases',
     pages: [
-      { as: 'Media Gallery', href: '/back/media' },
+      { as: 'Media Gallery', href: '/back/dbMedia' },
       { as: 'Contact Form', href: '/back/contactForm' },
     ],
   },

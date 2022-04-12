@@ -9,18 +9,9 @@ import { TOAST } from 'actions';
 
 import css from './Login.module.scss';
 
-const initFormData = {
-  username: '',
-  password: '',
-};
-
 export const Login = ({ ...props }) => {
   const dispatch = useDispatch();
-
-  const { mutateUser } = useUser({
-    redirectIfFound: false,
-    redirectTo: '/welcome',
-  });
+  const { mutateUser } = useUser();
 
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({ ...initFormData });
@@ -57,7 +48,7 @@ export const Login = ({ ...props }) => {
   return (
     <div className={css.menu_item}>
       <li onClick={() => setOpen(!open)} className={open ? 'sc' : ''}>
-        logIn
+        login
       </li>
 
       <div style={iStyle} className={css.form_wrapper}>
@@ -86,4 +77,9 @@ export const Login = ({ ...props }) => {
       </div>
     </div>
   );
+};
+
+const initFormData = {
+  username: '',
+  password: '',
 };

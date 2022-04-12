@@ -7,6 +7,14 @@ export const navConstr = [
     as: 'webdesign',
     href: '/webdesign',
   },
+  {
+    as: 'about',
+    href: '/about',
+  },
+  {
+    as: 'contact',
+    href: '/contact',
+  },
 ];
 
 export const navSubConstr = [

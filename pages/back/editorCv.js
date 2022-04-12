@@ -4,7 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { initContr, initForm } from 'page-components/EditorCv';
 
 import { BacksideView, Menu, Controllers } from 'components/BacksideView';
-import { Editor, List, Item } from 'page-components/EditorCv';
+import {
+  Editor,
+  List,
+  Item,
+  GalleryConstructor,
+} from 'page-components/EditorCv';
 import { ButtonType } from 'components';
 
 import * as api from 'api-lib/dispatch/cv';
@@ -64,13 +69,15 @@ export default function EditorCv() {
                   i={i}
                   data={p}
                   onClick={() => setActiveId(p._id)}
-                  onDelete={() => deleteOne(p._id)}
+                  onDelete={() => dispatch(api.deleteOne(p._id))}
                   controller={controller}
                 />
               ))
             : 'loading...'}
         </List>
       )}
+
+      <GalleryConstructor />
     </BacksideView>
   );
 }

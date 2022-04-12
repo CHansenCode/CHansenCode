@@ -21,7 +21,7 @@ export const Main = ({ children, ...props }) => {
       0,
     width:
       (router.pathname === '/viewer/cv' ||
-        router.pathname === 'viewer/slides') &&
+        router.pathname === '/viewer/slides') &&
       '100vw',
   };
 

@@ -7,11 +7,17 @@
 
   height: 5rem;
   width: 100vw;
+}
+.inner {
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  border-bottom: thin solid red;
+  background-color: #fff;
 
   display: grid;
   grid-template: 'logo info links drop login' 1fr / 20rem 1fr auto auto auto;
-
-  align-items: center;
 }
 
 .logo {
@@ -22,4 +28,42 @@
 .nav button {
   height: 2rem;
   width: 5rem;
+}
+
+.btn_toggleMenu {
+  position: fixed;
+  z-index: 101;
+  top: 0;
+  right: 0;
+
+  height: 3rem;
+  width: 3rem;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  > button {
+    height: 100%;
+    width: 100%;
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .nav {
+    height: 3rem;
+    width: calc(100vw - 3.25rem);
+    grid-template: 'logo info drop' 1fr / 20rem 1fr auto;
+  }
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: block;
+    background-color: red;
+  }
+  .btn_toggleMenu {
+    display: flex;
+  }
 }

@@ -1,7 +1,11 @@
 import nextConnect from 'next-connect';
 import middleware from 'middleware/database';
 
-import { findByIdAndUpdate, findByIdAndDelete, findOneByWhom } from 'api-db/cv';
+import {
+  findByIdAndUpdate,
+  findByIdAndDelete,
+  findOneByWhom,
+} from 'api-lib/db/cv';
 
 const handler = nextConnect();
 handler.use(middleware);
@@ -33,10 +37,10 @@ handler.patch(async (req, res) => {
 });
 
 handler.delete(async (req, res) => {
-  const { id } = req.query;
+  const { pid } = req.query;
 
   try {
-    const response = await findByIdAndDelete(req.db, id);
+    const response = await findByIdAndDelete(req.db, pid);
 
     res.json(response);
   } catch (error) {

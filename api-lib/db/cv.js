@@ -10,7 +10,6 @@ export async function getAll(db) {
     console.log(error);
   }
 }
-
 export async function postOne(db, formData) {
   try {
     const response = await db.collection(col).insertOne(formData); //res = {acknowledged = true, insertedId: "objectId"}
@@ -19,7 +18,6 @@ export async function postOne(db, formData) {
     console.log(error);
   }
 }
-
 export async function findOneByWhom(db, whom) {
   try {
     const post = await db.collection(col).findOne({ whom: whom });
@@ -31,7 +29,6 @@ export async function findOneByWhom(db, whom) {
     console.log(`No cv found with key: ${whom}`);
   }
 }
-
 export async function findByIdAndUpdate(db, id, data) {
   try {
     const { value } = await db.collection(col).findOneAndUpdate(
@@ -62,7 +59,7 @@ export async function findByIdAndDelete(db, id) {
   try {
     const { value } = await db
       .collection(col)
-      .findOneAndDelete({ _id: new ObjectId(id) }); //res = {?}
+      .findOneAndDelete({ _id: new ObjectId(id) });
     return value;
   } catch (error) {
     console.log(error);
@@ -73,7 +70,7 @@ export async function findByIdAndDelete(db, id) {
 
 export async function getAllOccupations(db) {
   try {
-    const response = await db.collection('occupations').find().toArray(); //res = [...mediaPosts]
+    const response = await db.collection('occupations').find().toArray();
     return response;
   } catch (error) {
     console.log(error);

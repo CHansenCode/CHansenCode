@@ -63,6 +63,7 @@
   grid-area: page;
   display: flex;
   align-items: center;
+  gap: 0.75rem;
 
   > * {
     display: flex;
@@ -70,6 +71,11 @@
 
     height: 100%;
     width: 100%;
+  }
+  button {
+    box-shadow: 0 0 0 0 black;
+    outline: thin solid transparent;
+    transition: 0.3s ease;
   }
 }
 

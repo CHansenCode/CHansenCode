@@ -6,7 +6,7 @@ import useUser from 'lib/useUser';
 import { checkUser } from 'lib/checkUser';
 
 import { GlobalStyles, Main, Meta, Nav, Dashboard } from './';
-import { Dev, Toast, Footer } from './';
+import { Dev, Toast, Image } from './';
 
 export function Layout({ ...props }) {
   const router = useRouter();
@@ -38,10 +38,13 @@ export function Layout({ ...props }) {
     <>
       {process.env.NODE_ENV === 'development' && <Dev {...props} />}
 
-      <Toast />
-
+      {/* SETTINGS */}
       <Meta {...props} />
       <GlobalStyles {...props} />
+
+      {/* MODALS */}
+      <Toast />
+      <Image.Modal />
 
       {router.pathname === '/viewer/cv' ||
       router.pathname === '/viewer/slides' ? (
@@ -58,7 +61,7 @@ export function Layout({ ...props }) {
 
       <Main {...props} />
 
-      {!user?.isLoggedIn && <Footer />}
+      {/* {!user?.isLoggedIn && <Footer />} */}
     </>
   );
 }

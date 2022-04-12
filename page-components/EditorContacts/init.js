@@ -1,7 +1,5 @@
-export const initForm = {
-  name: '',
-  contactInfo: '',
-  message: '',
-
-  dummy: '',
+export const contr = {
+  isCreating: false,
+  isEditing: false,
+  isDeleting: false,
 };

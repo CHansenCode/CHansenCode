@@ -8,6 +8,7 @@
     "editorIndentGuide.activeBackground": "#696969",
     "editorIndentGuide.background": "#3a3a3a07"
   },
+
   "files.exclude": {
     //  dep's
     "**/.git": false,

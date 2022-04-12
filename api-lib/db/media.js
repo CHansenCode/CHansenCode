@@ -10,16 +10,14 @@ export async function getAll(db) {
     console.log(error);
   }
 }
-
 export async function postOne(db, formData) {
   try {
     const response = await db.collection(col).insertOne(formData); //res = {acknowledged = true, insertedId: "objectId"}
-    return response;
+    return { ...formData };
   } catch (error) {
     console.log(error);
   }
 }
-
 export async function findByIdAndUpdate(db, id, data) {
   try {
     const { value } = await db.collection(col).findOneAndUpdate(
@@ -27,30 +25,38 @@ export async function findByIdAndUpdate(db, id, data) {
       {
         $set: {
           title: data.title,
+          alt: data.alt,
+
           project: data.project,
           category: data.category,
-          description: data.description,
-          url: data.url,
-          createdBy: data.createdBy,
-          drawingType: data.drawingType,
-          stage: data.stage,
-          stageType: data.stageType,
           tags: data.tags,
-          alt: data.alt,
+
+          createdAt: new Date(),
+          createdBy: data.createdBy,
         },
       },
       { returnDocument: 'after' },
-    ); //res = {?}
+    );
     return value;
   } catch (error) {
     console.log(error);
   }
 }
-export async function findByIdAndDelete(db, id) {
+export async function findByIdAndDelete(db, id, cloudId) {
   try {
     const { value } = await db
       .collection(col)
       .findOneAndDelete({ _id: new ObjectId(id) }); //res = {?}
+    return value;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getShowcase(db) {
+  try {
+    const value = await db.collection(col).find({ project: 'cv' }).toArray();
+
     return value;
   } catch (error) {
     console.log(error);

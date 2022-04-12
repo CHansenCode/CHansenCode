@@ -8,16 +8,17 @@ import { combineReducers } from 'redux';
 // import tickets from './tickets';
 // import presentation from './presentation';
 
-// ** DOMAIN
-// import imageModal from './imageModal';
-
-import toast from './toast';
+//  **  forms / consumer
 import cv from './cv';
 import media from './media';
 import contactForm from './contactForm';
 import planningApp from './planningApp';
 import slides from './slides';
 import users from './users';
+
+//  **  modals
+import toast from './toast';
+import imgModal from './imgModal';
 
 export const reducers = combineReducers({
   planningApp,
@@ -27,4 +28,5 @@ export const reducers = combineReducers({
   media,
   slides,
   users,
+  imgModal,
 });

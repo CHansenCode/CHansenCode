@@ -1,0 +1,67 @@
+$width: 35rem;
+
+.fixed {
+  position: fixed;
+  z-index: 101;
+
+  top: 0;
+  right: -$width;
+
+  height: 100vh;
+  width: $width;
+
+  transition: 0.3s ease;
+
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+}
+.fixed_open {
+  right: 0;
+}
+
+.inner {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+
+  > form {
+    display: grid;
+    gap: 2rem;
+    grid-template:
+      'title' 12rem
+      'body' 1fr
+      'buttons' auto / 1fr;
+  }
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 12rem;
+  gap: 2rem;
+}
+.header .title {
+  width: 100%;
+  margin-bottom: -0.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  h4 {
+    margin-bottom: 1rem;
+  }
+}
+.footer {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  button {
+    padding: 1rem 2rem;
+  }
+}
+
+@media screen and (max-width: 932px) {
+  .fixed {
+    width: 100vw;
+    max-width: 100vw;
+  }
+}

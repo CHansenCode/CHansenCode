@@ -2,24 +2,24 @@ import React from 'react';
 
 import css from './ToggleWidth.module.scss';
 
-export const ToggleWidth = ({ children, ...props }) => {
-  const propStyle = {
-    containerOne: {
-      width: props.activeId ? '30%' : '100%',
+export const ToggleWidth = ({ activeId, children }) => {
+  const iStyle = {
+    a: {
+      width: activeId ? '30%' : '100%',
     },
-    containerTwo: {
-      width: props.activeId ? '70%' : '0.1%',
-      opacity: props.activeId ? '1' : '0',
+    b: {
+      width: activeId ? '70%' : '0.1%',
+      opacity: activeId ? '1' : '0',
     },
   };
 
   return (
     <div className={css.container}>
-      <div style={propStyle.containerOne}>
+      <div style={iStyle.a}>
         {children && children.length > 0 && children[0]}
       </div>
 
-      <div style={propStyle.containerTwo}>
+      <div style={iStyle.b}>
         {children && children.length > 1 && children[1]}
       </div>
     </div>

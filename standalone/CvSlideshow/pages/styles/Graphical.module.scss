@@ -1,0 +1,23 @@
+.main {
+  height: 100%;
+}
+
+.gallery {
+  height: 600px;
+  display: flex;
+  gap: 3rem;
+
+  display: grid;
+  grid-template:
+    'a b c d' 1fr
+    'e g h h' 1fr / 1fr 1fr 1fr 1fr;
+  gap: 2rem;
+
+  border: thin solid;
+}
+
+.img_wrapper {
+  overflow: hidden;
+  height: 16rem;
+  width: 16rem;
+}
