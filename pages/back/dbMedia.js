@@ -1,32 +1,36 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import {
-  init,
-  List,
-  FixedForm,
-  MenuButtons,
-} from 'page-components/EditorMedia';
-import { BacksideView, Menu, Controllers } from 'components/BacksideView';
+import { init, List, FixedForm, Menu } from 'page-components/EditMedia';
+import { BacksideView, TopBar } from 'components/BacksideView';
 
 import * as api from 'api-lib/dispatch/media';
 
-export default function Media({ ...props }) {
+export default function Media() {
   const [controller, setController] = useState({ ...init.contr });
   const [formData, setFormData] = useState({ ...init.form });
   const [activeId, setActiveId] = useState('');
 
   const dispatch = useDispatch();
 
-  // DEV!
-  // useEffect(() => console.log(formData), [formData]);
-
   const store = useSelector(s => s.media);
   const activePost = useSelector(s => s.media.find(o => o._id === activeId));
   useEffect(() => dispatch(api.getAll()), [dispatch]);
   useEffect(() => activePost && setFormData({ ...activePost }), [activePost]);
 
-  props = {
+  useEffect(() => initFetch(), []);
+
+  async function initFetch() {
+    try {
+      dispatch(api.getAll());
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setController({ ...controller, initFetch: true });
+    }
+  }
+
+  let props = {
     controller,
     setController,
     formData,
@@ -38,17 +42,17 @@ export default function Media({ ...props }) {
   return (
     <>
       <BacksideView hasMenu={true}>
-        <Menu title="Media Database">
-          <span>
-            <MenuButtons {...props} />
-          </span>
-
-          <Controllers delete={true} create={true} {...props} />
-        </Menu>
+        <TopBar title="Media Database" delete={true} {...props}>
+          <Menu {...props} />
+        </TopBar>
 
         <FixedForm {...props} />
 
-        <List.Map mapData={store} {...props} />
+        {controller.initFetch ? (
+          <List.Map mapData={store} {...props} />
+        ) : (
+          <>Connecting to database</>
+        )}
       </BacksideView>
     </>
   );

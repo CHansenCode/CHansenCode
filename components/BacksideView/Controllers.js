@@ -8,6 +8,8 @@ export const Controllers = ({ controller, setController, ...props }) => {
   //
   const [fold, setFold] = useState(true);
 
+  let usesContrBtns = props.create || props.edit || props.delete ? true : false;
+
   async function toggleCreating() {
     setController({
       ...controller,
@@ -29,9 +31,7 @@ export const Controllers = ({ controller, setController, ...props }) => {
 
   return (
     <div className={css.controllers}>
-      {(props.delete === true ||
-        props.edit === true ||
-        props.create === true) && (
+      {usesContrBtns && (
         <Settings onClick={() => setFold(!fold)} active={!fold} />
       )}
 
@@ -43,6 +43,7 @@ export const Controllers = ({ controller, setController, ...props }) => {
             active={controller.isCreating}
           />
         )}
+
         {props.edit === true && (
           <Edit
             onClick={() => toggleEditing(controller, setController)}
@@ -50,6 +51,7 @@ export const Controllers = ({ controller, setController, ...props }) => {
             active={controller.isEditing}
           />
         )}
+
         {props.delete === true && (
           <Delete
             onClick={() => toggleDeleting(controller, setController)}

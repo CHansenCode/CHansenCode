@@ -1,8 +1,8 @@
 import css from './elements.module.scss';
 
-export const Select = props => {
+export const Select = ({ ...props }) => {
   return (
-    <div
+    <select
       value={props.value}
       placeholder={props.placeholder}
       rows={props.rows}
@@ -19,7 +19,12 @@ export const Select = props => {
       onFocus={props.onFocus}
       onBlur={props.onBlur}
     >
-      {props.children}
-    </div>
+      <option></option>
+      {props.options
+        ? props.options.map((o, i) => (
+            <option key={`${props.uniqueKey}${i}`}>{o}</option>
+          ))
+        : 'no "options" prop found'}
+    </select>
   );
 };

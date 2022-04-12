@@ -1,21 +1,23 @@
+import { Controllers } from './Controllers';
+
 import css from './bsview.module.scss';
 
-export const Menu = ({ ...props }) => {
+export const Menu = ({ title, ...props }) => {
+  //
+
+  let contrBtns = props.create || props.edit || props.delete ? true : false;
+
   return (
     <header className={`pc1b ${css.menu}`}>
-      {props.title && (
+      {title && (
         <div className={css.title}>
-          <h4 className={`sc ${css.title}`}>{props.title}</h4>
+          <h4 className="sc">{title}</h4>
         </div>
       )}
 
-      <div className={css.page_menu}>
-        {props.children && props.children.length > 1 && props.children[0]}
-      </div>
+      <div className={css.page_menu}>{props.children}</div>
 
-      {props.children && props.children.length > 1
-        ? props.children[1]
-        : props.children}
+      {contrBtns ? <Controllers {...props} /> : <div />}
     </header>
   );
 };

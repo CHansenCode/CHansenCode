@@ -8,20 +8,21 @@
     "editorIndentGuide.activeBackground": "#696969",
     "editorIndentGuide.background": "#3a3a3a07"
   },
+
   "files.exclude": {
     //  dep's
-    "**/.git": true,
+    "**/.git": false,
     "**/.next": false,
-    "**/node_modules": true,
+    "**/node_modules": false,
 
     //  settings
-    "**/.gitignore": true,
-    "**/.prettierrc": true,
-    "**/.eslintrc.json": true,
+    "**/.gitignore": false,
+    "**/.prettierrc": false,
+    "**/.eslintrc.json": false,
     //  proj.Settings
-    "**/package.json": true,
-    "**/package-lock.json": true,
-    "**/jsconfig.json": true,
+    "**/package.json": false,
+    "**/package-lock.json": false,
+    "**/jsconfig.json": false,
     "**/next.config.js": false,
 
     //  others

@@ -33,7 +33,7 @@ export const Button = ({ active, text, ...props }) => {
         style={props.style}
         onMouseOver={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        onClick={props.onClick ? props.onClick : e => e.preventDefault()}
+        onClick={props.onClick}
       >
         {text}
         {props.children}

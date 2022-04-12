@@ -1,0 +1,10 @@
+.desktop {
+  border: thin solid;
+  width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+  .desktop {
+    display: none;
+  }
+}

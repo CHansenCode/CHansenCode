@@ -16,3 +16,8 @@ a {
   color: currentColor;
   text-decoration: none;
 }
+
+button {
+  outline: thin solid transparent !important;
+  transition: 0.3s ease;
+}

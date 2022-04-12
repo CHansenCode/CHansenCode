@@ -12,6 +12,7 @@ export * from './BsLoading'; //Loading wrapped in full paged flex-center compone
 export * from './PlannedFeature';
 export * from './RenderRichText';
 export * from './Diode';
+export * from './Hamburger';
 
 //  Structural
 export * from './Section'; //section for frontside, title="" & myRef={} props for layout and pageNav
@@ -28,6 +29,7 @@ export * from './TypeInput';
 export * from './Textarea';
 export * from './Select';
 export * from './Cimage'; //extension of next.js/Image w. domain specific alt, placeholder etc.
+export * from './CloudImg'; //Cloudinary url composer
 export * from './NextLink'; //extension of Link/next with active={boolean} toggle
 export * from './Text'; //extension of p, if we wanna restyle bread text on the site without breaking scss
 

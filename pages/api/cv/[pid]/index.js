@@ -37,10 +37,10 @@ handler.patch(async (req, res) => {
 });
 
 handler.delete(async (req, res) => {
-  const { id } = req.query;
+  const { pid } = req.query;
 
   try {
-    const response = await findByIdAndDelete(req.db, id);
+    const response = await findByIdAndDelete(req.db, pid);
 
     res.json(response);
   } catch (error) {
