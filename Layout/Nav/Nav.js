@@ -35,7 +35,7 @@ export function Nav() {
           <ul className={css.main_links}>
             {navConstr.map((l, i) =>
               l.as === ('architecture' || 'webdesign') ? (
-                <NavLink name={l.as} href={l.href} key={`cowie${i}`} />
+                <NavLink name={l.as} href={l.href} key={`coe${i}`} />
               ) : (
                 <></>
               ),
@@ -45,7 +45,7 @@ export function Nav() {
             {navConstr.map(
               (l, i) =>
                 !(l.as === ('architecture' || 'webdesign')) && (
-                  <NavLink name={l.as} href={l.href} key={`cowie${i}`} />
+                  <NavLink name={l.as} href={l.href} key={`coie${i}`} />
                 ),
             )}
           </ul>
@@ -63,7 +63,7 @@ export function Nav() {
             {navConstr.map(
               (l, i) =>
                 l.name === ('architecture' || 'webdesign') && (
-                  <NavLink name={l.as} href={l.href} key={`cowie${i}`} />
+                  <NavLink name={l.as} href={l.href} key={`coi${i}`} />
                 ),
             )}
           </ul>
@@ -71,7 +71,7 @@ export function Nav() {
             {navConstr.map(
               (l, i) =>
                 !(l.name === ('architecture' || 'webdesign')) && (
-                  <NavLink name={l.as} href={l.href} key={`cowie${i}`} />
+                  <NavLink name={l.as} href={l.href} key={`co${i}`} />
                 ),
             )}
           </ul>

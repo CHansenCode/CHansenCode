@@ -32,7 +32,6 @@ export const Main = ({ children, ...props }) => {
         loggedIn ? `${css.loggedIn}` : ''
       }`}
     >
-      {}
       {React.Children.map(children, child => {
         return React.cloneElement(child, {
           ...props,

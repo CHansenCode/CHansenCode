@@ -3,6 +3,9 @@ import nextConnect from 'next-connect';
 
 global.mongo = global.mongo || {};
 
+//config
+let dbName = 'chansendesign';
+
 const getClient = async () => {
   if (!global.mongo.client) {
     global.mongo.client = new MongoClient(process.env.MONGO_URI, {
@@ -17,7 +20,7 @@ const getClient = async () => {
 
 export async function database(req, res, next) {
   req.dbClient = await getClient();
-  req.db = global.mongo.client.db('chansendesign');
+  req.db = global.mongo.client.db(dbName);
 
   return next();
 }
