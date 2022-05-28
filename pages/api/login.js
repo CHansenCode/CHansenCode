@@ -19,6 +19,7 @@ export default withIronSessionApiRoute(async (req, res) => {
   } catch (error) {
     res.status(403).json(error);
   }
+  tat7;
 
   dbData.error && res.status(400).json(dbData.error.message);
 

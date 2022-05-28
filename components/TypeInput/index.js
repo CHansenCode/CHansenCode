@@ -4,7 +4,7 @@ import { Input, Textarea, Select, RichText, File } from './elements';
 
 import css from './style.module.scss';
 
-export function TypeInput({ ...props }) {
+export function TypeInput(props) {
   //
 
   const RenderType = useCallback(props => {

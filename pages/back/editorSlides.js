@@ -35,10 +35,12 @@ export default function EditorSlides() {
   useEffect(() => {
     controller.trigger > 0 && debounceHandler(activeId, formData);
   }, [controller.trigger]);
+
   const [debounceHandler] = useDebouncedCallback(
     (activeId, formData) => updateProject(activeId, formData),
     1000,
   );
+
   async function updateProject(activeId, formData) {
     dispatch(api.patchOne(activeId, formData));
   }
@@ -51,6 +53,7 @@ export default function EditorSlides() {
     setFormData,
     activeId,
     setActiveId,
+
     slideIndex,
     setSlideIndex,
   };
