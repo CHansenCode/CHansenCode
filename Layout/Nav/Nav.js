@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-import { navConstr, navSubConstr } from 'config';
+import { navMain, navSub } from 'config';
 import { NavLink, Desktop, Mobile } from './';
 import { Hamburger, Login, Logo, Button, Flex } from 'components';
 
@@ -22,62 +22,44 @@ export function Nav() {
   async function toggleMenu() {
     setFullMenuOpen(!fullMenuOpen);
   }
-  async function onNavigate() {
+
+  useEffect(() => {
     setFullMenuOpen(false);
-  }
+  }, [router.pathname]);
 
   return (
     <nav className={css.nav}>
       <div className={css.inner}>
-        <Desktop onGoHome={goHome}>
-          <Logo height="4rem" />
-
-          <ul className={css.main_links}>
-            {navConstr.map((l, i) =>
-              l.as === ('architecture' || 'webdesign') ? (
-                <NavLink name={l.as} href={l.href} key={`coe${i}`} />
-              ) : (
-                <></>
-              ),
-            )}
-          </ul>
-          <ul className={css.sub_links}>
-            {navConstr.map(
-              (l, i) =>
-                !(l.as === ('architecture' || 'webdesign')) && (
-                  <NavLink name={l.as} href={l.href} key={`coie${i}`} />
-                ),
-            )}
-          </ul>
-
-          <Button text="login" />
-          {viewLogin && <Login />}
-        </Desktop>
-
-        <div className={css.btn_toggleMenu}>
-          <Hamburger size="3rem" ternary={fullMenuOpen} onClick={toggleMenu} />
+        <div className={css.logo} onClick={goHome}>
+          <Logo height="3rem" onClick={goHome} />
         </div>
 
-        <Mobile onGoHome={goHome} open={fullMenuOpen} onNavigate={onNavigate}>
-          <ul className={css.main_links}>
-            {navConstr.map(
-              (l, i) =>
-                l.name === ('architecture' || 'webdesign') && (
-                  <NavLink name={l.as} href={l.href} key={`coi${i}`} />
-                ),
-            )}
-          </ul>
-          <ul className={css.sub_links} onClick={() => setFullMenuOpen(false)}>
-            {navConstr.map(
-              (l, i) =>
-                !(l.name === ('architecture' || 'webdesign')) && (
-                  <NavLink name={l.as} href={l.href} key={`co${i}`} />
-                ),
-            )}
-          </ul>
+        <div className="empty_grid1fr_div" />
 
-          {viewLogin && <Login />}
-        </Mobile>
+        <ul className={css.nav_main}>
+          {navMain.map((l, i) => (
+            <NavLink key={`navMain${i}`} as={l.as} href={l.href} />
+          ))}
+        </ul>
+
+        <div className={css.nav_sub}>
+          <Button height="2rem" width="2rem" text={`<`} onClick={toggleMenu} />
+          <ul className={fullMenuOpen ? css.sub_open : css.sub_close}>
+            {navSub.map((l, i) => (
+              <NavLink key={`navMain${i}`} as={l.as} href={l.href} />
+            ))}
+          </ul>
+        </div>
+
+        <div className={css.login}>
+          <div className={css.login_btn}>
+            <Login />
+          </div>
+
+          <div className={css.hamburger}>
+            <Hamburger ternary={fullMenuOpen} onClick={toggleMenu} />
+          </div>
+        </div>
       </div>
     </nav>
   );

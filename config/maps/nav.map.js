@@ -1,4 +1,4 @@
-export const navConstr = [
+export const navMain = [
   {
     as: 'architecture',
     href: '/architecture',
@@ -7,17 +7,9 @@ export const navConstr = [
     as: 'webdesign',
     href: '/webdesign',
   },
-  {
-    as: 'about',
-    href: '/about',
-  },
-  {
-    as: 'contact',
-    href: '/contact',
-  },
 ];
 
-export const navSubConstr = [
+export const navSub = [
   {
     as: 'about',
     href: '/about',

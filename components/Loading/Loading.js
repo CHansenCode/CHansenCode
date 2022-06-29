@@ -6,7 +6,7 @@ export const Loading = ({ ...props }) => {
   switch (props.type) {
     case 'text':
       return <Text {...props} />;
-    case 'text':
+    case 'circle':
       return <Circle {...props} />;
     default:
       return <Circle {...props} />;

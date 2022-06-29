@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 import css from './NavLink.module.scss';
 
-export const NavLink = ({ name, href, ...props }) => {
+export const NavLink = ({ as, href, ...props }) => {
   const { pathname } = useRouter();
 
   const isActive = pathname.startsWith(href);
@@ -11,7 +11,7 @@ export const NavLink = ({ name, href, ...props }) => {
   return (
     <Link href={href}>
       <a {...props} className={`${css.a} ${isActive ? `sc` : ''}`}>
-        <li className={`${css.li} ${isActive ? css.active : ''}`}>{name}</li>
+        <li className={`${css.li} ${isActive ? css.active : ''}`}>{as}</li>
       </a>
     </Link>
   );

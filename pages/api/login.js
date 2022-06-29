@@ -5,30 +5,21 @@ import { auth } from 'api-lib/db/auth';
 
 export default withIronSessionApiRoute(async (req, res) => {
   const { username, password } = await req.body;
-  const hashed = await bcrypt.hash(password, 10);
 
   const userData = {
     username: username,
-    password: hashed,
+    password: password,
   };
 
-  let dbData;
-
-  try {
-    dbData = await auth(userData);
-  } catch (error) {
-    res.status(403).json(error);
-  }
-  tat7;
-
-  dbData.error && res.status(400).json(dbData.error.message);
+  let dbRes = await auth(userData);
+  dbRes.error && res.status(400).json(dbRes.error.message);
 
   const user = {
-    username: dbData.username,
+    username: dbRes.username,
     isLoggedIn: true,
-    role: dbData.role,
-    group: dbData.group,
-    organisation: dbData.organisation,
+    role: dbRes.role,
+    group: dbRes.group,
+    organisation: dbRes.organisation,
   };
 
   try {

@@ -21,16 +21,27 @@ export const Hamburger = ({ ternary, size, id, className, onClick }) => {
     },
   };
   return (
-    <div
-      id={id}
-      className={className}
-      style={{ ...propStyle.wrapper, ...inline.wrapper }}
-      onClick={onClick}
-    >
-      <span style={{ ...propStyle.topBun, ...inline.span, ...inline.topBun }} />
-      <span style={{ ...propStyle.meat, ...inline.span, ...inline.meat }} />
-      <span style={{ ...propStyle.botBun, ...inline.span, ...inline.botBun }} />
-    </div>
+    <>
+      <div
+        id={id}
+        className={className}
+        style={{ ...propStyle.wrapper, ...inline.wrapper }}
+        onClick={onClick}
+      >
+        <span
+          style={{ ...propStyle.topBun, ...inline.span, ...inline.topBun }}
+        />
+        <span style={{ ...propStyle.meat, ...inline.span, ...inline.meat }} />
+        <span
+          style={{ ...propStyle.botBun, ...inline.span, ...inline.botBun }}
+        />
+      </div>
+
+      <style jsx>{`
+        .cow {
+        }
+      `}</style>
+    </>
   );
 };
 

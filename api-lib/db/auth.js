@@ -7,8 +7,7 @@ const client = new MongoClient(url);
 const dbName = 'chansendesign';
 const coll = 'Users';
 
-export async function auth(userData) {
-  const { username, password } = userData;
+export async function auth({ username, password }) {
   await client.connect();
   const db = client.db(dbName);
 
@@ -18,11 +17,11 @@ export async function auth(userData) {
     return { error: { message: `${username} not found in database` } };
   }
 
-  // const validatePsw = await bcrypt.compare(password, user.password);
+  const validatePsw = await bcrypt.compare(password, user.password);
 
-  // if (!validatePsw) {
-  //   return { error: { message: 'Incorrect password' } };
-  // }
+  if (!validatePsw) {
+    return { error: { message: 'Incorrect password' } };
+  }
 
   return { ...user, password: undefined };
 }

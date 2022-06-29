@@ -11,6 +11,7 @@ export const Logo = ({ pc, sc, height, width, ...props }) => {
       width={width}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1500 900"
+      onClick={props.onClick}
     >
       <g style={{ fill: pc ? pc : 'teal' }}>
         <g id="ANSEN">

@@ -28,11 +28,15 @@ export const Login = ({ ...props }) => {
   async function handleSubmit(e) {
     e.preventDefault();
 
+    let toLower = {
+      username: formData.username.toLowerCase(),
+      password: formData.password,
+    };
+
     try {
-      const { data } = await axios.post('api/login', formData);
+      const { data } = await axios.post('api/login', toLower);
       mutateUser(data);
     } catch (error) {
-      console.log('Auth request failed');
       dispatch({
         type: TOAST,
         payload: { type: 'alert', message: 'Auth request failed' },
@@ -42,7 +46,7 @@ export const Login = ({ ...props }) => {
 
   const iStyle = {
     opacity: open ? '1' : '0',
-    pointerEvnts: open ? 'all' : 'none',
+    pointerEvents: open ? 'all' : 'none',
   };
 
   return (
